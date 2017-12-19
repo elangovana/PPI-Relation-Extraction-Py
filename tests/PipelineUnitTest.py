@@ -16,6 +16,7 @@ class PipelineUnitTest(unittest.TestCase):
         Should train data
         :type train_file_path: The training file
         """
+
         train_file_abs_path = os.path.join(os.path.dirname(__file__), train_file_path)
         self.assertEquals(os.path.exists(train_file_abs_path), True,
                           "The file {} does not exist".format(train_file_abs_path))
