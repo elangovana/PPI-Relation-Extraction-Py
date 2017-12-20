@@ -29,7 +29,6 @@ class NGramFeatureExtractionUnitTest(unittest.TestCase):
 
         # Act
         actual = sut.extract(text_vector)
-        print(actual)
 
         # Assert
         actual_dim = len(actual.shape)
