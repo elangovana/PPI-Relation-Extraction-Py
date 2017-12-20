@@ -2,7 +2,7 @@ import unittest
 import os
 from ddt import ddt, data, unpack
 
-from FeatureExtraction import FeatureExtraction
+from NGramFeatureExtraction import NGramFeatureExtraction
 
 """
 Unit tests for FeatureExtraction class
@@ -10,7 +10,7 @@ Unit tests for FeatureExtraction class
 
 
 @ddt
-class FeatureExtractionUnitTest(unittest.TestCase):
+class NGramFeatureExtractionUnitTest(unittest.TestCase):
 
     @data((["This is a ngram", "This is also a ngram"], 2, 4)
         , (["This is apple"], 3, 1)
@@ -25,7 +25,7 @@ class FeatureExtractionUnitTest(unittest.TestCase):
         """
 
         # Arrange
-        sut = FeatureExtraction(n_gram)
+        sut = NGramFeatureExtraction(n_gram)
 
         # Act
         actual = sut.extract(text_vector)

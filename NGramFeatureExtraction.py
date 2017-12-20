@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import CountVectorizer
 
 
-class FeatureExtraction:
+class NGramFeatureExtraction:
 
     def __init__(self, n_gram_len=3):
         """
