@@ -10,7 +10,7 @@ Unit tests for FeatureExtraction class
 
 
 @ddt
-class NGramFeatureExtractionUnitTest(unittest.TestCase):
+class TestNGramFeatureExtraction(unittest.TestCase):
 
     @data((["This is a ngram", "This is also a ngram"], 2, 4)
         , (["This is apple"], 3, 1)
