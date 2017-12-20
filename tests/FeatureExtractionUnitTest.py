@@ -15,10 +15,10 @@ class FeatureExtractionUnitTest(unittest.TestCase):
     @data((["This is a ngram", "This is also a ngram"], 2, 4)
           ,(["This is apple"], 3, 1)
           ,(["Jack is a ngram"],1, 3)
-        , (["This"], 1, 1)
+          ,(["This"], 1, 1)
           )
     @unpack
-    def test_should_extract(self, text_vector, n_gram, expected_columns):
+    def test_should_extract_ngrams(self, text_vector, n_gram, expected_columns):
         """
         Should extract features
         :type text_vector: The text vector
