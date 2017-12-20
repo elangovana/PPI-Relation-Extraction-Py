@@ -20,6 +20,6 @@ class FeatureExtraction:
         vectorizer = CountVectorizer(analyzer="word", binary=True,
                                      ngram_range=(self.n_gram_len, self.n_gram_len))
 
-        data_features = vectorizer.fit_transform(text_vector)
+        data_features = vectorizer.fit_transform(text_vector).toarray()
 
         return (data_features)
