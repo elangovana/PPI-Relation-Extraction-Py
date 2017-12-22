@@ -8,7 +8,7 @@ Unit tests for Pipeline class
 
 
 @ddt
-class PipelineUnitTest(unittest.TestCase):
+class TestPipeline(unittest.TestCase):
 
     @data("data/smallTrainingData.xml")
     def test_should_train(self, train_file_path):
