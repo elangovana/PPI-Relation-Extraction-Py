@@ -18,7 +18,7 @@ class TestNGramFeatureExtraction(unittest.TestCase):
         , (["This"], 1, 1)
           )
     @unpack
-    def test_should_extract_ngrams(self, text_vector, n_gram, expected_columns):
+    def test_should_extract_ngrams(self, text_vector, n_gram, expected_no_columns):
         """
         Should extract features
         :type text_vector: The text vector
@@ -33,5 +33,5 @@ class TestNGramFeatureExtraction(unittest.TestCase):
         # Assert
         actual_dim = len(actual.shape)
         self.assertEquals(actual_dim, 2, "Expecting a 2 dimensional array, instead found {}".format(actual_dim))
-        self.assertEquals(actual.shape[1], expected_columns)
+        self.assertEquals(actual.shape[1], expected_no_columns)
         self.assertEquals(actual.shape[0], len(text_vector))
