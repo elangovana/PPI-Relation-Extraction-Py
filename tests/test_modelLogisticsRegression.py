@@ -20,4 +20,5 @@ class TestModelLogisticsRegression(TestCase):
 
         # Assert
         self.assertIsNotNone(actual_model)
-        self.assertTrue(0 <= actual_score <= 1.0, "The actual score must be between one and zero, but is {}".format(actual_score))
+        self.assertTrue(0 <= actual_score <= 1.0,
+                        "The actual score must be between one and zero, but is {}".format(actual_score))
