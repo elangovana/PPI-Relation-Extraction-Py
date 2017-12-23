@@ -3,3 +3,4 @@ scipy
 ddt
 bioc
 future
+numpy

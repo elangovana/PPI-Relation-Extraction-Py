@@ -1,7 +1,7 @@
 from unittest import TestCase
-
+import numpy
 from ddt import data, ddt
-
+import  numpy as np
 from ModelLogisticsRegresssion import ModelLogisticsRegression
 
 
@@ -9,12 +9,16 @@ from ModelLogisticsRegresssion import ModelLogisticsRegression
 class TestModelLogisticsRegression(TestCase):
 
 
-    @data
+
     def test_train(self):
         #Arrange
         sut = ModelLogisticsRegression()
+        data_x = np.transpose( [range(1,50), range(1,50)])
+        print(data_x)
+        data_y = np.remainder( data_x[:,1] , 2)
 
         #Act
-        sut.train()
+        sut.train(data_x, data_y)
 
         #Assert
+

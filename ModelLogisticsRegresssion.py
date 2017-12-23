@@ -11,7 +11,7 @@ class ModelLogisticsRegression:
         model = LogisticRegression()
         k_fold = KFold(n_splits=2)
 
-        for k, (train, test) in enumerate(k_fold.split(matrix_x, vector_y)):
+        for train, test in k_fold.split(matrix_x, vector_y):
             model.fit(matrix_x[train], vector_y[train])
-            print("[fold {0}] alpha: {1:.5f}, score: {2:.5f}".
-                format(k, model.coef_, model.score(matrix_x[test], vector_y[test])))
+            print("[alpha: {0}, score: {1}".
+                format( model.coef_, model.score(matrix_x[test], vector_y[test])))
