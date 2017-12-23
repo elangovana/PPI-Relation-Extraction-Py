@@ -11,10 +11,13 @@ class TestModelLogisticsRegression(TestCase):
     def test_train(self):
         # Arrange
         sut = ModelLogisticsRegression()
-        data_x = np.transpose([range(1, 50), range(1, 50)])
-        data_y = np.remainder(data_x[:, 1], 2)
+        mn, mx = 1, 50
+        data_x = np.transpose([range(mn, mx), range(mn, mx)])
+        data_y = data_x[:, 1] > (mx - mn) / 2
 
         # Act
-        sut.train(data_x, data_y)
+        actual_model, actual_score = sut.train(data_x, data_y)
 
         # Assert
+        self.assertIsNotNone(actual_model)
+        self.assertTrue(0 <= actual_score <= 1.0, "The actual score must be between one and zero, but is {}".format(actual_score))
