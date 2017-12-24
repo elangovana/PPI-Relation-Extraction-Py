@@ -17,7 +17,7 @@ class TestModelLogisticsRegression(TestCase):
     def test_train(self):
         # Arrange
         sut = ModelLogisticsRegression()
-        mn, mx = 1, 50
+        mn, mx = 1, 2500
         data_x = np.transpose([range(mn, mx), range(mn, mx)])
         data_y = data_x[:, 1] > (mx - mn) / 2
 
