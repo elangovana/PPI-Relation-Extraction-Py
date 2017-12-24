@@ -12,12 +12,10 @@ class TestModelLogisticsRegression(TestCase):
 
     def setUp(self):
         fileConfig(os.path.join(os.path.dirname( __file__), 'logger.ini'))
-        self.logger = logging.getLogger(__name__)
 
 
     def test_train(self):
         # Arrange
-        self.logger.debug("Running test to arrange")
         sut = ModelLogisticsRegression()
         mn, mx = 1, 50
         data_x = np.transpose([range(mn, mx), range(mn, mx)])
