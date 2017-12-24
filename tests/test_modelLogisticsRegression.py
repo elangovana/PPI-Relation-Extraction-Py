@@ -3,10 +3,14 @@ import numpy
 from ddt import data, ddt
 import numpy as np
 from ModelLogisticsRegresssion import ModelLogisticsRegression
-
+from logging.config import fileConfig
+import os
 
 @ddt
 class TestModelLogisticsRegression(TestCase):
+
+    def setUp(self):
+        fileConfig(os.path.join(os.path.dirname( __file__), 'logger.ini'))
 
     def test_train(self):
         # Arrange

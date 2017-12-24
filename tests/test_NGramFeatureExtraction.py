@@ -1,7 +1,7 @@
 import unittest
 import os
 from ddt import ddt, data, unpack
-
+from logging.config import fileConfig
 from NGramFeatureExtraction import NGramFeatureExtraction
 
 """
@@ -11,6 +11,10 @@ Unit tests for FeatureExtraction class
 
 @ddt
 class TestNGramFeatureExtraction(unittest.TestCase):
+
+    def setUp(self):
+        fileConfig(os.path.join(os.path.dirname( __file__), 'logger.ini'))
+
 
     @data((["This is a ngram", "This is also a ngram"], 2, 4)
         , (["This is apple"], 3, 1)
