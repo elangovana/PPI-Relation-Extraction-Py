@@ -5,12 +5,12 @@ from unittest import TestCase
 import os
 from ddt import ddt, data, unpack
 
-from BiocAnnotationSentences import BiocAnnotationSentences
+from BiocSentences import BiocSentences
 import bioc
 
 
 @ddt
-class TestBiocAnnotationSentences(TestCase):
+class TestBiocSentences(TestCase):
 
     def setUp(self):
         fileConfig(os.path.join(os.path.dirname(__file__), 'logger.ini'))
@@ -22,7 +22,7 @@ class TestBiocAnnotationSentences(TestCase):
     def test_convert_to_vec(self, bioc_doc_input):
         # Arrange
         expected_vec = []
-        sut = BiocAnnotationSentences()
+        sut = BiocSentences()
         doc = bioc.BioCDocument()
         # construct a bioc doc object given the input array
         for p in bioc_doc_input:

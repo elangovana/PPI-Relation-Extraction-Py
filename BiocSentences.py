@@ -1,7 +1,7 @@
 import logging
 
 
-class BiocAnnotationSentences:
+class BiocSentences:
 
     def __init__(self):
         self.logger = logging.getLogger(__name__)
