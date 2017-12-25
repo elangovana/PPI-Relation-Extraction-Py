@@ -8,25 +8,24 @@ class BiocAnnotationGenes:
         pass
 
     def get_gene_names(self, bioc_element):
-        if isinstance(bioc_element , bioc.BioCDocument):
+        if isinstance(bioc_element, bioc.BioCDocument):
             return self._get_gene_name_document(bioc_element)
         else:
             return self._get_gene_name_passage(bioc_element)
 
     def _get_gene_name_document(self, bioc_doc):
-        result = []
+        result = set()
         for passage in bioc_doc.passages:
-            result.append(self._get_gene_name_passage(passage))
+            result = result.union(self._get_gene_name_passage(passage))
         return result
 
     def _get_gene_name_passage(self, bioc_passage):
-        result = []
+        result = set()
         for annotation in bioc_passage.annotations:
             if self.is_annotation_gene_name(annotation):
-               result.append(annotation.infons["NCBI Gene"])
+                result.add(annotation.infons["NCBI GENE"])
         return result
 
     @staticmethod
-    def is_annotation_gene_name( annotation) :
+    def is_annotation_gene_name(annotation):
         return annotation.infons["type"] == GENE
-
