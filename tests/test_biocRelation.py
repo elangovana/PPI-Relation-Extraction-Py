@@ -10,6 +10,9 @@ from BiocRelation import BiocRelation
 class TestBiocRelation(TestCase):
 
     @data(([{"Gene1":"1", "Gene2":"2"}], "1","2", True)
+          ,([{"Gene1":"1", "Gene2":"2"}], "2","1", True)
+          ,([{"Gene1":"1", "Gene2":"1"}], "1","1", True)
+        , ([{"Gene1": "1", "Gene2": "2"}], "1", "1", False)
           )
     @unpack
     def test_is_valid(self, relations_infons, gene1, gene2, expected):
