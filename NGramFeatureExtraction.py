@@ -22,4 +22,4 @@ class NGramFeatureExtraction:
 
         data_features = vectorizer.fit_transform(text_vector).toarray()
 
-        return (data_features)
+        return data_features
