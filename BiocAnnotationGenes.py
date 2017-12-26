@@ -10,6 +10,11 @@ class BiocAnnotationGenes:
         pass
 
     def get_gene_names_normalised(self, bioc_element):
+        """
+Returns NCBI gene ids from a document or a passage
+        :param bioc_element: A bioc document or a passage
+        :return: a list of NCBI genes
+        """
         gene_type = NCBI_GENE
         if isinstance(bioc_element, bioc.BioCDocument):
             return self._get_gene_name_normalised_document(bioc_element, gene_type)
