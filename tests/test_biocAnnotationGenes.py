@@ -94,27 +94,28 @@ class TestBiocAnnotationGenes(TestCase):
         # assert
         self.assertEqual(expected_normalised_gene, actual)
 
-    @data(([{"type": "Gene", "NCBI GENE": "8183", "text": "klk3"}]
+    @data(([[{"type": "Gene", "NCBI GENE": "8183", "text": "klk3"}]]
            , {"klk3": "8183"}
            )
         , (
-          [{"type": "Gene", "NCBI GENE": "8183", "text": "klk3"}, {"type": "Gene", "NCBI GENE": "8184", "text": "klk4"}]
+          [[{"type": "Gene", "NCBI GENE": "8183", "text": "klk3"}],[ {"type": "Gene", "NCBI GENE": "8184", "text": "klk4"}]]
           , {"klk3": "8183", "klk4":"8184"}
           )
           )
     @unpack
-    def test_should_get_gene_names_to_normalised_dict(self, list_gene_dict, expected_dict):
+    def test_should_get_gene_names_to_normalised_dict(self, list_gene_dict_in_passage, expected_dict):
         # Arrange
         sut = BiocAnnotationGenes()
         bioc_doc = BioCDocument()
-        bioc_passage = BioCPassage()
-        bioc_doc.add_passage(bioc_passage)
+        for list_gene_dict in list_gene_dict_in_passage:
+            bioc_passage = BioCPassage()
+            bioc_doc.add_passage(bioc_passage)
 
-        for dict in list_gene_dict:
-            annotation = BioCAnnotation()
-            annotation.text = dict["text"]
-            annotation.infons = dict
-            bioc_passage.add_annotation(annotation)
+            for dict in list_gene_dict:
+                annotation = BioCAnnotation()
+                annotation.text = dict["text"]
+                annotation.infons = dict
+                bioc_passage.add_annotation(annotation)
 
         # act
         actual = sut.get_gene_names_to_normalised_dict(bioc_doc)

@@ -47,7 +47,7 @@ Returns the normalised gene name given the normal gene name
             for annotation in bioc_passage.annotations:
                 if self.is_annotation_gene(annotation) and annotation.text == gene:
                     return annotation.infons[NCBI_GENE]
-            return None
+        return None
 
 
     @staticmethod
