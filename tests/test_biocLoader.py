@@ -1,3 +1,4 @@
+from logging.config import fileConfig
 from unittest import TestCase
 
 from BiocLoader import BiocLoader
@@ -7,7 +8,11 @@ from ddt import ddt, data, unpack
 @ddt
 class TestBiocLoader(TestCase):
 
-    @data(("data/smallTrainingData.xml"))
+    def setUp(self):
+        fileConfig(os.path.join(os.path.dirname(__file__), 'logger.ini'))
+
+    @data(("data/training_gold_sentences.xml")
+          )
     def test_parse(self, bioc_file):
         # Arrange
         sut = BiocLoader()
