@@ -20,7 +20,7 @@ class TestBiocAnnotationGenes(TestCase):
            , ["Klk3", "Klk4"])
     )
     @unpack
-    def test_should_get_gene_names(self, list_dict, expected_genes):
+    def test_should_get_gene_names_normalised(self, list_dict, expected_genes):
         # Arrange
         sut = BiocAnnotationGenes()
         bioc_doc = BioCDocument()
@@ -33,7 +33,7 @@ class TestBiocAnnotationGenes(TestCase):
             bioc_passage.add_annotation(annotation)
 
         # act
-        actual = sut.get_gene_names(bioc_doc)
+        actual = sut.get_gene_names_normalised(bioc_doc)
 
         # assert
         self.assertEqual(set(expected_genes), actual)

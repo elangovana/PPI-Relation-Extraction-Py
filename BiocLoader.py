@@ -7,7 +7,7 @@ from BiocSentences import BiocSentences
 class BiocLoader:
 
     def __init__(self):
-        self.biocDocProcessors=[BiocSentences().convert_to_vec, BiocAnnotationGenes().get_gene_names]
+        self.biocDocProcessors=[BiocSentences().convert_to_vec, BiocAnnotationGenes().get_gene_names_normalised]
 
     def parse(self, filename):
         with open(filename, 'r') as fp:
