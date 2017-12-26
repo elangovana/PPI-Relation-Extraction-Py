@@ -10,8 +10,8 @@ class BiocSentences:
         result =[]
         for passage in biocDoc.passages:
             for sentence in passage.sentences:
-                self.logger.debug("Adding bioc sentence %s", sentence)
-                result.append(sentence)
+                self.logger.debug("Adding bioc sentence %s", sentence.text)
+                result.append(sentence.text)
         return result
 
 

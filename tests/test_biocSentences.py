@@ -3,6 +3,8 @@ from logging.config import fileConfig
 from unittest import TestCase
 
 import os
+
+from bioc import BioCSentence
 from ddt import ddt, data, unpack
 
 from BiocSentences import BiocSentences
@@ -29,7 +31,9 @@ class TestBiocSentences(TestCase):
             bioc_p = bioc.BioCPassage()
             doc.add_passage(bioc_p)
             for s in p:
-                bioc_p.add_sentence(s)
+                bioc_sent = BioCSentence()
+                bioc_sent.text = s
+                bioc_p.add_sentence(bioc_sent)
                 expected_vec.append(s)
 
         # Act

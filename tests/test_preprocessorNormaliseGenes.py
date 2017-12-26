@@ -23,10 +23,14 @@ class TestPreprocessorNormaliseGenes(TestCase):
         # Assert
         self.assertEqual(expected_v_sentences, actual)
 
-
     @data(
-        [["This is sentence 1 with gene1 from passage 1"]
-            , {"gene1":"normgene1"}, ["This is sentence 1 with normgene1 from passage 1"]]
+        (["This is sentence 1 with gene1 from passage 1"]
+         , {"gene1": "normgene1"},
+         ["This is sentence 1 with normgene1 from passage 1"])
+
+        , (["This is sentence 1 with gene1 from passage 1", "This is sentence 1 with gene1 from passage 2"]
+           , {"gene1": "normgene1"},
+           ["This is sentence 1 with normgene1 from passage 1", "This is sentence 1 with normgene1 from passage 2"])
     )
     @unpack
     def test_normalise_gene_names_bulk(self, v_sentences, dict, expected_v_sentences):
@@ -38,5 +42,3 @@ class TestPreprocessorNormaliseGenes(TestCase):
 
         # Assert
         self.assertEqual(expected_v_sentences, actual)
-
-

@@ -1,15 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version='1.0' encoding='UTF-8'?>
 <collection>
-    <source>PubTator</source>
-    <date>2017-06-02</date>
-    <key>BioC.key</key>
+    <source></source>
+    <date>2017-08-31</date>
+    <key></key>
     <document>
         <id>20638386</id>
         <passage>
             <infon key="type">title</infon>
             <offset>0</offset>
-            <text>Crystal structure of tubulin folding cofactor A from Arabidopsis thaliana and its beta-tubulin binding characterization.</text>
+            <text>Crystal structure of tubulin folding cofactor A from Arabidopsis thaliana and its beta-tubulin binding
+                characterization.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>Crystal structure of tubulin folding cofactor A from Arabidopsis thaliana and its beta-tubulin binding
+                    characterization.
+                </text>
+            </sentence>
             <annotation id="0">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
@@ -22,103 +29,203 @@
                 <location offset="82" length="12"/>
                 <text>beta-tubulin</text>
             </annotation>
+            <annotation id="2">
+                <infon key="NCBI GENE">6902</infon>
+                <infon key="type">Gene</infon>
+                <location offset="21" length="26"/>
+                <text>tubulin folding cofactor A</text>
+            </annotation>
+            <annotation id="5">
+                <infon key="NCBI Taxonomy">3702</infon>
+                <infon key="type">Species</infon>
+                <location offset="53" length="20"/>
+                <text>Arabidopsis thaliana</text>
+            </annotation>
         </passage>
         <passage>
             <infon key="type">abstract</infon>
             <offset>121</offset>
-            <text>Microtubules are composed of polymerized alpha/beta-tubulin heterodimers. Biogenesis of assembly-competent tubulin dimers is a complex multistep process that requires sequential actions of distinct molecular chaperones and cofactors. Tubulin folding cofactor A (TFCA), which captures beta-tubulin during the folding pathway, has been identified in many organisms. Here, we report the crystal structure of Arabidopsis thaliana TFC A (KIESEL, KIS), which forms a monomeric three-helix bundle. The functional binding analysis demonstrated that KIS interacts with beta-tubulin in plant. Furthermore, mutagenesis studies indicated that the alpha-helical regions of KIS participate in beta-tubulin binding. Unlike the budding yeast TFC A, the two loop regions of KIS are not required for this interaction suggesting a distinct binding mechanism of TFC A to beta-tubulin in plants.</text>
-            <annotation id="2">
+            <text>Microtubules are composed of polymerized alpha/beta-tubulin heterodimers. Biogenesis of
+                assembly-competent tubulin dimers is a complex multistep process that requires sequential actions of
+                distinct molecular chaperones and cofactors. Tubulin folding cofactor A (TFCA), which captures
+                beta-tubulin during the folding pathway, has been identified in many organisms. Here, we report the
+                crystal structure of Arabidopsis thaliana TFC A (KIESEL, KIS), which forms a monomeric three-helix
+                bundle. The functional binding analysis demonstrated that KIS interacts with beta-tubulin in plant.
+                Furthermore, mutagenesis studies indicated that the alpha-helical regions of KIS participate in
+                beta-tubulin binding. Unlike the budding yeast TFC A, the two loop regions of KIS are not required for
+                this interaction suggesting a distinct binding mechanism of TFC A to beta-tubulin in plants.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>Microtubules are composed of polymerized alpha/beta-tubulin heterodimers. </text>
+            </sentence>
+            <sentence>
+                <offset>75</offset>
+                <text>Biogenesis of
+                    assembly-competent tubulin dimers is a complex multistep process that requires sequential actions of
+                    distinct molecular chaperones and cofactors. </text>
+            </sentence>
+            <sentence>
+                <offset>268</offset>
+                <text>Tubulin folding cofactor A (TFCA), which captures
+                    beta-tubulin during the folding pathway, has been identified in many organisms. </text>
+            </sentence>
+            <sentence>
+                <offset>415</offset>
+                <text>Here, we report the
+                    crystal structure of Arabidopsis thaliana TFC A (KIESEL, KIS), which forms a monomeric three-helix
+                    bundle. </text>
+            </sentence>
+            <sentence>
+                <offset>575</offset>
+                <text>The functional binding analysis demonstrated that KIS interacts with beta-tubulin in plant.
+                </text>
+            </sentence>
+            <sentence>
+                <offset>684</offset>
+                <text>Furthermore, mutagenesis studies indicated that the alpha-helical regions of KIS participate in
+                    beta-tubulin binding. </text>
+            </sentence>
+            <sentence>
+                <offset>819</offset>
+                <text>Unlike the budding yeast TFC A, the two loop regions of KIS are not required for
+                    this interaction suggesting a distinct binding mechanism of TFC A to beta-tubulin in plants.
+                </text>
+            </sentence>
+            <annotation id="6">
                 <infon key="NCBI GENE">827837</infon>
                 <infon key="type">Gene</infon>
                 <location offset="168" length="12"/>
                 <text>beta-tubulin</text>
             </annotation>
-            <annotation id="3">
+            <annotation id="7">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="355" length="26"/>
                 <text>Tubulin folding cofactor A</text>
             </annotation>
-            <annotation id="4">
+            <annotation id="8">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="383" length="4"/>
                 <text>TFCA</text>
             </annotation>
-            <annotation id="5">
+            <annotation id="9">
                 <infon key="NCBI GENE">827837</infon>
                 <infon key="type">Gene</infon>
                 <location offset="405" length="12"/>
                 <text>beta-tubulin</text>
             </annotation>
-            <annotation id="6">
+            <annotation id="10">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="547" length="5"/>
                 <text>TFC A</text>
             </annotation>
-            <annotation id="7">
+            <annotation id="11">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="554" length="6"/>
                 <text>KIESEL</text>
             </annotation>
-            <annotation id="8">
+            <annotation id="12">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="562" length="3"/>
                 <text>KIS</text>
             </annotation>
-            <annotation id="9">
+            <annotation id="13">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="662" length="3"/>
                 <text>KIS</text>
             </annotation>
-            <annotation id="10">
+            <annotation id="14">
                 <infon key="NCBI GENE">827837</infon>
                 <infon key="type">Gene</infon>
                 <location offset="681" length="12"/>
                 <text>beta-tubulin</text>
             </annotation>
-            <annotation id="11">
+            <annotation id="15">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="781" length="3"/>
                 <text>KIS</text>
             </annotation>
-            <annotation id="12">
+            <annotation id="16">
                 <infon key="NCBI GENE">827837</infon>
                 <infon key="type">Gene</infon>
                 <location offset="800" length="12"/>
                 <text>beta-tubulin</text>
             </annotation>
-            <annotation id="13">
+            <annotation id="17">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="847" length="5"/>
                 <text>TFC A</text>
             </annotation>
-            <annotation id="14">
+            <annotation id="18">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="878" length="3"/>
                 <text>KIS</text>
             </annotation>
-            <annotation id="15">
+            <annotation id="19">
                 <infon key="NCBI GENE">817592</infon>
                 <infon key="type">Gene</infon>
                 <location offset="963" length="5"/>
                 <text>TFC A</text>
             </annotation>
-            <annotation id="16">
+            <annotation id="20">
                 <infon key="NCBI GENE">827837</infon>
                 <infon key="type">Gene</infon>
                 <location offset="972" length="12"/>
                 <text>beta-tubulin</text>
             </annotation>
+            <annotation id="22">
+                <infon key="NCBI GENE">6902</infon>
+                <infon key="type">Gene</infon>
+                <location offset="355" length="26"/>
+                <text>Tubulin folding cofactor A</text>
+            </annotation>
+            <annotation id="24">
+                <infon key="NCBI GENE">127933</infon>
+                <infon key="type">Gene</infon>
+                <location offset="562" length="3"/>
+                <text>KIS</text>
+            </annotation>
+            <annotation id="25">
+                <infon key="NCBI GENE">127933</infon>
+                <infon key="type">Gene</infon>
+                <location offset="662" length="3"/>
+                <text>KIS</text>
+            </annotation>
+            <annotation id="33">
+                <infon key="NCBI GENE">127933</infon>
+                <infon key="type">Gene</infon>
+                <location offset="878" length="3"/>
+                <text>KIS</text>
+            </annotation>
+            <annotation id="34">
+                <infon key="NCBI GENE">127933</infon>
+                <infon key="type">Gene</infon>
+                <location offset="781" length="3"/>
+                <text>KIS</text>
+            </annotation>
+            <annotation id="40">
+                <infon key="NCBI Taxonomy">3702</infon>
+                <infon key="type">Species</infon>
+                <location offset="526" length="20"/>
+                <text>Arabidopsis thaliana</text>
+            </annotation>
+            <annotation id="41">
+                <infon key="NCBI Taxonomy">4932</infon>
+                <infon key="type">Species</infon>
+                <location offset="841" length="5"/>
+                <text>yeast</text>
+            </annotation>
         </passage>
-        <relation id="R0">
+        <relation id="827837#817592">
             <infon key="Gene1">827837</infon>
             <infon key="Gene2">817592</infon>
             <infon key="relation">PPIm</infon>
@@ -130,6 +237,10 @@
             <infon key="type">title</infon>
             <offset>0</offset>
             <text>p53 inhibits autophagy by interacting with the human ortholog of yeast Atg17, RB1CC1/FIP200.</text>
+            <sentence>
+                <offset>0</offset>
+                <text>p53 inhibits autophagy by interacting with the human ortholog of yeast Atg17, RB1CC1/FIP200.</text>
+            </sentence>
             <annotation id="0">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
@@ -148,111 +259,345 @@
                 <location offset="85" length="6"/>
                 <text>FIP200</text>
             </annotation>
+            <annotation id="3">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="0" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="4">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="71" length="5"/>
+                <text>Atg17</text>
+            </annotation>
+            <annotation id="5">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="78" length="6"/>
+                <text>RB1CC1</text>
+            </annotation>
+            <annotation id="6">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="85" length="6"/>
+                <text>FIP200</text>
+            </annotation>
+            <annotation id="7">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="47" length="5"/>
+                <text>human</text>
+            </annotation>
+            <annotation id="8">
+                <infon key="NCBI Taxonomy">4932</infon>
+                <infon key="type">Species</infon>
+                <location offset="65" length="5"/>
+                <text>yeast</text>
+            </annotation>
         </passage>
         <passage>
             <infon key="type">abstract</infon>
             <offset>93</offset>
-            <text>The tumor suppressor protein p53 tonically suppresses autophagy when it is present in the cytoplasm. This effect is phylogenetically conserved from mammals to nematodes, and human p53 can inhibit autophagy in yeast, as we show here. Bioinformatic investigations of the p53 interactome in relationship to the autophagy-relevant protein network underscored the possible relevance of a direct molecular interaction between p53 and the mammalian ortholog of the essential yeast autophagy protein Atg17, namely RB1-inducible coiled-coil protein 1 (RB1CC1), also called FAK family kinase-interacting protein of 200 KDa (FIP200). Mutational analyses revealed that a single point mutation in p53 (K382R) abolished its capacity to inhibit autophagy upon transfection into p53-deficient human colon cancer or yeast cells. In conditions in which wild-type p53 co-immunoprecipitated with RB1CC1/FIP200, p53 (K382R) failed to do so, underscoring the importance of the physical interaction between these proteins for the control of autophagy. In conclusion, p53 regulates autophagy through a direct molecular interaction with RB1CC1/FIP200, a protein that is essential for the very apical step of autophagy initiation.</text>
-            <annotation id="3">
+            <text>The tumor suppressor protein p53 tonically suppresses autophagy when it is present in the cytoplasm.
+                This effect is phylogenetically conserved from mammals to nematodes, and human p53 can inhibit autophagy
+                in yeast, as we show here. Bioinformatic investigations of the p53 interactome in relationship to the
+                autophagy-relevant protein network underscored the possible relevance of a direct molecular interaction
+                between p53 and the mammalian ortholog of the essential yeast autophagy protein Atg17, namely
+                RB1-inducible coiled-coil protein 1 (RB1CC1), also called FAK family kinase-interacting protein of 200
+                KDa (FIP200). Mutational analyses revealed that a single point mutation in p53 (K382R) abolished its
+                capacity to inhibit autophagy upon transfection into p53-deficient human colon cancer or yeast cells. In
+                conditions in which wild-type p53 co-immunoprecipitated with RB1CC1/FIP200, p53 (K382R) failed to do so,
+                underscoring the importance of the physical interaction between these proteins for the control of
+                autophagy. In conclusion, p53 regulates autophagy through a direct molecular interaction with
+                RB1CC1/FIP200, a protein that is essential for the very apical step of autophagy initiation.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>The tumor suppressor protein p53 tonically suppresses autophagy when it is present in the cytoplasm.
+                </text>
+            </sentence>
+            <sentence>
+                <offset>118</offset>
+                <text>This effect is phylogenetically conserved from mammals to nematodes, and human p53 can inhibit autophagy
+                    in yeast, as we show here. </text>
+            </sentence>
+            <sentence>
+                <offset>267</offset>
+                <text>Bioinformatic investigations of the p53 interactome in relationship to the
+                    autophagy-relevant protein network underscored the possible relevance of a direct molecular interaction
+                    between p53 and the mammalian ortholog of the essential yeast autophagy protein Atg17, namely
+                    RB1-inducible coiled-coil protein 1 (RB1CC1), also called FAK family kinase-interacting protein of 200
+                    KDa (FIP200). </text>
+            </sentence>
+            <sentence>
+                <offset>722</offset>
+                <text>Mutational analyses revealed that a single point mutation in p53 (K382R) abolished its
+                    capacity to inhibit autophagy upon transfection into p53-deficient human colon cancer or yeast cells. </text>
+            </sentence>
+            <sentence>
+                <offset>928</offset>
+                <text>In
+                    conditions in which wild-type p53 co-immunoprecipitated with RB1CC1/FIP200, p53 (K382R) failed to do so,
+                    underscoring the importance of the physical interaction between these proteins for the control of
+                    autophagy. </text>
+            </sentence>
+            <sentence>
+                <offset>1194</offset>
+                <text>In conclusion, p53 regulates autophagy through a direct molecular interaction with
+                    RB1CC1/FIP200, a protein that is essential for the very apical step of autophagy initiation.
+                </text>
+            </sentence>
+            <annotation id="9">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="122" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="4">
+            <annotation id="10">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="273" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="5">
+            <annotation id="11">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="362" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="6">
+            <annotation id="12">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="513" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="7">
+            <annotation id="13">
                 <infon key="NCBI GENE">9821</infon>
                 <infon key="type">Gene</infon>
                 <location offset="599" length="35"/>
                 <text>RB1-inducible coiled-coil protein 1</text>
             </annotation>
-            <annotation id="8">
+            <annotation id="14">
                 <infon key="NCBI GENE">9821</infon>
                 <infon key="type">Gene</infon>
                 <location offset="636" length="6"/>
                 <text>RB1CC1</text>
             </annotation>
-            <annotation id="9">
+            <annotation id="15">
                 <infon key="NCBI GENE">9821</infon>
                 <infon key="type">Gene</infon>
                 <location offset="707" length="6"/>
                 <text>FIP200</text>
             </annotation>
-            <annotation id="10">
+            <annotation id="16">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="777" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="11">
+            <annotation id="17">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="856" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="12">
+            <annotation id="18">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="938" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="13">
+            <annotation id="19">
                 <infon key="NCBI GENE">9821</infon>
                 <infon key="type">Gene</infon>
                 <location offset="969" length="6"/>
                 <text>RB1CC1</text>
             </annotation>
-            <annotation id="14">
+            <annotation id="20">
                 <infon key="NCBI GENE">9821</infon>
                 <infon key="type">Gene</infon>
                 <location offset="976" length="6"/>
                 <text>FIP200</text>
             </annotation>
-            <annotation id="15">
+            <annotation id="21">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="984" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="16">
+            <annotation id="22">
                 <infon key="NCBI GENE">7157</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1137" length="3"/>
                 <text>p53</text>
             </annotation>
-            <annotation id="17">
+            <annotation id="23">
                 <infon key="NCBI GENE">9821</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1205" length="6"/>
                 <text>RB1CC1</text>
             </annotation>
-            <annotation id="18">
+            <annotation id="24">
                 <infon key="NCBI GENE">9821</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1212" length="6"/>
                 <text>FIP200</text>
             </annotation>
+            <annotation id="26">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="122" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="27">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="273" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="28">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="362" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="29">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="513" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="30">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="585" length="5"/>
+                <text>Atg17</text>
+            </annotation>
+            <annotation id="31">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="599" length="35"/>
+                <text>RB1-inducible coiled-coil protein 1</text>
+            </annotation>
+            <annotation id="32">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="636" length="6"/>
+                <text>RB1CC1</text>
+            </annotation>
+            <annotation id="33">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="657" length="48"/>
+                <text>FAK family kinase-interacting protein of 200 KDa</text>
+            </annotation>
+            <annotation id="34">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="707" length="6"/>
+                <text>FIP200</text>
+            </annotation>
+            <annotation id="35">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="777" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="36">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="856" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="37">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="938" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="38">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="969" length="6"/>
+                <text>RB1CC1</text>
+            </annotation>
+            <annotation id="39">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="976" length="6"/>
+                <text>FIP200</text>
+            </annotation>
+            <annotation id="40">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="984" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="41">
+                <infon key="NCBI GENE">7157</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1137" length="3"/>
+                <text>p53</text>
+            </annotation>
+            <annotation id="42">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1205" length="6"/>
+                <text>RB1CC1</text>
+            </annotation>
+            <annotation id="43">
+                <infon key="NCBI GENE">9821</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1212" length="6"/>
+                <text>FIP200</text>
+            </annotation>
+            <annotation id="44">
+                <infon key="NCBI Taxonomy">6239</infon>
+                <infon key="type">Species</infon>
+                <location offset="252" length="9"/>
+                <text>nematodes</text>
+            </annotation>
+            <annotation id="45">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="267" length="5"/>
+                <text>human</text>
+            </annotation>
+            <annotation id="46">
+                <infon key="NCBI Taxonomy">4932</infon>
+                <infon key="type">Species</infon>
+                <location offset="302" length="5"/>
+                <text>yeast</text>
+            </annotation>
+            <annotation id="47">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="525" length="9"/>
+                <text>mammalian</text>
+            </annotation>
+            <annotation id="48">
+                <infon key="NCBI Taxonomy">4932</infon>
+                <infon key="type">Species</infon>
+                <location offset="561" length="5"/>
+                <text>yeast</text>
+            </annotation>
+            <annotation id="49">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="870" length="5"/>
+                <text>human</text>
+            </annotation>
+            <annotation id="50">
+                <infon key="NCBI Taxonomy">4932</infon>
+                <infon key="type">Species</infon>
+                <location offset="892" length="5"/>
+                <text>yeast</text>
+            </annotation>
         </passage>
-        <relation id="R0">
-            <infon key="Gene1">7157</infon>
-            <infon key="Gene2">9821</infon>
+        <relation id="9821#7157">
+            <infon key="Gene1">9821</infon>
+            <infon key="Gene2">7157</infon>
             <infon key="relation">PPIm</infon>
         </relation>
     </document>
@@ -261,7 +606,15 @@
         <passage>
             <infon key="type">title</infon>
             <offset>0</offset>
-            <text>A direct interaction between the Utp6 half-a-tetratricopeptide repeat domain and a specific peptide in Utp21 is essential for efficient pre-rRNA processing.</text>
+            <text>A direct interaction between the Utp6 half-a-tetratricopeptide repeat domain and a specific peptide in
+                Utp21 is essential for efficient pre-rRNA processing.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>A direct interaction between the Utp6 half-a-tetratricopeptide repeat domain and a specific peptide in
+                    Utp21 is essential for efficient pre-rRNA processing.
+                </text>
+            </sentence>
             <annotation id="0">
                 <infon key="NCBI GENE">852060</infon>
                 <infon key="type">Gene</infon>
@@ -274,74 +627,185 @@
                 <location offset="103" length="5"/>
                 <text>Utp21</text>
             </annotation>
+            <annotation id="2">
+                <infon key="NCBI GENE">55813</infon>
+                <infon key="type">Gene</infon>
+                <location offset="33" length="4"/>
+                <text>Utp6</text>
+            </annotation>
+            <annotation id="4">
+                <infon key="NCBI GENE">134430</infon>
+                <infon key="type">Gene</infon>
+                <location offset="103" length="5"/>
+                <text>Utp21</text>
+            </annotation>
         </passage>
         <passage>
             <infon key="type">abstract</infon>
             <offset>157</offset>
-            <text>The small subunit (SSU) processome is a ribosome biogenesis intermediate that assembles from its subcomplexes onto the pre-18S rRNA with yet unknown order and structure. Here, we investigate the architecture of the UtpB subcomplex of the SSU processome, focusing on the interaction between the half-a-tetratricopeptide repeat (HAT) domain of Utp6 and a specific peptide in Utp21. We present a comprehensive map of the interactions within the UtpB subcomplex and further show that the N-terminal domain of Utp6 interacts with Utp18 while the HAT domain interacts with Utp21. Using a panel of point and deletion mutants of Utp6, we show that an intact HAT domain is essential for efficient pre-rRNA processing and cell growth. Further investigation of the Utp6-Utp21 interaction using both genetic and biophysical methods shows that the HAT domain binds a specific peptide ligand in Utp21, the first example of a HAT domain peptide ligand, with a dissociation constant of 10 muM.</text>
-            <annotation id="2">
+            <text>The small subunit (SSU) processome is a ribosome biogenesis intermediate that assembles from its
+                subcomplexes onto the pre-18S rRNA with yet unknown order and structure. Here, we investigate the
+                architecture of the UtpB subcomplex of the SSU processome, focusing on the interaction between the
+                half-a-tetratricopeptide repeat (HAT) domain of Utp6 and a specific peptide in Utp21. We present a
+                comprehensive map of the interactions within the UtpB subcomplex and further show that the N-terminal
+                domain of Utp6 interacts with Utp18 while the HAT domain interacts with Utp21. Using a panel of point
+                and deletion mutants of Utp6, we show that an intact HAT domain is essential for efficient pre-rRNA
+                processing and cell growth. Further investigation of the Utp6-Utp21 interaction using both genetic and
+                biophysical methods shows that the HAT domain binds a specific peptide ligand in Utp21, the first
+                example of a HAT domain peptide ligand, with a dissociation constant of 10 muM.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>The small subunit (SSU) processome is a ribosome biogenesis intermediate that assembles from its
+                    subcomplexes onto the pre-18S rRNA with yet unknown order and structure. </text>
+            </sentence>
+            <sentence>
+                <offset>187</offset>
+                <text>Here, we investigate the
+                    architecture of the UtpB subcomplex of the SSU processome, focusing on the interaction between the
+                    half-a-tetratricopeptide repeat (HAT) domain of Utp6 and a specific peptide in Utp21. </text>
+            </sentence>
+            <sentence>
+                <offset>430</offset>
+                <text>We present a
+                    comprehensive map of the interactions within the UtpB subcomplex and further show that the N-terminal
+                    domain of Utp6 interacts with Utp18 while the HAT domain interacts with Utp21. </text>
+            </sentence>
+            <sentence>
+                <offset>657</offset>
+                <text>Using a panel of point
+                    and deletion mutants of Utp6, we show that an intact HAT domain is essential for efficient pre-rRNA
+                    processing and cell growth. </text>
+            </sentence>
+            <sentence>
+                <offset>841</offset>
+                <text>Further investigation of the Utp6-Utp21 interaction using both genetic and
+                    biophysical methods shows that the HAT domain binds a specific peptide ligand in Utp21, the first
+                    example of a HAT domain peptide ligand, with a dissociation constant of 10 muM.
+                </text>
+            </sentence>
+            <annotation id="5">
                 <infon key="NCBI GENE">852060</infon>
                 <infon key="type">Gene</infon>
                 <location offset="499" length="4"/>
                 <text>Utp6</text>
             </annotation>
-            <annotation id="3">
+            <annotation id="6">
                 <infon key="NCBI GENE">851125</infon>
                 <infon key="type">Gene</infon>
                 <location offset="530" length="5"/>
                 <text>Utp21</text>
             </annotation>
-            <annotation id="4">
+            <annotation id="7">
                 <infon key="NCBI GENE">852060</infon>
                 <infon key="type">Gene</infon>
                 <location offset="662" length="4"/>
                 <text>Utp6</text>
             </annotation>
-            <annotation id="5">
+            <annotation id="8">
                 <infon key="NCBI GENE">853376</infon>
                 <infon key="type">Gene</infon>
                 <location offset="682" length="5"/>
                 <text>Utp18</text>
             </annotation>
-            <annotation id="6">
+            <annotation id="9">
                 <infon key="NCBI GENE">851125</infon>
                 <infon key="type">Gene</infon>
                 <location offset="724" length="5"/>
                 <text>Utp21</text>
             </annotation>
-            <annotation id="7">
+            <annotation id="10">
                 <infon key="NCBI GENE">852060</infon>
                 <infon key="type">Gene</infon>
                 <location offset="778" length="4"/>
                 <text>Utp6</text>
             </annotation>
-            <annotation id="8">
+            <annotation id="11">
                 <infon key="NCBI GENE">852060</infon>
                 <infon key="type">Gene</infon>
                 <location offset="911" length="4"/>
                 <text>Utp6</text>
             </annotation>
-            <annotation id="9">
+            <annotation id="12">
                 <infon key="NCBI GENE">851125</infon>
                 <infon key="type">Gene</infon>
                 <location offset="916" length="5"/>
                 <text>Utp21</text>
             </annotation>
-            <annotation id="10">
+            <annotation id="13">
                 <infon key="NCBI GENE">851125</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1038" length="5"/>
                 <text>Utp21</text>
             </annotation>
+            <annotation id="16">
+                <infon key="NCBI GENE">55813</infon>
+                <infon key="type">Gene</infon>
+                <location offset="499" length="4"/>
+                <text>Utp6</text>
+            </annotation>
+            <annotation id="17">
+                <infon key="NCBI GENE">134430</infon>
+                <infon key="type">Gene</infon>
+                <location offset="530" length="5"/>
+                <text>Utp21</text>
+            </annotation>
+            <annotation id="19">
+                <infon key="NCBI GENE">55813</infon>
+                <infon key="type">Gene</infon>
+                <location offset="662" length="4"/>
+                <text>Utp6</text>
+            </annotation>
+            <annotation id="20">
+                <infon key="NCBI GENE">51096</infon>
+                <infon key="type">Gene</infon>
+                <location offset="682" length="5"/>
+                <text>Utp18</text>
+            </annotation>
+            <annotation id="22">
+                <infon key="NCBI GENE">134430</infon>
+                <infon key="type">Gene</infon>
+                <location offset="724" length="5"/>
+                <text>Utp21</text>
+            </annotation>
+            <annotation id="23">
+                <infon key="NCBI GENE">55813</infon>
+                <infon key="type">Gene</infon>
+                <location offset="778" length="4"/>
+                <text>Utp6</text>
+            </annotation>
+            <annotation id="25">
+                <infon key="NCBI GENE">55813</infon>
+                <infon key="type">Gene</infon>
+                <location offset="911" length="4"/>
+                <text>Utp6</text>
+            </annotation>
+            <annotation id="26">
+                <infon key="NCBI GENE">134430</infon>
+                <infon key="type">Gene</infon>
+                <location offset="916" length="5"/>
+                <text>Utp21</text>
+            </annotation>
+            <annotation id="28">
+                <infon key="NCBI GENE">134430</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1038" length="5"/>
+                <text>Utp21</text>
+            </annotation>
         </passage>
-        <relation id="R0">
+        <relation id="851125#852060">
             <infon key="Gene1">851125</infon>
             <infon key="Gene2">852060</infon>
             <infon key="relation">PPIm</infon>
         </relation>
-        <relation id="R1">
-            <infon key="Gene1">853376</infon>
-            <infon key="Gene2">852060</infon>
+        <relation id="851125#853376">
+            <infon key="Gene1">851125</infon>
+            <infon key="Gene2">853376</infon>
+            <infon key="relation">PPIm</infon>
+        </relation>
+        <relation id="852060#853376">
+            <infon key="Gene1">852060</infon>
+            <infon key="Gene2">853376</infon>
             <infon key="relation">PPIm</infon>
         </relation>
     </document>
@@ -350,7 +814,15 @@
         <passage>
             <infon key="type">title</infon>
             <offset>0</offset>
-            <text>The A domain of fibronectin-binding protein B of Staphylococcus aureus contains a novel fibronectin binding site.</text>
+            <text>The A domain of fibronectin-binding protein B of Staphylococcus aureus contains a novel fibronectin
+                binding site.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>The A domain of fibronectin-binding protein B of Staphylococcus aureus contains a novel fibronectin
+                    binding site.
+                </text>
+            </sentence>
             <annotation id="0">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
@@ -363,85 +835,217 @@
                 <location offset="88" length="11"/>
                 <text>fibronectin</text>
             </annotation>
+            <annotation id="6">
+                <infon key="NCBI Taxonomy">1280</infon>
+                <infon key="type">Species</infon>
+                <location offset="49" length="21"/>
+                <text>Staphylococcus aureus</text>
+            </annotation>
         </passage>
         <passage>
             <infon key="type">abstract</infon>
             <offset>114</offset>
-            <text>The fibronectin-binding proteins FnBPA and FnBPB are multifunctional adhesins than can also bind to fibrinogen and elastin. In this study, the N2N3 subdomains of region A of FnBPB were shown to bind fibrinogen with a similar affinity to those of FnBPA (2  M). The binding site for FnBPB in fibrinogen was localized to the C-terminus of the y-chain. Like clumping factor A, region A of FnBPB bound to the y-chain of fibrinogen in a Ca(2+)-inhibitable manner. The deletion of 17 residues from the C-terminus of domain N3 and the substitution of two residues in equivalent positions for crucial residues for fibrinogen binding in clumping factor A and FnBPA eliminated fibrinogen binding by FnBPB. This indicates that FnBPB binds fibrinogen by the dock-lock-latch mechanism. In contrast, the A domain of FnBPB bound fibronectin with K(D) = 2.5  M despite lacking any of the known fibronectin-binding tandem repeats. A truncate lacking the C-terminal 17 residues (latching peptide) bound fibronectin with the same affinity, suggesting that the FnBPB A domain binds fibronectin by a novel mechanism. The substitution of the two residues required for fibrinogen binding also resulted in a loss of fibronectin binding. This, combined with the observation that purified subdomain N3 bound fibronectin with a measurable, but reduced, K(D) of 20  M, indicates that the type I modules of fibronectin bind to both the N2 and N3 subdomains. The fibronectin-binding ability of the FnBPB A domain was also functional when the protein was expressed on and anchored to the surface of staphylococcal cells, showing that it is not an artifact of recombinant protein expression.</text>
-            <annotation id="2">
+            <text>The fibronectin-binding proteins FnBPA and FnBPB are multifunctional adhesins than can also bind to
+                fibrinogen and elastin. In this study, the N2N3 subdomains of region A of FnBPB were shown to bind
+                fibrinogen with a similar affinity to those of FnBPA (2 M). The binding site for FnBPB in fibrinogen was
+                localized to the C-terminus of the y-chain. Like clumping factor A, region A of FnBPB bound to the
+                y-chain of fibrinogen in a Ca(2+)-inhibitable manner. The deletion of 17 residues from the C-terminus of
+                domain N3 and the substitution of two residues in equivalent positions for crucial residues for
+                fibrinogen binding in clumping factor A and FnBPA eliminated fibrinogen binding by FnBPB. This indicates
+                that FnBPB binds fibrinogen by the dock-lock-latch mechanism. In contrast, the A domain of FnBPB bound
+                fibronectin with K(D) = 2.5 M despite lacking any of the known fibronectin-binding tandem repeats. A
+                truncate lacking the C-terminal 17 residues (latching peptide) bound fibronectin with the same affinity,
+                suggesting that the FnBPB A domain binds fibronectin by a novel mechanism. The substitution of the two
+                residues required for fibrinogen binding also resulted in a loss of fibronectin binding. This, combined
+                with the observation that purified subdomain N3 bound fibronectin with a measurable, but reduced, K(D)
+                of 20 M, indicates that the type I modules of fibronectin bind to both the N2 and N3 subdomains. The
+                fibronectin-binding ability of the FnBPB A domain was also functional when the protein was expressed on
+                and anchored to the surface of staphylococcal cells, showing that it is not an artifact of recombinant
+                protein expression.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>The fibronectin-binding proteins FnBPA and FnBPB are multifunctional adhesins than can also bind to
+                    fibrinogen and elastin. </text>
+            </sentence>
+            <sentence>
+                <offset>141</offset>
+                <text>In this study, the N2N3 subdomains of region A of FnBPB were shown to bind
+                    fibrinogen with a similar affinity to those of FnBPA (2 M). </text>
+            </sentence>
+            <sentence>
+                <offset>293</offset>
+                <text>The binding site for FnBPB in fibrinogen was
+                    localized to the C-terminus of the y-chain. </text>
+            </sentence>
+            <sentence>
+                <offset>399</offset>
+                <text>Like clumping factor A, region A of FnBPB bound to the
+                    y-chain of fibrinogen in a Ca(2+)-inhibitable manner. </text>
+            </sentence>
+            <sentence>
+                <offset>525</offset>
+                <text>The deletion of 17 residues from the C-terminus of
+                    domain N3 and the substitution of two residues in equivalent positions for crucial residues for
+                    fibrinogen binding in clumping factor A and FnBPA eliminated fibrinogen binding by FnBPB. </text>
+            </sentence>
+            <sentence>
+                <offset>795</offset>
+                <text>This indicates
+                    that FnBPB binds fibrinogen by the dock-lock-latch mechanism. </text>
+            </sentence>
+            <sentence>
+                <offset>889</offset>
+                <text>In contrast, the A domain of FnBPB bound
+                    fibronectin with K(D) = 2.5 M despite lacking any of the known fibronectin-binding tandem repeats. </text>
+            </sentence>
+            <sentence>
+                <offset>1046</offset>
+                <text>A
+                    truncate lacking the C-terminal 17 residues (latching peptide) bound fibronectin with the same affinity,
+                    suggesting that the FnBPB A domain binds fibronectin by a novel mechanism. </text>
+            </sentence>
+            <sentence>
+                <offset>1261</offset>
+                <text>The substitution of the two
+                    residues required for fibrinogen binding also resulted in a loss of fibronectin binding. </text>
+            </sentence>
+            <sentence>
+                <offset>1395</offset>
+                <text>This, combined
+                    with the observation that purified subdomain N3 bound fibronectin with a measurable, but reduced, K(D)
+                    of 20 M, indicates that the type I modules of fibronectin bind to both the N2 and N3 subdomains. </text>
+            </sentence>
+            <sentence>
+                <offset>1643</offset>
+                <text>The
+                    fibronectin-binding ability of the FnBPB A domain was also functional when the protein was expressed on
+                    and anchored to the surface of staphylococcal cells, showing that it is not an artifact of recombinant
+                    protein expression.
+                </text>
+            </sentence>
+            <annotation id="7">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="118" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="3">
+            <annotation id="8">
                 <infon key="NCBI GENE">28379874</infon>
                 <infon key="type">Gene</infon>
                 <location offset="147" length="5"/>
                 <text>FnBPA</text>
             </annotation>
-            <annotation id="4">
+            <annotation id="9">
                 <infon key="NCBI GENE">28379874</infon>
                 <infon key="type">Gene</infon>
                 <location offset="360" length="5"/>
                 <text>FnBPA</text>
             </annotation>
-            <annotation id="5">
+            <annotation id="10">
                 <infon key="NCBI GENE">28379874</infon>
                 <infon key="type">Gene</infon>
                 <location offset="763" length="5"/>
                 <text>FnBPA</text>
             </annotation>
-            <annotation id="6">
+            <annotation id="11">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="927" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="7">
+            <annotation id="12">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="991" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="8">
+            <annotation id="13">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1098" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="9">
+            <annotation id="14">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1175" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="10">
+            <annotation id="15">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1305" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="11">
+            <annotation id="16">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1395" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="12">
+            <annotation id="17">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1491" length="11"/>
                 <text>fibronectin</text>
             </annotation>
-            <annotation id="13">
+            <annotation id="18">
                 <infon key="NCBI GENE">2335</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1546" length="11"/>
                 <text>fibronectin</text>
             </annotation>
+            <annotation id="20">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="214" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
+            <annotation id="25">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="529" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
+            <annotation id="40">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1259" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
+            <annotation id="41">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="841" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
+            <annotation id="42">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="780" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
+            <annotation id="43">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="719" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
+            <annotation id="44">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="404" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
+            <annotation id="45">
+                <infon key="NCBI GENE">2244</infon>
+                <infon key="type">Gene</infon>
+                <location offset="313" length="10"/>
+                <text>fibrinogen</text>
+            </annotation>
         </passage>
-        <relation id="R0">
+        <relation id="2335#28379874">
             <infon key="Gene1">2335</infon>
             <infon key="Gene2">28379874</infon>
             <infon key="relation">PPIm</infon>
@@ -453,6 +1057,10 @@
             <infon key="type">title</infon>
             <offset>0</offset>
             <text>Binding of paxillin to alpha4 integrins modifies integrin-dependent biological responses.</text>
+            <sentence>
+                <offset>0</offset>
+                <text>Binding of paxillin to alpha4 integrins modifies integrin-dependent biological responses.</text>
+            </sentence>
             <annotation id="0">
                 <infon key="NCBI GENE">5829</infon>
                 <infon key="type">Gene</infon>
@@ -465,105 +1073,251 @@
                 <location offset="23" length="16"/>
                 <text>alpha4 integrins</text>
             </annotation>
+            <annotation id="3">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="23" length="6"/>
+                <text>alpha4</text>
+            </annotation>
         </passage>
         <passage>
             <infon key="type">abstract</infon>
             <offset>90</offset>
-            <text>The alpha4 integrins are indispensable for embryogenesis, haematopoiesis and immune responses, possibly because alpha4 regulates cellular functions differently from other integrins through its cytoplasmic tail. We used novel mimics of the alpha4 tail to identify molecules that could account for alpha4-specific signalling. Here we report that the alpha4 tail, but not several other alpha-subunit tails, binds tightly to the signalling adaptor paxillin. Paxillin physically associated with alpha4 integrins in Jurkat T cells at high stoichiometry, and joining the alpha4 tail to alphaIIb resulted in a complex of integrin alphaIIbbeta3 with paxillin. This association markedly enhanced the rates of alphaIIbbeta3-dependent phosphorylation of focal adhesion kinase and cell migration. It also reduced cell spreading, focal adhesion and stress fibre formation. A point mutation within the alpha4 tail that disrupts paxillin binding reversed all of these effects. Furthermore, alpha4beta1-dependent adhesion to VCAM-1 led to spreading of mouse embryonic fibroblasts derived from paxillin-null but not from wild-type mice. Thus, the tight association of paxillin with the alpha4 tail leads to distinct biochemical and biological responses to integrin-mediated cell adhesion.</text>
-            <annotation id="2">
+            <text>The alpha4 integrins are indispensable for embryogenesis, haematopoiesis and immune responses,
+                possibly because alpha4 regulates cellular functions differently from other integrins through its
+                cytoplasmic tail. We used novel mimics of the alpha4 tail to identify molecules that could account for
+                alpha4-specific signalling. Here we report that the alpha4 tail, but not several other alpha-subunit
+                tails, binds tightly to the signalling adaptor paxillin. Paxillin physically associated with alpha4
+                integrins in Jurkat T cells at high stoichiometry, and joining the alpha4 tail to alphaIIb resulted in a
+                complex of integrin alphaIIbbeta3 with paxillin. This association markedly enhanced the rates of
+                alphaIIbbeta3-dependent phosphorylation of focal adhesion kinase and cell migration. It also reduced
+                cell spreading, focal adhesion and stress fibre formation. A point mutation within the alpha4 tail that
+                disrupts paxillin binding reversed all of these effects. Furthermore, alpha4beta1-dependent adhesion to
+                VCAM-1 led to spreading of mouse embryonic fibroblasts derived from paxillin-null but not from wild-type
+                mice. Thus, the tight association of paxillin with the alpha4 tail leads to distinct biochemical and
+                biological responses to integrin-mediated cell adhesion.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>The alpha4 integrins are indispensable for embryogenesis, haematopoiesis and immune responses,
+                    possibly because alpha4 regulates cellular functions differently from other integrins through its
+                    cytoplasmic tail. </text>
+            </sentence>
+            <sentence>
+                <offset>244</offset>
+                <text>We used novel mimics of the alpha4 tail to identify molecules that could account for
+                    alpha4-specific signalling. </text>
+            </sentence>
+            <sentence>
+                <offset>374</offset>
+                <text>Here we report that the alpha4 tail, but not several other alpha-subunit
+                    tails, binds tightly to the signalling adaptor paxillin. </text>
+            </sentence>
+            <sentence>
+                <offset>521</offset>
+                <text>Paxillin physically associated with alpha4
+                    integrins in Jurkat T cells at high stoichiometry, and joining the alpha4 tail to alphaIIb resulted in a
+                    complex of integrin alphaIIbbeta3 with paxillin. </text>
+            </sentence>
+            <sentence>
+                <offset>751</offset>
+                <text>This association markedly enhanced the rates of
+                    alphaIIbbeta3-dependent phosphorylation of focal adhesion kinase and cell migration. </text>
+            </sentence>
+            <sentence>
+                <offset>901</offset>
+                <text>It also reduced
+                    cell spreading, focal adhesion and stress fibre formation. </text>
+            </sentence>
+            <sentence>
+                <offset>993</offset>
+                <text>A point mutation within the alpha4 tail that
+                    disrupts paxillin binding reversed all of these effects. </text>
+            </sentence>
+            <sentence>
+                <offset>1112</offset>
+                <text>Furthermore, alpha4beta1-dependent adhesion to
+                    VCAM-1 led to spreading of mouse embryonic fibroblasts derived from paxillin-null but not from wild-type
+                    mice. </text>
+            </sentence>
+            <sentence>
+                <offset>1303</offset>
+                <text>Thus, the tight association of paxillin with the alpha4 tail leads to distinct biochemical and
+                    biological responses to integrin-mediated cell adhesion.
+                </text>
+            </sentence>
+            <annotation id="4">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="94" length="16"/>
                 <text>alpha4 integrins</text>
             </annotation>
-            <annotation id="3">
+            <annotation id="5">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="202" length="6"/>
                 <text>alpha4</text>
             </annotation>
-            <annotation id="4">
+            <annotation id="6">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="329" length="6"/>
                 <text>alpha4</text>
             </annotation>
-            <annotation id="5">
+            <annotation id="7">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="386" length="6"/>
                 <text>alpha4</text>
             </annotation>
-            <annotation id="6">
+            <annotation id="8">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="438" length="6"/>
                 <text>alpha4</text>
             </annotation>
-            <annotation id="7">
+            <annotation id="9">
                 <infon key="NCBI GENE">5829</infon>
                 <infon key="type">Gene</infon>
                 <location offset="534" length="8"/>
                 <text>paxillin</text>
             </annotation>
-            <annotation id="8">
+            <annotation id="10">
                 <infon key="NCBI GENE">5829</infon>
                 <infon key="type">Gene</infon>
                 <location offset="544" length="8"/>
                 <text>Paxillin</text>
             </annotation>
-            <annotation id="9">
+            <annotation id="11">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="580" length="6"/>
                 <text>alpha4</text>
             </annotation>
-            <annotation id="10">
+            <annotation id="12">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="654" length="6"/>
                 <text>alpha4</text>
             </annotation>
-            <annotation id="11">
+            <annotation id="13">
                 <infon key="NCBI GENE">5829</infon>
                 <infon key="type">Gene</infon>
                 <location offset="731" length="8"/>
                 <text>paxillin</text>
             </annotation>
-            <annotation id="12">
+            <annotation id="14">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="977" length="6"/>
                 <text>alpha4</text>
             </annotation>
-            <annotation id="13">
+            <annotation id="15">
                 <infon key="NCBI GENE">5829</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1003" length="8"/>
                 <text>paxillin</text>
             </annotation>
-            <annotation id="14">
+            <annotation id="16">
                 <infon key="NCBI GENE">5829</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1166" length="8"/>
                 <text>paxillin</text>
             </annotation>
-            <annotation id="15">
+            <annotation id="17">
                 <infon key="NCBI GENE">5829</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1240" length="8"/>
                 <text>paxillin</text>
             </annotation>
-            <annotation id="16">
+            <annotation id="18">
                 <infon key="NCBI GENE">3676</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1258" length="6"/>
                 <text>alpha4</text>
             </annotation>
+            <annotation id="19">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="202" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="25">
+                <infon key="NCBI GENE">7412</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1098" length="6"/>
+                <text>VCAM-1</text>
+            </annotation>
+            <annotation id="28">
+                <infon key="NCBI Taxonomy">10090</infon>
+                <infon key="type">Species</infon>
+                <location offset="1125" length="5"/>
+                <text>mouse</text>
+            </annotation>
+            <annotation id="29">
+                <infon key="NCBI Taxonomy">10090</infon>
+                <infon key="type">Species</infon>
+                <location offset="1203" length="4"/>
+                <text>mice</text>
+            </annotation>
+            <annotation id="30">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="600" length="6"/>
+                <text>Jurkat</text>
+            </annotation>
+            <annotation id="31">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1258" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="32">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="977" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="33">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="654" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="34">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="580" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="35">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="438" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="36">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="386" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="37">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="329" length="6"/>
+                <text>alpha4</text>
+            </annotation>
+            <annotation id="38">
+                <infon key="NCBI GENE">3476</infon>
+                <infon key="type">Gene</infon>
+                <location offset="94" length="6"/>
+                <text>alpha4</text>
+            </annotation>
         </passage>
-        <relation id="R0">
-            <infon key="Gene1">3676</infon>
-            <infon key="Gene2">5829</infon>
+        <relation id="5829#3676">
+            <infon key="Gene1">5829</infon>
+            <infon key="Gene2">3676</infon>
             <infon key="relation">PPIm</infon>
         </relation>
     </document>
@@ -572,62 +1326,248 @@
         <passage>
             <infon key="type">title</infon>
             <offset>0</offset>
-            <text>N-glycosylation is important for the correct intracellular localization of HFE and its ability to decrease cell surface transferrin binding.</text>
+            <text>N-glycosylation is important for the correct intracellular localization of HFE and its ability to
+                decrease cell surface transferrin binding.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>N-glycosylation is important for the correct intracellular localization of HFE and its ability to
+                    decrease cell surface transferrin binding.
+                </text>
+            </sentence>
             <annotation id="0">
                 <infon key="NCBI GENE">3077</infon>
                 <infon key="type">Gene</infon>
                 <location offset="75" length="3"/>
                 <text>HFE</text>
             </annotation>
+            <annotation id="1">
+                <infon key="NCBI GENE">3077</infon>
+                <infon key="type">Gene</infon>
+                <location offset="75" length="3"/>
+                <text>HFE</text>
+            </annotation>
+            <annotation id="2">
+                <infon key="NCBI GENE">7018</infon>
+                <infon key="type">Gene</infon>
+                <location offset="120" length="11"/>
+                <text>transferrin</text>
+            </annotation>
         </passage>
         <passage>
             <infon key="type">abstract</infon>
             <offset>141</offset>
-            <text>HFE is a type 1 transmembrane protein that becomes N-glycosylated during transport to the cell membrane. It influences cellular iron concentrations through multiple mechanisms, including regulation of transferrin binding to transferrin receptors. The importance of glycosylation in HFE localization and function has not yet been studied. Here we employed bioinformatics to identify putative N-glycosylation sites at residues N110, N130 and N234 of the human HFE protein, and used site-directed mutagenesis to create combinations of single, double or triple mutants. Compared with the wild-type protein, which co-localizes with the type 1 transferrin receptor in the endosomal recycling compartment and on distributed punctae, the triple mutant co-localized with BiP in the endoplasmic reticulum. This was similar to the localization pattern described previously for the misfolding HFE-C282Y mutant that causes type 1 hereditary haemachromatosis. We also observed that the triple mutant was functionally deficient in beta2-microglobulin interactions and incapable of regulating transferrin binding, once again, reminiscent of the HFE-C282Y variant. Single and double mutants that undergo limited glycosylation appeared to have a mixed phenotype, with characteristics primarily of the wild-type, but also some from the glycosylation-deficient protein. Therefore, although they displayed an endosomal recycling compartment/punctate localization like the wild-type protein, many cells simultaneously displayed additional reticular localization. Furthermore, although the majority of cells expressing these single and double mutants showed decreased surface binding of transferrin, a number appeared to have lost this ability. We conclude that glycosylation is important for the normal intracellular trafficking and functional activity of HFE.</text>
-            <annotation id="1">
+            <text>HFE is a type 1 transmembrane protein that becomes N-glycosylated during transport to the cell
+                membrane. It influences cellular iron concentrations through multiple mechanisms, including regulation
+                of transferrin binding to transferrin receptors. The importance of glycosylation in HFE localization and
+                function has not yet been studied. Here we employed bioinformatics to identify putative N-glycosylation
+                sites at residues N110, N130 and N234 of the human HFE protein, and used site-directed mutagenesis to
+                create combinations of single, double or triple mutants. Compared with the wild-type protein, which
+                co-localizes with the type 1 transferrin receptor in the endosomal recycling compartment and on
+                distributed punctae, the triple mutant co-localized with BiP in the endoplasmic reticulum. This was
+                similar to the localization pattern described previously for the misfolding HFE-C282Y mutant that causes
+                type 1 hereditary haemachromatosis. We also observed that the triple mutant was functionally deficient
+                in beta2-microglobulin interactions and incapable of regulating transferrin binding, once again,
+                reminiscent of the HFE-C282Y variant. Single and double mutants that undergo limited glycosylation
+                appeared to have a mixed phenotype, with characteristics primarily of the wild-type, but also some from
+                the glycosylation-deficient protein. Therefore, although they displayed an endosomal recycling
+                compartment/punctate localization like the wild-type protein, many cells simultaneously displayed
+                additional reticular localization. Furthermore, although the majority of cells expressing these single
+                and double mutants showed decreased surface binding of transferrin, a number appeared to have lost this
+                ability. We conclude that glycosylation is important for the normal intracellular trafficking and
+                functional activity of HFE.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>HFE is a type 1 transmembrane protein that becomes N-glycosylated during transport to the cell
+                    membrane. </text>
+            </sentence>
+            <sentence>
+                <offset>122</offset>
+                <text>It influences cellular iron concentrations through multiple mechanisms, including regulation
+                    of transferrin binding to transferrin receptors. </text>
+            </sentence>
+            <sentence>
+                <offset>281</offset>
+                <text>The importance of glycosylation in HFE localization and
+                    function has not yet been studied. </text>
+            </sentence>
+            <sentence>
+                <offset>389</offset>
+                <text>Here we employed bioinformatics to identify putative N-glycosylation
+                    sites at residues N110, N130 and N234 of the human HFE protein, and used site-directed mutagenesis to
+                    create combinations of single, double or triple mutants. </text>
+            </sentence>
+            <sentence>
+                <offset>650</offset>
+                <text>Compared with the wild-type protein, which
+                    co-localizes with the type 1 transferrin receptor in the endosomal recycling compartment and on
+                    distributed punctae, the triple mutant co-localized with BiP in the endoplasmic reticulum. </text>
+            </sentence>
+            <sentence>
+                <offset>913</offset>
+                <text>This was
+                    similar to the localization pattern described previously for the misfolding HFE-C282Y mutant that causes
+                    type 1 hereditary haemachromatosis. </text>
+            </sentence>
+            <sentence>
+                <offset>1096</offset>
+                <text>We also observed that the triple mutant was functionally deficient
+                    in beta2-microglobulin interactions and incapable of regulating transferrin binding, once again,
+                    reminiscent of the HFE-C282Y variant. </text>
+            </sentence>
+            <sentence>
+                <offset>1331</offset>
+                <text>Single and double mutants that undergo limited glycosylation
+                    appeared to have a mixed phenotype, with characteristics primarily of the wild-type, but also some from
+                    the glycosylation-deficient protein. </text>
+            </sentence>
+            <sentence>
+                <offset>1566</offset>
+                <text>Therefore, although they displayed an endosomal recycling
+                    compartment/punctate localization like the wild-type protein, many cells simultaneously displayed
+                    additional reticular localization. </text>
+            </sentence>
+            <sentence>
+                <offset>1790</offset>
+                <text>Furthermore, although the majority of cells expressing these single
+                    and double mutants showed decreased surface binding of transferrin, a number appeared to have lost this
+                    ability. </text>
+            </sentence>
+            <sentence>
+                <offset>2004</offset>
+                <text>We conclude that glycosylation is important for the normal intracellular trafficking and
+                    functional activity of HFE.
+                </text>
+            </sentence>
+            <annotation id="3">
                 <infon key="NCBI GENE">3077</infon>
                 <infon key="type">Gene</infon>
                 <location offset="141" length="3"/>
                 <text>HFE</text>
             </annotation>
-            <annotation id="2">
+            <annotation id="4">
                 <infon key="NCBI GENE">3077</infon>
                 <infon key="type">Gene</infon>
                 <location offset="423" length="3"/>
                 <text>HFE</text>
             </annotation>
-            <annotation id="3">
+            <annotation id="5">
                 <infon key="NCBI GENE">3077</infon>
                 <infon key="type">Gene</infon>
                 <location offset="599" length="3"/>
                 <text>HFE</text>
             </annotation>
-            <annotation id="4">
+            <annotation id="6">
                 <infon key="NCBI GENE">3077</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1022" length="3"/>
                 <text>HFE</text>
             </annotation>
-            <annotation id="5">
+            <annotation id="7">
                 <infon key="NCBI GENE">567</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1157" length="19"/>
                 <text>beta2-microglobulin</text>
             </annotation>
-            <annotation id="6">
+            <annotation id="8">
                 <infon key="NCBI GENE">3077</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1270" length="3"/>
                 <text>HFE</text>
             </annotation>
-            <annotation id="7">
+            <annotation id="9">
                 <infon key="NCBI GENE">3077</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1975" length="3"/>
                 <text>HFE</text>
             </annotation>
+            <annotation id="10">
+                <infon key="NCBI GENE">3077</infon>
+                <infon key="type">Gene</infon>
+                <location offset="141" length="3"/>
+                <text>HFE</text>
+            </annotation>
+            <annotation id="12">
+                <infon key="NCBI GENE">7018</infon>
+                <infon key="type">Gene</infon>
+                <location offset="342" length="11"/>
+                <text>transferrin</text>
+            </annotation>
+            <annotation id="14">
+                <infon key="NCBI GENE">3077</infon>
+                <infon key="type">Gene</infon>
+                <location offset="599" length="3"/>
+                <text>HFE</text>
+            </annotation>
+            <annotation id="16">
+                <infon key="NCBI GENE">3309</infon>
+                <infon key="type">Gene</infon>
+                <location offset="903" length="3"/>
+                <text>BiP</text>
+            </annotation>
+            <annotation id="17">
+                <infon key="NCBI GENE">567</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1157" length="19"/>
+                <text>beta2-microglobulin</text>
+            </annotation>
+            <annotation id="18">
+                <infon key="NCBI GENE">7018</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1218" length="11"/>
+                <text>transferrin</text>
+            </annotation>
+            <annotation id="19">
+                <infon key="NCBI GENE">7018</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1805" length="11"/>
+                <text>transferrin</text>
+            </annotation>
+            <annotation id="22">
+                <infon key="NCBI GENE">3077</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1975" length="3"/>
+                <text>HFE</text>
+            </annotation>
+            <annotation id="23">
+                <infon key="NCBI GENE">3077</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1270" length="3"/>
+                <text>HFE</text>
+            </annotation>
+            <annotation id="24">
+                <infon key="NCBI GENE">3077</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1022" length="3"/>
+                <text>HFE</text>
+            </annotation>
+            <annotation id="25">
+                <infon key="NCBI GENE">3077</infon>
+                <infon key="type">Gene</infon>
+                <location offset="423" length="3"/>
+                <text>HFE</text>
+            </annotation>
+            <annotation id="26">
+                <infon key="NCBI GENE">7018</infon>
+                <infon key="type">Gene</infon>
+                <location offset="365" length="11"/>
+                <text>transferrin</text>
+            </annotation>
+            <annotation id="27">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="593" length="5"/>
+                <text>human</text>
+            </annotation>
+            <annotation id="28">
+                <infon key="NCBI GENE">7018</infon>
+                <infon key="type">Gene</infon>
+                <location offset="779" length="11"/>
+                <text>transferrin</text>
+            </annotation>
         </passage>
-        <relation id="R0">
+        <relation id="567#3077">
             <infon key="Gene1">567</infon>
             <infon key="Gene2">3077</infon>
             <infon key="relation">PPIm</infon>
@@ -638,7 +1578,15 @@
         <passage>
             <infon key="type">title</infon>
             <offset>0</offset>
-            <text>Threonine 391 phosphorylation of the human prolactin receptor mediates a novel interaction with 14-3-3 proteins.</text>
+            <text>Threonine 391 phosphorylation of the human prolactin receptor mediates a novel interaction with 14-3-3
+                proteins.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>Threonine 391 phosphorylation of the human prolactin receptor mediates a novel interaction with 14-3-3
+                    proteins.
+                </text>
+            </sentence>
             <annotation id="0">
                 <infon key="NCBI GENE">5618</infon>
                 <infon key="type">Gene</infon>
@@ -651,71 +1599,238 @@
                 <location offset="96" length="15"/>
                 <text>14-3-3 proteins</text>
             </annotation>
+            <annotation id="2">
+                <infon key="NCBI GENE">5618</infon>
+                <infon key="type">Gene</infon>
+                <location offset="43" length="18"/>
+                <text>prolactin receptor</text>
+            </annotation>
+            <annotation id="4">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="37" length="5"/>
+                <text>human</text>
+            </annotation>
         </passage>
         <passage>
             <infon key="type">abstract</infon>
             <offset>113</offset>
-            <text>The prolactin receptor (PrlR) is a member of the cytokine receptor superfamily that lacks an intrinsic kinase domain and relies on the cytoplasmic Jak tyrosine kinases to transduce signals. Prolactin-induced Jak2 activation and consequent tyrosine phosphorylation of the receptor and downstream signaling molecules have been studied, but phosphorylation of the PrlR on serine or threonine residues has not been reported. Here we describe a novel interaction between the PrlR and the phosphoserine/phosphothreonine-binding 14-3-3 proteins. This association is mediated by the KCST391WP motif, which occurs in the major functional isoform of the human receptor and is conserved among a wide variety of species. Mutagenesis of threonine 391 to alanine significantly impaired 14-3-3 binding to the PrlR in both glutathione S-transferase pulldown and coimmunoprecipitation assays. In breast carcinoma and mouse mammary epithelial cell lines, the endogenous receptor was found to associate with glutathione S-transferase-14-3-3 proteins independent of prolactin stimulation. A phospho-specific peptide antibody was generated and used to demonstrate phosphorylation of Thr391 in vivo. Phosphorylation of this site was found to be sensitive to okadaic acid, a specific inhibitor of serine/threonine protein phosphatases. Interestingly, the T391A PrlR mutant exhibited increased basal and prolactin-induced tyrosine phosphorylation compared with the wild-type receptor. This was accompanied by a ligand-induced increase in protein kinase B and Erk activation but not that of Stat5a. Phosphorylation of the receptor on Thr391 may therefore provide a new mechanism by which prolactin signaling is attenuated.</text>
-            <annotation id="2">
+            <text>The prolactin receptor (PrlR) is a member of the cytokine receptor superfamily that lacks an intrinsic
+                kinase domain and relies on the cytoplasmic Jak tyrosine kinases to transduce signals. Prolactin-induced
+                Jak2 activation and consequent tyrosine phosphorylation of the receptor and downstream signaling
+                molecules have been studied, but phosphorylation of the PrlR on serine or threonine residues has not
+                been reported. Here we describe a novel interaction between the PrlR and the
+                phosphoserine/phosphothreonine-binding 14-3-3 proteins. This association is mediated by the KCST391WP
+                motif, which occurs in the major functional isoform of the human receptor and is conserved among a wide
+                variety of species. Mutagenesis of threonine 391 to alanine significantly impaired 14-3-3 binding to the
+                PrlR in both glutathione S-transferase pulldown and coimmunoprecipitation assays. In breast carcinoma
+                and mouse mammary epithelial cell lines, the endogenous receptor was found to associate with glutathione
+                S-transferase-14-3-3 proteins independent of prolactin stimulation. A phospho-specific peptide antibody
+                was generated and used to demonstrate phosphorylation of Thr391 in vivo. Phosphorylation of this site
+                was found to be sensitive to okadaic acid, a specific inhibitor of serine/threonine protein
+                phosphatases. Interestingly, the T391A PrlR mutant exhibited increased basal and prolactin-induced
+                tyrosine phosphorylation compared with the wild-type receptor. This was accompanied by a ligand-induced
+                increase in protein kinase B and Erk activation but not that of Stat5a. Phosphorylation of the receptor
+                on Thr391 may therefore provide a new mechanism by which prolactin signaling is attenuated.
+            </text>
+            <sentence>
+                <offset>0</offset>
+                <text>The prolactin receptor (PrlR) is a member of the cytokine receptor superfamily that lacks an intrinsic
+                    kinase domain and relies on the cytoplasmic Jak tyrosine kinases to transduce signals. </text>
+            </sentence>
+            <sentence>
+                <offset>207</offset>
+                <text>Prolactin-induced
+                    Jak2 activation and consequent tyrosine phosphorylation of the receptor and downstream signaling
+                    molecules have been studied, but phosphorylation of the PrlR on serine or threonine residues has not
+                    been reported. </text>
+            </sentence>
+            <sentence>
+                <offset>487</offset>
+                <text>Here we describe a novel interaction between the PrlR and the
+                    phosphoserine/phosphothreonine-binding 14-3-3 proteins. </text>
+            </sentence>
+            <sentence>
+                <offset>622</offset>
+                <text>This association is mediated by the KCST391WP
+                    motif, which occurs in the major functional isoform of the human receptor and is conserved among a wide
+                    variety of species. </text>
+            </sentence>
+            <sentence>
+                <offset>825</offset>
+                <text>Mutagenesis of threonine 391 to alanine significantly impaired 14-3-3 binding to the
+                    PrlR in both glutathione S-transferase pulldown and coimmunoprecipitation assays. </text>
+            </sentence>
+            <sentence>
+                <offset>1009</offset>
+                <text>In breast carcinoma
+                    and mouse mammary epithelial cell lines, the endogenous receptor was found to associate with glutathione
+                    S-transferase-14-3-3 proteins independent of prolactin stimulation. </text>
+            </sentence>
+            <sentence>
+                <offset>1235</offset>
+                <text>A phospho-specific peptide antibody
+                    was generated and used to demonstrate phosphorylation of Thr391 in vivo. </text>
+            </sentence>
+            <sentence>
+                <offset>1361</offset>
+                <text>Phosphorylation of this site
+                    was found to be sensitive to okadaic acid, a specific inhibitor of serine/threonine protein
+                    phosphatases. </text>
+            </sentence>
+            <sentence>
+                <offset>1529</offset>
+                <text>Interestingly, the T391A PrlR mutant exhibited increased basal and prolactin-induced
+                    tyrosine phosphorylation compared with the wild-type receptor. </text>
+            </sentence>
+            <sentence>
+                <offset>1694</offset>
+                <text>This was accompanied by a ligand-induced
+                    increase in protein kinase B and Erk activation but not that of Stat5a. </text>
+            </sentence>
+            <sentence>
+                <offset>1824</offset>
+                <text>Phosphorylation of the receptor
+                    on Thr391 may therefore provide a new mechanism by which prolactin signaling is attenuated.
+                </text>
+            </sentence>
+            <annotation id="5">
                 <infon key="NCBI GENE">5618</infon>
                 <infon key="type">Gene</infon>
                 <location offset="117" length="18"/>
                 <text>prolactin receptor</text>
             </annotation>
-            <annotation id="3">
+            <annotation id="6">
                 <infon key="NCBI GENE">5618</infon>
                 <infon key="type">Gene</infon>
                 <location offset="137" length="4"/>
                 <text>PrlR</text>
             </annotation>
-            <annotation id="4">
+            <annotation id="7">
                 <infon key="NCBI GENE">5618</infon>
                 <infon key="type">Gene</infon>
                 <location offset="474" length="4"/>
                 <text>PrlR</text>
             </annotation>
-            <annotation id="5">
+            <annotation id="8">
                 <infon key="NCBI GENE">5618</infon>
                 <infon key="type">Gene</infon>
                 <location offset="583" length="4"/>
                 <text>PrlR</text>
             </annotation>
-            <annotation id="6">
+            <annotation id="9">
                 <infon key="NCBI GENE">7534</infon>
                 <infon key="type">Gene</infon>
                 <location offset="635" length="15"/>
                 <text>14-3-3 proteins</text>
             </annotation>
-            <annotation id="7">
+            <annotation id="10">
                 <infon key="NCBI GENE">7534</infon>
                 <infon key="type">Gene</infon>
                 <location offset="885" length="6"/>
                 <text>14-3-3</text>
             </annotation>
-            <annotation id="8">
+            <annotation id="11">
                 <infon key="NCBI GENE">5618</infon>
                 <infon key="type">Gene</infon>
                 <location offset="907" length="4"/>
                 <text>PrlR</text>
             </annotation>
-            <annotation id="9">
+            <annotation id="12">
                 <infon key="NCBI GENE">7534</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1128" length="15"/>
                 <text>14-3-3 proteins</text>
             </annotation>
-            <annotation id="10">
+            <annotation id="13">
                 <infon key="NCBI GENE">5618</infon>
                 <infon key="type">Gene</infon>
                 <location offset="1451" length="4"/>
                 <text>PrlR</text>
             </annotation>
+            <annotation id="14">
+                <infon key="NCBI GENE">5618</infon>
+                <infon key="type">Gene</infon>
+                <location offset="117" length="18"/>
+                <text>prolactin receptor</text>
+            </annotation>
+            <annotation id="15">
+                <infon key="NCBI GENE">5618</infon>
+                <infon key="type">Gene</infon>
+                <location offset="137" length="4"/>
+                <text>PrlR</text>
+            </annotation>
+            <annotation id="19">
+                <infon key="NCBI GENE">3717</infon>
+                <infon key="type">Gene</infon>
+                <location offset="321" length="4"/>
+                <text>Jak2</text>
+            </annotation>
+            <annotation id="20">
+                <infon key="NCBI GENE">5618</infon>
+                <infon key="type">Gene</infon>
+                <location offset="474" length="4"/>
+                <text>PrlR</text>
+            </annotation>
+            <annotation id="21">
+                <infon key="NCBI GENE">5618</infon>
+                <infon key="type">Gene</infon>
+                <location offset="583" length="4"/>
+                <text>PrlR</text>
+            </annotation>
+            <annotation id="24">
+                <infon key="NCBI GENE">5618</infon>
+                <infon key="type">Gene</infon>
+                <location offset="907" length="4"/>
+                <text>PrlR</text>
+            </annotation>
+            <annotation id="25">
+                <infon key="NCBI GENE">373156</infon>
+                <infon key="type">Gene</infon>
+                <location offset="920" length="25"/>
+                <text>glutathione S-transferase</text>
+            </annotation>
+            <annotation id="28">
+                <infon key="NCBI GENE">5618</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1451" length="4"/>
+                <text>PrlR</text>
+            </annotation>
+            <annotation id="31">
+                <infon key="NCBI GENE">2048</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1648" length="3"/>
+                <text>Erk</text>
+            </annotation>
+            <annotation id="32">
+                <infon key="NCBI GENE">6776</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1679" length="6"/>
+                <text>Stat5a</text>
+            </annotation>
+            <annotation id="33">
+                <infon key="NCBI GENE">373156</infon>
+                <infon key="type">Gene</infon>
+                <location offset="1102" length="25"/>
+                <text>glutathione S-transferase</text>
+            </annotation>
+            <annotation id="34">
+                <infon key="NCBI Taxonomy">9606</infon>
+                <infon key="type">Species</infon>
+                <location offset="757" length="5"/>
+                <text>human</text>
+            </annotation>
+            <annotation id="35">
+                <infon key="NCBI Taxonomy">10090</infon>
+                <infon key="type">Species</infon>
+                <location offset="1013" length="5"/>
+                <text>mouse</text>
+            </annotation>
         </passage>
-        <relation id="R0">
+        <relation id="5618#7534">
             <infon key="Gene1">5618</infon>
             <infon key="Gene2">7534</infon>
             <infon key="relation">PPIm</infon>
         </relation>
     </document>
-
 </collection>

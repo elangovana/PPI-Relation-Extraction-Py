@@ -1,6 +1,7 @@
 import bioc
 
 NCBI_GENE = "NCBI GENE"
+NCBI_Gene = "NCBI gene"
 
 GENE = "Gene"
 
@@ -21,9 +22,9 @@ Returns NCBI gene ids from a document or a passage  by inspecting at the annotat
         """
         gene_type = NCBI_GENE
         if isinstance(bioc_element, bioc.BioCDocument):
-            return self._get_gene_name_normalised_document(bioc_element, gene_type)
+            return self._get_normalised_gene_name_from_document(bioc_element, gene_type)
         else:
-            return self._get_gene_name_normalised_passage(bioc_element, gene_type)
+            return self._get_normalised_gene_name_from_passage(bioc_element, gene_type)
 
     def get_gene_names(self, bioc_element):
         """
@@ -32,9 +33,9 @@ Returns the gene names from a document or a passage by inspecting at the annotat
         :return: A list of gene names
         """
         if isinstance(bioc_element, bioc.BioCDocument):
-            return self._get_gene_names_document(bioc_element)
+            return self._get_gene_names_from_document(bioc_element)
         else:
-            return self._get_gene_names_passage(bioc_element)
+            return self._get_gene_names_from_passage(bioc_element)
 
     def get_normalised_gene_name(self, doc, gene):
         """
@@ -46,7 +47,7 @@ Returns the normalised gene name given the normal gene name
         for bioc_passage in doc.passages:
             for annotation in bioc_passage.annotations:
                 if self.is_annotation_gene(annotation) and annotation.text == gene:
-                    return annotation.infons[NCBI_GENE]
+                    return annotation.infons[NCBI_GENE] or annotation.infons[NCBI_Gene]
         return None
 
 
@@ -67,31 +68,29 @@ Returns a dictionary of gene to normalised id by parsing the annotations in the 
         return  result
 
 
-    def _get_gene_name_normalised_document(self, bioc_doc,  gene_type=None):
+    def _get_normalised_gene_name_from_document(self, bioc_doc, gene_type=None):
         result = set()
         for passage in bioc_doc.passages:
-            result = result.union(self._get_gene_name_normalised_passage(passage, gene_type))
+            result = result.union(self._get_normalised_gene_name_from_passage(passage, gene_type))
         return result
 
-    def _get_gene_name_normalised_passage(self, bioc_passage, gene_type=NCBI_GENE):
+    def _get_normalised_gene_name_from_passage(self, bioc_passage, gene_type=NCBI_GENE):
         result = set()
         for annotation in bioc_passage.annotations:
             if self.is_annotation_gene(annotation):
                 result.add(annotation.infons[gene_type])
         return result
 
-    def _get_gene_names_document(self, bioc_doc):
+    def _get_gene_names_from_document(self, bioc_doc):
         result = set()
         for passage in bioc_doc.passages:
-            result = result.union(self._get_gene_names_passage(passage))
+            result = result.union(self._get_gene_names_from_passage(passage))
         return result
 
-    def _get_gene_names_passage(self, bioc_passage):
+    def _get_gene_names_from_passage(self, bioc_passage):
         result = set()
         for annotation in bioc_passage.annotations:
             if self.is_annotation_gene(annotation):
                 result.add(annotation.text)
         return result
 
-    def _get_normalised_gene_name_document(self, bioc_element, gene):
-        pass
