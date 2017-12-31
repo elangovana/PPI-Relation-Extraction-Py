@@ -47,7 +47,8 @@ class BiocLoader:
         result_y = []
         gene_to_norm_gene_dict = BiocAnnotationGenes().get_gene_names_to_normalised_dict(doc)
         relex = BiocRelation()
-        gene_pairs = self._get_gene_pairs(set(gene_to_norm_gene_dict.values()))
+        genes = gene_to_norm_gene_dict.values()
+        gene_pairs = self._get_gene_pairs(set(genes))
         # normalise gene names in sentences
         normalised_sentences = PreprocessorNormaliseGenes().normalise_gene_names_bulk(self.sentence_extractor(doc),
                                                                                       gene_to_norm_gene_dict)
@@ -55,7 +56,7 @@ class BiocLoader:
             # construct unique id
             gene1 = gene_pair[0]
             gene2 = gene_pair[1]
-            fragments = PPIFragementExtractor().extract(normalised_sentences, gene1, gene2)
+            fragments = PPIFragementExtractor().extract(normalised_sentences, gene1, gene2, genes)
             count_of_valid_fragments = sum(gene1 in f and gene2 in f for f in fragments)
             normalised_freqeuncy = (count_of_valid_fragments) * 100 / (len(normalised_sentences))
             combined_fragments = "   \t ".join(fragments)
