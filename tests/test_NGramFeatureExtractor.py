@@ -15,8 +15,9 @@ class TestNGramFeatureExtractor(unittest.TestCase):
     def setUp(self):
         fileConfig(os.path.join(os.path.dirname(__file__), 'logger.ini'))
 
-    @data((["This is a ngram", "This is also a ngram"], 2, 4)
+    @data((["This is a ngram ", "This is also a ngram"], 2, 4)
         , (["This is apple"], 3, 1)
+        ,  (["This is stemming"], 3, 1)
         , (["Jack is a ngram"], 1, 3)
         , (["This"], 1, 1)
           # , (["This is apple. This is banna"], 3, 2) # Expect n-grams shouldn't span sentences

@@ -4,3 +4,4 @@ ddt
 bioc
 future
 numpy
+nltk
