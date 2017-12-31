@@ -71,5 +71,6 @@ class BiocLoader:
         result = []
         for gene1 in normalised_genes:
             for gene2 in normalised_genes:
-                result.append((gene1, gene2))
+                if  gene1 != gene2:
+                    result.append((gene1, gene2))
         return result
