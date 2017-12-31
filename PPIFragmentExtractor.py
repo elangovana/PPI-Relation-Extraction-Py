@@ -36,5 +36,5 @@ class PPIFragementExtractor:
         matching_words = re.search(regex_str.format(protein1, protein2), sentence)
 
         if matching_words:
-            return matching_words.group(1);
+            return matching_words.group(1).replace(protein1,"").replace(protein2,"");
         return None

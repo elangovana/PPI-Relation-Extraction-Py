@@ -70,7 +70,7 @@ class BiocLoader:
 
         genes_list = list(normalised_genes)
         for i in range(0, len(genes_list)):
-            for j in range(i, len(genes_list)):
+            for j in range(i+1, len(genes_list)):
                 gene1= genes_list[i]
                 gene2= genes_list[j]
                 result.append((gene1, gene2))
