@@ -10,8 +10,8 @@ class ModelLogisticsRegression:
     def __init__(self):
         self.n_splits = 5
         self.logger = logging.getLogger(__name__)
-        self.labels = ['True', 'False']
-        self.positive_label = 'True'
+        self.labels = [True, False]
+        self.positive_label = True
 
     def train(self, matrix_x, vector_y):
         model = LogisticRegression()
@@ -22,7 +22,10 @@ class ModelLogisticsRegression:
     def evalute_kfold_score(self, matrix_x, model, vector_y):
         k_fold = KFold(n_splits=self.n_splits, shuffle=True)
         k_fold_scores = []
-        for train, test in k_fold.split(matrix_x, vector_y):
+     
+        for train, test in k_fold.split(matrix_x):
+
+
             self.logger.info("Training set splits")
             self._log_confusion_matrix(vector_y[train], vector_y[train], self.labels)
             model.fit(matrix_x[train], vector_y[train])

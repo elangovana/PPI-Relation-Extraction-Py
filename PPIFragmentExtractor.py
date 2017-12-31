@@ -32,9 +32,9 @@ class PPIFragementExtractor:
             result.append(word_frag)
 
     def _getWordFrag(self, sentence, protein1, protein2):
-        regex_str = r"{}\s+[^.]*\s+{}";
+        regex_str = r"{}\s+([^.]*)\s+{}";
         matching_words = re.search(regex_str.format(protein1, protein2), sentence)
 
         if matching_words:
-            return matching_words.group(0);
+            return matching_words.group(1);
         return None

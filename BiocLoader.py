@@ -7,46 +7,44 @@ from ModelLogisticsRegresssion import ModelLogisticsRegression
 from NGramFeatureExtractor import NGramFeatureExtractor
 from PPIFragmentExtractor import PPIFragementExtractor
 from PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
-
+import os
+import tempfile
+import logging
 
 class BiocLoader:
 
-    def __init__(self, model=None):
-
+    def __init__(self, model=None, logs_dir = tempfile.mkdtemp()):
+        self.logs_dir = logs_dir
         self.model = model or ModelLogisticsRegression()
         self.sentence_extractor = BiocSentences().convert_to_vec
+        self.logger = logging.getLogger(__name__)
 
     def parse(self, filename):
-        result = []
+        data_rows = []
+        labels = []
         with open(filename, 'r') as fp:
             collection = bioc.load(fp)
             for doc in collection.documents:
-                result.extend(self._convert_doc_to_flat(doc))
+                rows_x, rows_y = self._convert_doc_to_flat(doc)
+                data_rows.extend(rows_x)
+                labels.extend(rows_y)
 
         # return result
-        v_ngram_features = NGramFeatureExtractor().extract(np.array(result)[:, 4])
-        freq_v = np.array(result)[:, 5].astype(int)
-        print(v_ngram_features.shape)
-        print( np.array(freq_v).T.shape)
+        v_ngram_features = NGramFeatureExtractor().extract(np.array(data_rows)[:, 4])
+        freq_v = np.array(data_rows)[:, 5].astype(int)
+
         # add the frequency feature
-        features =v_ngram_features# np.concatenate((v_ngram_features, freq_v.reshape(len(freq_v),1)), axis=1)
-        # i = 0
-        # for row in v_ngram_features:
-        #
-        #     rown = np.concatenate([row, [freq_v[i]]])
-        #     #print(rown)
-        #     np.append(rown)
-        #
-        #     #   features[i].append( lastColumn)
-        #     # Now add the new column to the current row
-        #     i = i + 1
+        # features = np.concatenate((v_ngram_features, freq_v.reshape(len(freq_v),1)), axis=1)
+        features = v_ngram_features
+        logs_features_file = os.path.join(self.logs_dir, tempfile.mkstemp(suffix=".csv")[1])
+        self.logger.info("Writing features to log file %s", logs_features_file)
+        np.savetxt(logs_features_file, features, delimiter='|')
+        self.model.train(features, np.array( labels));
 
-
-        # v_ngram_features[:, -1] = freq_v#np.array( np.array(result)[:, 5]).reshape((len(np.array(result)[:, 5]), 1))
-        self.model.train(features, np.array(result)[:, 6]);
 
     def _convert_doc_to_flat(self, doc):
-        result = []
+        result_x = []
+        result_y = []
         gene_to_norm_gene_dict = BiocAnnotationGenes().get_gene_names_to_normalised_dict(doc)
         relex = BiocRelation()
         gene_pairs = self._get_gene_pairs(set(gene_to_norm_gene_dict.values()))
@@ -60,17 +58,20 @@ class BiocLoader:
             fragments = PPIFragementExtractor().extract(normalised_sentences, gene1, gene2)
             count_of_valid_fragments = sum(gene1 in f and gene2 in f for f in fragments)
             normalised_freqeuncy = (count_of_valid_fragments) * 100 / (len(normalised_sentences))
-            combined_fragments = " nline nline ".join(fragments)
+            combined_fragments = "   \t ".join(fragments)
             uid = "{}#{}#{}".format(doc.id, gene1, gene2)
-            result.append([uid, doc.id, gene1, gene2, combined_fragments, normalised_freqeuncy,
-                           relex.is_valid(doc, gene1, gene2)])
+            result_x.append([uid, doc.id, gene1, gene2, combined_fragments, normalised_freqeuncy])
+            result_y.append(relex.is_valid(doc, gene1, gene2))
 
-        return result
+        return result_x, result_y
 
     def _get_gene_pairs(self, normalised_genes):
         result = []
-        for gene1 in normalised_genes:
-            for gene2 in normalised_genes:
-                if  gene1 != gene2:
-                    result.append((gene1, gene2))
+
+        genes_list = list(normalised_genes)
+        for i in range(0, len(genes_list)):
+            for j in range(i, len(genes_list)):
+                gene1= genes_list[i]
+                gene2= genes_list[j]
+                result.append((gene1, gene2))
         return result
