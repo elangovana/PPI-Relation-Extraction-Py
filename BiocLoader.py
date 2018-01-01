@@ -36,9 +36,9 @@ class BiocLoader:
         # add the frequency feature
         # features = np.concatenate((v_ngram_features, freq_v.reshape(len(freq_v),1)), axis=1)
         features = v_ngram_features
-        logs_features_file = os.path.join(self.logs_dir, tempfile.mkstemp(suffix=".csv")[1])
+        logs_features_file = os.path.join(self.logs_dir, tempfile.mkstemp(prefix="data_formatted_features",suffix=".csv")[1])
         self.logger.info("Writing features to log file %s", logs_features_file)
-        np.savetxt(logs_features_file, features, delimiter='|')
+        np.savetxt(logs_features_file, features, delimiter='|', fmt="%s")
         self.model.train(features, np.array( labels));
 
 

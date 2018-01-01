@@ -11,7 +11,7 @@ class TestBiocLoader(TestCase):
     def setUp(self):
         fileConfig(os.path.join(os.path.dirname(__file__), 'logger.ini'))
 
-    @data(("data/training_gold_sentences.xml")
+    @data(("data/training_gnorm_with_gold.xml")
           )
     def test_parse(self, bioc_file):
         # Arrange
