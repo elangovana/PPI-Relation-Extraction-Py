@@ -8,7 +8,7 @@ import os
 
 class NGramFeatureExtractor(CountVectorizer):
 
-    def __init__(self, n_gram_len=2, logs_dir=tempfile.mkdtemp()):
+    def __init__(self, n_gram_len=1, logs_dir=tempfile.mkdtemp()):
         """
 
         :param n_gram_len: the size of n-gram where each gram is a word
