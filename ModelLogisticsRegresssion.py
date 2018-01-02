@@ -15,14 +15,14 @@ class ModelLogisticsRegression:
 
     def train(self, matrix_x, vector_y):
         model = LogisticRegression(class_weight="balanced")
-        score = self.evalute_kfold_score(matrix_x, model, vector_y)
         model.fit(matrix_x, vector_y)
+        # predict on the training set
         pred = model.predict(matrix_x)
         f_score, p_score, r_score = self._get_scores(vector_y, pred)
         self.logger.info('Training data f-score %f, p-score %f, r-score %f ', f_score, p_score, r_score)
+        # kfold cross validation
+        score = self.evalute_kfold_score(matrix_x, model, vector_y)
         return model, score
-
-
 
     def evalute_kfold_score(self, matrix_x, model, vector_y):
         k_fold = KFold(n_splits=self.n_splits, shuffle=True)
@@ -31,8 +31,6 @@ class ModelLogisticsRegression:
         k_fold_rscores = []
 
         for train, test in k_fold.split(matrix_x):
-
-
             self.logger.info("Training set splits")
             self._log_confusion_matrix(vector_y[train], vector_y[train], self.labels)
             model.fit(matrix_x[train], vector_y[train])
@@ -61,16 +59,15 @@ class ModelLogisticsRegression:
     def _log_confusion_matrix(self, actual, pred, labels):
         self.logger.info("-------------------------------")
         s = "\t\t"
-        for l in labels   :
-            s = "{}\t\t|{} Pred".format(s,l)
-        self.logger.info("|%s|",s)
+        for l in labels:
+            s = "{}\t\t|{} Pred".format(s, l)
+        self.logger.info("|%s|", s)
         cm = sklearn.metrics.confusion_matrix(actual, pred, labels)
         i = 0
-        for r in cm   :
+        for r in cm:
             s = ""
-            for c in r   :
+            for c in r:
                 s = "{}\t\t|{}".format(s, c)
             self.logger.info("|%s Actual\t%s|", labels[i], s)
             i = i + 1
         self.logger.info("---------------------------------")
-
