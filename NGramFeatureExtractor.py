@@ -38,4 +38,4 @@ class NGramFeatureExtractor(CountVectorizer):
         self.logger.info("Writing N Gram features  to log file %s", logs_features_file)
         np.savetxt(logs_features_file, np.array(vectorizer.get_feature_names()), fmt="%s")
 
-        return data_features
+        return data_features, vectorizer.get_feature_names()

@@ -10,10 +10,12 @@ from PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
 import os
 import tempfile
 import logging
+import collections
+
 
 class BiocLoader:
 
-    def __init__(self, model=None, logs_dir = tempfile.mkdtemp()):
+    def __init__(self, model=None, logs_dir=tempfile.mkdtemp()):
         self.logs_dir = logs_dir
         self.model = model or ModelLogisticsRegression()
         self.sentence_extractor = BiocSentences().convert_to_vec
@@ -30,17 +32,43 @@ class BiocLoader:
                 labels.extend(rows_y)
 
         # return result
-        v_ngram_features = NGramFeatureExtractor().extract(np.array(data_rows)[:, 4])
-        freq_v = np.array(data_rows)[:, 5].astype(int)
+        v_ngram_features, n_gram_names = NGramFeatureExtractor().extract(np.array(data_rows)[:, 4])
+        # freq_v = np.array(data_rows)[:, 5].astype(int)
 
         # add the frequency feature
         # features = np.concatenate((v_ngram_features, freq_v.reshape(len(freq_v),1)), axis=1)
         features = v_ngram_features
-        logs_features_file = os.path.join(self.logs_dir, tempfile.mkstemp(prefix="data_formatted_features",suffix=".csv")[1])
-        self.logger.info("Writing features to log file %s", logs_features_file)
-        np.savetxt(logs_features_file, features, delimiter='|', fmt="%s")
-        self.model.train(features, np.array( labels));
+        logs_features_file = os.path.join(self.logs_dir,
+                                          tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
+        self.save_to_file(logs_features_file, (["uid", "docid", "gene1", "gene2"], n_gram_names, ["label"]),
+                          (np.array(data_rows)[:, 0:4], features, labels))
+        self.model.train(features, np.array(labels));
 
+    def save_to_file(self, logs_features_file, column_names, columnr_data_to_merge):
+        c_names = []
+        for c in column_names:
+            c_names.extend(c)
+
+        data = columnr_data_to_merge[0]
+
+        for i in range(1, len(columnr_data_to_merge)):
+            print(columnr_data_to_merge[i][0:5])
+            if isinstance(columnr_data_to_merge[i][0], collections.Sequence):
+                w = len(columnr_data_to_merge[i][0])
+            elif isinstance(columnr_data_to_merge[i][0], np.ndarray):
+                w = columnr_data_to_merge[i].shape[1]
+            else:
+                w = 1
+
+            data = np.concatenate((data, np.array(columnr_data_to_merge[i]).reshape(len(columnr_data_to_merge[i]), w)),
+                                  axis=1)
+
+
+        data = np.concatenate((np.array(c_names).reshape(1, len(c_names)), data), axis=0)
+
+        self.logger.info("Writing features to log file %s", logs_features_file)
+
+        np.savetxt(logs_features_file, data, delimiter='|', fmt="%s")
 
     def _convert_doc_to_flat(self, doc):
         result_x = []
@@ -71,8 +99,8 @@ class BiocLoader:
 
         genes_list = list(normalised_genes)
         for i in range(0, len(genes_list)):
-            for j in range(i+1, len(genes_list)):
-                gene1= genes_list[i]
-                gene2= genes_list[j]
+            for j in range(i , len(genes_list)):
+                gene1 = genes_list[i]
+                gene2 = genes_list[j]
                 result.append((gene1, gene2))
         return result

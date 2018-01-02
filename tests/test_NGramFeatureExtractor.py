@@ -33,7 +33,7 @@ class TestNGramFeatureExtractor(unittest.TestCase):
         sut = NGramFeatureExtractor(n_gram_size)
 
         # Act
-        actual = sut.extract(text_vector)
+        actual, feature_names = sut.extract(text_vector)
 
         # Assert
         actual_dim = len(actual.shape)
