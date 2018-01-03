@@ -61,7 +61,7 @@ class BiocLoader:
             r.append(combined_fragments)
             r.append(int(r[I_GENE1] == r[I_GENE2]))
 
-        # Extract fragments
+        # Extract ngram features
         v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(np.array(data_rows)[:, I_FRAGMENTS])
         features = v_ngram_features
         feature_names = n_gram_names
