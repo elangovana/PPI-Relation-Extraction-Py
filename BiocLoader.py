@@ -22,7 +22,7 @@ class BiocLoader:
         self.model = model or ModelLogisticsRegression()
         self.sentence_extractor = BiocSentences().convert_to_vec
         self.logger = logging.getLogger(__name__)
-        self.genenames_normaliser = BiocAnnotationGenes().get_gene_names_to_normalised_dict
+        self.gene_names_normaliser = BiocAnnotationGenes().get_gene_names_to_normalised_dict
         self.validate_relation = BiocRelation().is_valid
 
     def parse(self, filename, output_dir=tempfile.mkdtemp()):
@@ -49,7 +49,9 @@ class BiocLoader:
         trained_model = self.model.train(features, np.array(labels));
 
         # persist trained model
-        with open(os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")), 'wb') as fd:
+        pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
+        self.logger.info("Saving model to %s", pickle_file_name)
+        with open(pickle_file_name, 'wb') as fd:
             pickle.dump(trained_model, fd)
 
     def save_to_file(self, logs_features_file, column_names, columnr_data_to_merge):
@@ -81,7 +83,7 @@ class BiocLoader:
         result_x = []
         result_y = []
 
-        gene_to_norm_gene_dict = self.genenames_normaliser(doc)
+        gene_to_norm_gene_dict = self.gene_names_normaliser(doc)
         genes = gene_to_norm_gene_dict.values()
         gene_pairs = itertools.combinations(list(set(genes)), 2)
 
