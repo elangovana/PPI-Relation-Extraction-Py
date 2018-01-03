@@ -14,8 +14,6 @@ import collections
 import cPickle as pickle
 import itertools
 
-
-
 I_DOCID = 1
 I_GENE1 = 2
 I_GENE2 = 3
@@ -48,8 +46,8 @@ class BiocLoader:
             for doc in collection.documents:
                 rows_x = self.convert_bioc_document_to_rows(doc)
                 data_rows.extend(rows_x)
-        #subset
-        #data_rows =  data_rows[1:100]
+        # subset
+        # data_rows =  data_rows[1:100]
 
         # Extract fragments
         for r in data_rows:
@@ -130,8 +128,6 @@ class BiocLoader:
             gene2 = gene_pair[1]
             uid = "{}#{}#{}".format(doc.id, gene1, gene2)
             result_x.append([uid, doc.id, gene1, gene2, normalised_sentences, genes, doc])
-
-
 
         return result_x
 
