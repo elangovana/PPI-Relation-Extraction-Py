@@ -8,13 +8,13 @@ import os
 
 class NGramFeatureExtractor(CountVectorizer):
 
-    def __init__(self, n_gram_len=1, logs_dir=tempfile.mkdtemp()):
+    def __init__(self, n_gram_len=1, vocabulary=None, logs_dir=tempfile.mkdtemp()):
         """
 
         :param n_gram_len: the size of n-gram where each gram is a word
         """
         super(NGramFeatureExtractor, self).__init__(analyzer="word", binary=True,
-                                     ngram_range=(n_gram_len, n_gram_len))
+                                     ngram_range=(n_gram_len, n_gram_len), vocabulary=vocabulary)
         self.n_gram_len = n_gram_len
         self.logs_dir = logs_dir
         self.logger = logging.getLogger(__name__)
@@ -38,4 +38,8 @@ class NGramFeatureExtractor(CountVectorizer):
         self.logger.info("Writing N Gram features  to log file %s", logs_features_file)
         np.savetxt(logs_features_file, np.array(vectorizer.get_feature_names()), fmt="%s")
 
+
+
         return data_features, vectorizer.get_feature_names()
+
+
