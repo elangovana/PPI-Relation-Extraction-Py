@@ -59,6 +59,19 @@ class BiocLoader:
             r.append(combined_fragments)
             r.append(int(r[I_GENE1] == r[I_GENE2]))
 
+        # Test case by titling the number in favour of thumb print 0 to false, by removing some records
+       #  remove_rec=[('21569203','28379874','2335')
+       #  ,('18570893','801','4651')
+       #  ,('15350535','5058','58480')
+       #  ,('26342861','7474','11197')
+       #  ,('26342861','11197','7476')
+       #  ,('20547845','3146','7099')
+       #  ,('20890284','10870','22914')
+       #  ,('20181956','26986','57690')
+       #  ,('18647389','9185','274')
+       # ]
+       #  data_rows = [r for r in data_rows if (r[I_DOCID], r[I_GENE1], r[I_GENE2]) not in remove_rec]
+
         # Extract ngram features
         v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(np.array(data_rows)[:, I_FRAGMENTS])
         features = v_ngram_features
@@ -66,19 +79,28 @@ class BiocLoader:
 
         # Append features to ngrams
         # Self Relation
-        new_feature = np.array(data_rows)[:, I_SELFRELATION]
-        features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
-        feature_names.append("SelfRelation")
+        # new_feature = np.array(data_rows)[:, I_SELFRELATION]
+        # features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
+        # feature_names.append("SelfRelation")
 
         # Train model
         labels = np.array(self.get_labels(data_rows))
-        trained_model = self.model.train(features, labels)
+        self.logger.info("Training model...")
+        self.logger.info("Total number of features used %i. Feature names:\n%s", len(feature_names),
+                         "\n".join(feature_names))
+        trained_model, holdout_f_score = self.model.train(features, labels)
+        predicted_on_train = trained_model.predict(features)
 
         # log formatted features to file
         logs_features_file = os.path.join(self.logs_dir,
                                           tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
-        self.save_to_file(logs_features_file, (["uid", "docid", "gene1", "gene2"], feature_names, ["labels"]),
-                          (np.array(data_rows)[:, 0:I_SENTENCES], features, labels))
+        feature_thumbprint = np.array([["".join(np.array(r).astype(str))] for r in features])
+        self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
+        self.save_to_file(logs_features_file,
+                          (["uid", "docid", "gene1", "gene2"], ["labels"], ["Pred"], ["thumbprint"], feature_names),
+                          (np.array(data_rows)[:, 0:I_SENTENCES], labels, np.array(predicted_on_train),
+                           feature_thumbprint,
+                           features))
 
         # persist trained model
         pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
@@ -94,10 +116,12 @@ class BiocLoader:
         data = columnr_data_to_merge[0]
 
         for i in range(1, len(columnr_data_to_merge)):
-            if isinstance(columnr_data_to_merge[i][0], collections.Sequence):
-                w = len(columnr_data_to_merge[i][0])
-            elif isinstance(columnr_data_to_merge[i][0], np.ndarray):
+
+            if isinstance(columnr_data_to_merge[i][0], np.ndarray):
                 w = columnr_data_to_merge[i].shape[1]
+
+            elif isinstance(columnr_data_to_merge[i][0], collections.Sequence):
+                w = len(columnr_data_to_merge[i][0])
             else:
                 w = 1
 
@@ -105,8 +129,6 @@ class BiocLoader:
                                   axis=1)
 
         data = np.concatenate((np.array(c_names).reshape(1, len(c_names)), data), axis=0)
-
-        self.logger.info("Writing features to log file %s", logs_features_file)
 
         np.savetxt(logs_features_file, data, delimiter='|', fmt="%s")
 
