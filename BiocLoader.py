@@ -60,17 +60,17 @@ class BiocLoader:
             r.append(int(r[I_GENE1] == r[I_GENE2]))
 
         # Test case by titling the number in favour of thumb print 0 to false, by removing some records
-       #  remove_rec=[('21569203','28379874','2335')
-       #  ,('18570893','801','4651')
-       #  ,('15350535','5058','58480')
-       #  ,('26342861','7474','11197')
-       #  ,('26342861','11197','7476')
-       #  ,('20547845','3146','7099')
-       #  ,('20890284','10870','22914')
-       #  ,('20181956','26986','57690')
-       #  ,('18647389','9185','274')
-       # ]
-       #  data_rows = [r for r in data_rows if (r[I_DOCID], r[I_GENE1], r[I_GENE2]) not in remove_rec]
+        #  remove_rec=[('21569203','28379874','2335')
+        #  ,('18570893','801','4651')
+        #  ,('15350535','5058','58480')
+        #  ,('26342861','7474','11197')
+        #  ,('26342861','11197','7476')
+        #  ,('20547845','3146','7099')
+        #  ,('20890284','10870','22914')
+        #  ,('20181956','26986','57690')
+        #  ,('18647389','9185','274')
+        # ]
+        #  data_rows = [r for r in data_rows if (r[I_DOCID], r[I_GENE1], r[I_GENE2]) not in remove_rec]
 
         # Extract ngram features
         v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(np.array(data_rows)[:, I_FRAGMENTS])
@@ -88,7 +88,8 @@ class BiocLoader:
         self.logger.info("Training model...")
         self.logger.info("Total number of features used %i. Feature names:\n%s", len(feature_names),
                          "\n".join(feature_names))
-        trained_model, holdout_f_score = self.model.train(features, labels)
+        trained_model, holdout_f_score = self.model.train(features, labels,
+                                                          metadata_v=np.array(data_rows)[:, 0:I_SENTENCES])
         predicted_on_train = trained_model.predict(features)
 
         # log formatted features to file
@@ -137,7 +138,7 @@ class BiocLoader:
 
         gene_to_norm_gene_dict = self.retrieve_gene_names_dict(doc)
         genes = gene_to_norm_gene_dict.values()
-        gene_pairs = itertools.combinations_with_replacement(list(set(genes)), 2)
+        gene_pairs = itertools.combinations(list(set(genes)), 2)
 
         # normalise gene names in sentences
         sentences = self.sentence_extractor(doc)
