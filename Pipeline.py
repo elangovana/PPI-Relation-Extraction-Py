@@ -83,6 +83,7 @@ class Pipeline:
             r.append(normalised_frequency)
             r.append(combined_fragments)
             r.append(int(r[I_GENE1] == r[I_GENE2]))
+
         # Test case by titling the number in favour of thumb print 0 to false, by removing some records
         #  remove_rec=[('21569203','28379874','2335')
         #  ,('18570893','801','4651')
@@ -95,15 +96,18 @@ class Pipeline:
         #  ,('18647389','9185','274')
         # ]
         #  data_rows = [r for r in data_rows if (r[I_DOCID], r[I_GENE1], r[I_GENE2]) not in remove_rec]
+
         # Extract ngram features
         v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(np.array(data_rows)[:, I_FRAGMENTS])
         features = v_ngram_features
         feature_names = n_gram_names
+
         # Append features to ngrams
         # Self Relation
         new_feature = np.array(data_rows)[:, I_SELFRELATION]
         features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
         feature_names.append("SelfRelation")
+
         # Append features to metadata (not used by model)
         # Self Relation
         metadata = np.array(data_rows)[:, 0:I_SENTENCES]
@@ -111,6 +115,7 @@ class Pipeline:
         new_feature = np.array(data_rows)[:, I_SELFRELATION]
         metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
         metadata_feature_names.append("SelfRelation")
+
         # Train model
         labels = np.array(self.get_labels(data_rows))
         distinct_labels = np.unique(labels)
@@ -120,6 +125,7 @@ class Pipeline:
                          "\n".join(feature_names))
         trained_model, holdout_f_score = self.model.train(features, labels, metadata_v=metadata)
         predicted_on_train = trained_model.predict(features)
+
         # log formatted features to file
         logs_features_file = os.path.join(self.logs_dir,
                                           tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
@@ -128,6 +134,7 @@ class Pipeline:
         self._save_to_file(logs_features_file,
                            (metadata_feature_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
                            (metadata, labels, np.array(predicted_on_train), feature_thumbprint, features))
+
         # post processing
         model_scorer = ModelScorer(labels=distinct_labels, positive_label=positive_label,
                                    logs_dir=tempfile.gettempdir())
@@ -140,6 +147,7 @@ class Pipeline:
             post_processed_test = post_processor.process(None, pred_test, metadata[test])
             f, p, r = model_scorer.get_scores(labels[test], post_processed_test)
             self.logger.info("Kth hold set f-score, after post processing %s", f)
+
         # persist trained model
         pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
         self.logger.info("Saving model to %s", pickle_file_name)
