@@ -1,11 +1,15 @@
 import bioc
 import numpy as np
+from sklearn.model_selection import KFold
+
 from BiocAnnotationGenes import BiocAnnotationGenes
 from BiocRelation import BiocRelation
 from BiocSentences import BiocSentences
 from ModelLogisticsRegresssion import ModelLogisticsRegression
+from ModelScorer import ModelScorer
 from NGramFeatureExtractor import NGramFeatureExtractor
 from PPIFragmentExtractor import PPIFragementExtractor
+from PostProcessingSelfRelation import PostProcessingSelfRelation
 from PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
 import os
 import tempfile
@@ -79,17 +83,27 @@ class BiocLoader:
 
         # Append features to ngrams
         # Self Relation
-        # new_feature = np.array(data_rows)[:, I_SELFRELATION]
-        # features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
-        # feature_names.append("SelfRelation")
+        new_feature = np.array(data_rows)[:, I_SELFRELATION]
+        features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
+        feature_names.append("SelfRelation")
+
+        # Append features to metadata (not used by model)
+        # Self Relation
+        metadata = np.array(data_rows)[:, 0:I_SENTENCES]
+        metadata_feature_names = ["uid", "docid", "gene1", "gene2"]
+        new_feature = np.array(data_rows)[:, I_SELFRELATION]
+        metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
+        metadata_feature_names.append("SelfRelation")
 
         # Train model
         labels = np.array(self.get_labels(data_rows))
+        distinct_labels = np.unique(labels)
+        positive_label = True
+
         self.logger.info("Training model...")
         self.logger.info("Total number of features used %i. Feature names:\n%s", len(feature_names),
                          "\n".join(feature_names))
-        trained_model, holdout_f_score = self.model.train(features, labels,
-                                                          metadata_v=np.array(data_rows)[:, 0:I_SENTENCES])
+        trained_model, holdout_f_score = self.model.train(features, labels, metadata_v=metadata)
         predicted_on_train = trained_model.predict(features)
 
         # log formatted features to file
@@ -98,10 +112,21 @@ class BiocLoader:
         feature_thumbprint = np.array([["".join(np.array(r).astype(str))] for r in features])
         self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
         self.save_to_file(logs_features_file,
-                          (["uid", "docid", "gene1", "gene2"], ["labels"], ["Pred"], ["thumbprint"], feature_names),
-                          (np.array(data_rows)[:, 0:I_SENTENCES], labels, np.array(predicted_on_train),
-                           feature_thumbprint,
-                           features))
+                          (metadata_feature_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
+                          (metadata, labels, np.array(predicted_on_train), feature_thumbprint, features))
+
+        # post processing
+        model_scorer = ModelScorer(labels=distinct_labels, positive_label=positive_label,
+                                   logs_dir=tempfile.gettempdir())
+        col_self_rel_index = 4
+        post_processor = PostProcessingSelfRelation(col_self_rel_index, value_to_match=True, value_to_set=False)
+        k_fold = KFold(n_splits=3, shuffle=True, random_state=42)
+        for train, test in k_fold.split(features):
+            trained_model.fit(features[train], labels[train])
+            pred_test = trained_model.predict(features[test])
+            post_processed_test = post_processor.process(None, pred_test, metadata[test])
+            f, p, r = model_scorer.get_scores(labels[test], post_processed_test)
+            self.logger.info("Kth hold set f-score, after post processing %s", f)
 
         # persist trained model
         pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
@@ -138,7 +163,7 @@ class BiocLoader:
 
         gene_to_norm_gene_dict = self.retrieve_gene_names_dict(doc)
         genes = gene_to_norm_gene_dict.values()
-        gene_pairs = itertools.combinations(list(set(genes)), 2)
+        gene_pairs = itertools.combinations_with_replacement(list(set(genes)), 2)
 
         # normalise gene names in sentences
         sentences = self.sentence_extractor(doc)
