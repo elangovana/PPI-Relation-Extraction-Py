@@ -9,25 +9,25 @@ from BiocRelation import BiocRelation
 @ddt
 class TestBiocRelation(TestCase):
 
-    @data(([{"Gene1":"1", "Gene2":"2"}], "1","2", True)
-          ,([{"Gene1":"1", "Gene2":"2"}], "2","1", True)
-          ,([{"Gene1":"1", "Gene2":"1"}], "1","1", True)
+    @data(([{"Gene1": "1", "Gene2": "2"}], "1", "2", True)
+        , ([{"Gene1": "1", "Gene2": "2"}], "2", "1", True)
+        , ([{"Gene1": "1", "Gene2": "1"}], "1", "1", True)
         , ([{"Gene1": "1", "Gene2": "2"}], "1", "1", False)
           )
     @unpack
     def test_is_valid(self, relations_infons, gene1, gene2, expected):
-        #arrange
+        # arrange
         sut = BiocRelation()
         doc = BioCDocument()
 
         for dict in relations_infons:
+            dict["relation"] = "PPIm"
             relation = BioCRelation()
             relation.infons = dict
             doc.add_relation(relation)
 
-
-        #Act
+        # Act
         actual = sut.is_valid(doc, gene1, gene2)
-        
-        #Assert
+
+        # Assert
         self.assertEqual(expected, actual)
