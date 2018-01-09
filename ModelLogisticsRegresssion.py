@@ -17,14 +17,14 @@ class ModelLogisticsRegression:
             labels = [True, False]
 
         self.labels = labels
-        self.n_splits = 3
+
         self.logger = logging.getLogger(__name__)
         self.positive_label = positive_label
         self.logs_dir = logs_dir
-        self.model_scorer = ModelScorer(labels=self.labels, logs_dir = self.logs_dir, positive_label=self.positive_label)
+        self.model_scorer = ModelScorer(labels=self.labels, logs_dir=self.logs_dir, positive_label=self.positive_label)
 
-    def train(self, matrix_x, vector_y, metadata_v=None):
-        class_weight = None  # "balanced"
+    def train(self, matrix_x, vector_y, metadata_v=None, kfold_random_state=None, kfold_n_splits=3):
+        class_weight = "balanced"
         model = LogisticRegression(class_weight=class_weight)
         self.logger.info("Class weight %s", class_weight)
 
@@ -43,7 +43,8 @@ class ModelLogisticsRegression:
         self.logger.info('Training data f-score %f, p-score %f, r-score %f ', f_score, p_score, r_score)
 
         # kfold cross validation
-        score = self.model_scorer.evalute_kfold_score(matrix_x, model, vector_y, metadata_v, n_splits=self.n_splits)
+        score = self.model_scorer.evalute_kfold_score(matrix_x, model, vector_y, metadata_v, n_splits=kfold_n_splits,
+                                                      random_stat=kfold_random_state)
 
         # Return
         return model, score

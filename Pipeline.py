@@ -7,7 +7,7 @@ import tempfile
 
 import numpy as np
 import os
-import  cPickle as pickle
+import cPickle as pickle
 
 from sklearn.model_selection import KFold
 
@@ -37,17 +37,8 @@ class Pipeline:
         self.validate_relation = BiocRelation().is_valid
         self.preprocessor_ngram_feature_extractor = NGramFeatureExtractor().extract
         self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
+
         self.model = model or ModelLogisticsRegression()
-
-    def train(self, train_file_path):
-        """
-        Creates a train model for relation extraction
-        :param train_file_path:
-        """
-        pass
-
-    def test(self):
-        pass
 
     def _save_to_file(self, logs_features_file, column_names, columnr_data_to_merge):
         c_names = []
@@ -108,6 +99,18 @@ class Pipeline:
         features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
         feature_names.append("SelfRelation")
 
+        # Feature count
+        feature_count = np.array([[np.sum(r)] for r in features])
+        # new_feature = feature_count
+        # features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
+        # feature_names.append("feature_count")
+
+
+#Normalised gene pair frequncy
+        # new_feature = np.array(data_rows)[:, I_NORM_FREQUNCE]
+        # features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
+        # feature_names.append("normalised_frequency")
+
         # Append features to metadata (not used by model)
         # Self Relation
         metadata = np.array(data_rows)[:, 0:I_SENTENCES]
@@ -115,6 +118,10 @@ class Pipeline:
         new_feature = np.array(data_rows)[:, I_SELFRELATION]
         metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
         metadata_feature_names.append("SelfRelation")
+        #Feature count
+        new_feature = feature_count
+        metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
+        metadata_feature_names.append("feature count")
 
         # Train model
         labels = np.array(self.get_labels(data_rows))
@@ -123,7 +130,10 @@ class Pipeline:
         self.logger.info("Training model...")
         self.logger.info("Total number of features used %i. Feature names:\n%s", len(feature_names),
                          "\n".join(feature_names))
-        trained_model, holdout_f_score = self.model.train(features, labels, metadata_v=metadata)
+        random_state = 42
+        kfold_splits = 3
+        trained_model, holdout_f_score = self.model.train(features, labels, metadata_v=metadata,
+                                                          kfold_random_state=random_state, kfold_n_splits=kfold_splits)
         predicted_on_train = trained_model.predict(features)
 
         # log formatted features to file
@@ -140,11 +150,29 @@ class Pipeline:
                                    logs_dir=tempfile.gettempdir())
         col_self_rel_index = 4
         post_processor = PostProcessingSelfRelation(col_self_rel_index, value_to_match=True, value_to_set=False)
-        k_fold = KFold(n_splits=3, shuffle=True, random_state=42)
+        k_fold = KFold(n_splits=kfold_splits, shuffle=True, random_state=random_state)
         for train, test in k_fold.split(features):
             trained_model.fit(features[train], labels[train])
+            pred_train = trained_model.predict(features[train])
             pred_test = trained_model.predict(features[test])
             post_processed_test = post_processor.process(None, pred_test, metadata[test])
+            # Save test set
+            logs_features_file = os.path.join(self.logs_dir,
+                                              tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
+            self.logger.info("Writing kth train features labels and predictions to log file %s", logs_features_file)
+            self._save_to_file(logs_features_file,
+                               (metadata_feature_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
+                               (metadata[train], labels[train], np.array(pred_train), feature_thumbprint[train],
+                                features[train]))
+
+            logs_features_file = os.path.join(self.logs_dir,
+                                              tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
+            self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
+            self._save_to_file(logs_features_file,
+                               (metadata_feature_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
+                               (metadata[test], labels[test], np.array(post_processed_test), feature_thumbprint[test],
+                                features[test]))
+
             f, p, r = model_scorer.get_scores(labels[test], post_processed_test)
             self.logger.info("Kth hold set f-score, after post processing %s", f)
 

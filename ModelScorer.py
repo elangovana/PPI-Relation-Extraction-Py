@@ -31,9 +31,9 @@ class ModelScorer:
             i = i + 1
         logger.info("---------------------------------")
 
-    def evalute_kfold_score(self, matrix_x, model, vector_y, metadata_v=None, n_splits=3):
+    def evalute_kfold_score(self, matrix_x, model, vector_y, metadata_v=None, n_splits=3, random_stat=None):
         # Initialise
-        k_fold = KFold(n_splits=n_splits, shuffle=True, random_state=42)
+        k_fold = KFold(n_splits=n_splits, shuffle=True, random_state=random_stat)
         k_fold_fscores = []
         k_fold_pscores = []
         k_fold_rscores = []
