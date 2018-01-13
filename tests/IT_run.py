@@ -27,11 +27,11 @@ class TestRun(TestCase):
         sut(train_file_abs_path, output_dir=tempfile.mkdtemp(prefix="Train_test_run_"))
 
     @data(  # ("data/training_gold_sentences.xml")
-        ("data/training_gnorm_with_relation.xml", "data/trained_model.pickle")
-        ,("data/validation_set_with_gold_relation.xml", "data/trained_model.pickle")
+        ("data/training_gnorm_with_relation.xml")
+        ,("data/validation_set_with_gold_relation.xml")
     )
-    @unpack
-    def test_validate(self, train_data_file, training_settings_pickle):
+
+    def test_validate(self, train_data_file):
         # arrange
         sut = Train.validate
         train_file_abs_path = os.path.join(os.path.dirname(__file__), train_data_file)

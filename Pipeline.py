@@ -72,7 +72,7 @@ class Pipeline:
 
         # Train model
         random_state = 42
-        kfold_splits = 3
+        kfold_splits = 5
         trained_model, holdout_f_score = self.model.train(features, labels, metadata_v=metadata,
                                                           kfold_random_state=random_state, kfold_n_splits=kfold_splits)
         predicted_on_train = trained_model.predict(features)
