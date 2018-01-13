@@ -11,12 +11,14 @@ from Transformer import Transformer
 class TransformerFeatureExtractor(Transformer):
 
     def __init__(self, n_grams=None, preprocessor_ngram_feature_extractor=None):
-        Transformer.__init__(self)
         self.key_n_grams = "n_grams"
+        self.key_self_relation = "Self--Relation"
+        self.key_frequncy="frequnce"
         self.preprocessor_ngram_feature_extractor = preprocessor_ngram_feature_extractor or NGramFeatureExtractor(
             vocabulary=n_grams).extract
         self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
         self.logger = logging.getLogger(__name__)
+        Transformer.__init__(self)
 
     def extract(self, data_rows):
         tmp_stage1_transformed_data_rows = []
@@ -30,8 +32,10 @@ class TransformerFeatureExtractor(Transformer):
 
         for r in data_rows:
             fragments = self.preprocessor_fragment_extractor(r[I_SENTENCES], r[I_GENE1], r[I_GENE2], r[I_GENESINDOC])
-            count_of_valid_fragments = sum(r[I_GENE1] in f and r[I_GENE2] in f for f in fragments)
-            normalised_frequency = count_of_valid_fragments * 100 / (len(r[I_SENTENCES]))
+            count_of_valid_fragments = len(fragments)
+            print("{} {}".format(count_of_valid_fragments, len(r[I_SENTENCES])))
+            normalised_frequency = (count_of_valid_fragments * 100) / (len(r[I_SENTENCES]))
+            print(normalised_frequency)
             combined_fragments = "   \t ".join(fragments)
 
             tmp_stage1_transformed_data_rows.append(
@@ -62,7 +66,7 @@ class TransformerFeatureExtractor(Transformer):
         # Self Relation
         new_feature = (np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_IsSelfRelation]].astype(int))
         features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
-        feature_names.append("Self--Relation")
+        feature_names.append(self.key_self_relation)
 
         # Feature count
         feature_count = np.array([[np.sum(r)] for r in features])
@@ -71,16 +75,29 @@ class TransformerFeatureExtractor(Transformer):
         # feature_names.append("feature_count")
 
         # Normalised gene pair frequncy
-        # new_feature = np.array(data_rows)[:, I_NORM_FREQUNCE]
-        # features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
+        new_feature = np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_NORM_FREQ]].astype(int)
+        features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
+        feature_names.append("normalised_frequency")
+
+
+
+        #feature = np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_NORM_FREQ]].astype(int)
+        # feature_names=[]
         # feature_names.append("normalised_frequency")
 
         # Append features to metadata (not used by model)
         # Self Relation
-
         new_feature = np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_IsSelfRelation]]
         metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
         metadata_feature_names.append("SelfRelation")
+
+        ngram_indices = [i for i, x in enumerate(feature_names) if x in n_gram_names]
+        new_metadata_feature = np.array([["".join(np.array(r).astype(str))] for r in features[:, ngram_indices]])
+        metadata = np.concatenate((metadata, new_metadata_feature.reshape(len(new_metadata_feature), 1)), axis=1)
+        metadata_feature_names.append("tumbpint")
+
+
+        print(features)
 
         # Feature count
         new_feature = feature_count
@@ -92,4 +109,5 @@ class TransformerFeatureExtractor(Transformer):
                          "\n".join(feature_names))
 
         return ({self.key_metadata_names: metadata_feature_names, self.key_metadata: metadata,
-                 self.key_feature_names: feature_names, self.key_feature: features, self.key_n_grams: n_gram_names})
+                 self.key_feature_names: feature_names, self.key_feature: features, self.key_n_grams: n_gram_names,
+                 self.key_self_relation: self.key_self_relation})

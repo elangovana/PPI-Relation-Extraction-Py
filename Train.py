@@ -15,13 +15,14 @@ def run(training_data_file, output_dir):
 
     # Run Train
     pipeline = Pipeline()
-    pipeline.run_model(data_rows=data, output_dir=output_dir)
+    return pipeline.run_model(data_rows=data, output_dir=output_dir)
 
 
 def validate(training_settings_pickle, test_data_file, output_dir):
     # Parse data
     loader = BiocLoader()
     data = loader.parse(test_data_file)
+
 
     # training settings
     training_settings = pickle.load(open(training_settings_pickle, "rb"))

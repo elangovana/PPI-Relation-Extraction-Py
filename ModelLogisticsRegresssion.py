@@ -25,7 +25,7 @@ class ModelLogisticsRegression:
 
     def train(self, matrix_x, vector_y, metadata_v=None, kfold_random_state=None, kfold_n_splits=3):
         class_weight = "balanced"
-        model = LogisticRegression(class_weight=class_weight)
+        model = LogisticRegression(class_weight=class_weight, max_iter=200)
         self.logger.info("Class weight %s", class_weight)
 
         # Log some stats about the class
@@ -38,6 +38,7 @@ class ModelLogisticsRegression:
 
         # Fit model
         model.fit(matrix_x, vector_y)
+        print(model.coef_)
 
         # predict on the training set
         pred = model.predict(matrix_x)

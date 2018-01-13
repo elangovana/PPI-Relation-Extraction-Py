@@ -60,7 +60,11 @@ class Pipeline:
         features = result[self.feature_extractor.key_feature]
         metadata = result[self.feature_extractor.key_metadata]
         n_grams = result[self.feature_extractor.key_n_grams]
+        feature_name_self_relation = result[self.feature_extractor.key_self_relation]
 
+        self.logger.info("Total number of features used %s. Feature names:\n %s",
+                         len(feature_names),
+                         "\n".join(feature_names))
         # labels
         labels = np.array(self.get_labels(data_rows))
         distinct_labels = np.unique(labels)
@@ -82,13 +86,11 @@ class Pipeline:
         # log formatted features to file
         logs_features_file = os.path.join(self.logs_dir,
                                           tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
-        ngram_indices = [i for i, x in enumerate(feature_names) if x in n_grams]
 
-        n_gram_feature_thumbprint = np.array([["".join(np.array(r).astype(str))] for r in features[:, ngram_indices]])
         self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
         self._save_to_file(logs_features_file,
-                           (metadata_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
-                           (metadata, labels, np.array(predicted_on_train), n_gram_feature_thumbprint, features))
+                           (metadata_names, ["labels"], ["Pred"], feature_names),
+                           (metadata, labels, np.array(predicted_on_train),  features))
 
         # post processing
         model_scorer = ModelScorer(labels=distinct_labels, positive_label=positive_label,
@@ -106,33 +108,37 @@ class Pipeline:
                                               tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
             self.logger.info("Writing kth train features labels and predictions to log file %s", logs_features_file)
             self._save_to_file(logs_features_file,
-                               (metadata_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
-                               (metadata[train], labels[train], np.array(pred_train), n_gram_feature_thumbprint[train],
+                               (metadata_names, ["labels"], ["Pred"],  feature_names),
+                               (metadata[train], labels[train], np.array(pred_train),
                                 features[train]))
 
             logs_features_file = os.path.join(self.logs_dir,
                                               tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
             self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
             self._save_to_file(logs_features_file,
-                               (metadata_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
+                               (metadata_names, ["labels"], ["Pred"],  feature_names),
                                (metadata[test], labels[test], np.array(post_processed_test),
-                                n_gram_feature_thumbprint[test],
+
                                 features[test]))
 
             f, p, r = model_scorer.get_scores(labels[test], post_processed_test)
             self.logger.info("Kth hold set f-score, after post processing %s", f)
 
-
         return pickle_file_name
 
     def validate(self, data_rows, trained_model):
 
+        self.logger.info("Data six %s", np.array(data_rows).shape)
         result = self.feature_extractor.extract(data_rows)
         metadata_names = result[self.feature_extractor.key_metadata_names]
         feature_names = result[self.feature_extractor.key_feature_names]
         features = result[self.feature_extractor.key_feature]
         metadata = result[self.feature_extractor.key_metadata]
         n_grams = result[self.feature_extractor.key_n_grams]
+        feature_name_self_relation = result[self.feature_extractor.key_self_relation]
+        self.logger.info("Total number of features used %s. Feature names:\n %s",
+                         len(feature_names),
+                         "\n".join(feature_names))
 
         predicted = trained_model.predict(features)
 
@@ -142,10 +148,14 @@ class Pipeline:
 
         model_scorer = ModelScorer(labels=distinct_labels, positive_label=positive_label,
                                    logs_dir=tempfile.gettempdir())
-
         f, p, r = model_scorer.get_scores(labels, predicted)
+        self.logger.info("Validation set score f = %s, p= %s, r = %s", f, p, r)
 
-        self.logger.info("Validation set score f = %s, p= %s, r = %s", f, p,r)
+        post_processor = PostProcessingSelfRelation(4, value_to_match=True, value_to_set=False)
+        post_processed_pred = post_processor.process(None, predicted, metadata)
+
+        f, p, r = model_scorer.get_scores(labels, post_processed_pred)
+        self.logger.info("Validation post_processed_pred set score f = %s, p= %s, r = %s", f, p, r)
 
     def get_labels(self, data_rows):
         labels = []

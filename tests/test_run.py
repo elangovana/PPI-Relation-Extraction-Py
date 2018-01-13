@@ -28,13 +28,14 @@ class TestRun(TestCase):
 
     @data(  # ("data/training_gold_sentences.xml")
         ("data/training_gnorm_with_relation.xml", "data/trained_model.pickle")
+        ,("data/validation_set_with_gold_relation.xml", "data/trained_model.pickle")
     )
     @unpack
     def test_validate(self, train_data_file, training_settings_pickle):
         # arrange
         sut = Train.validate
         train_file_abs_path = os.path.join(os.path.dirname(__file__), train_data_file)
-        pickle_file_abs_path = os.path.join(os.path.dirname(__file__), training_settings_pickle)
+        pickle_file_abs_path = Train.run(train_file_abs_path, output_dir=tempfile.mkdtemp(prefix="Train_test_run_"))
 
         # assert
         sut(pickle_file_abs_path, train_file_abs_path, output_dir=tempfile.mkdtemp(prefix="Train_validate_run_"))
