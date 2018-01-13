@@ -1,4 +1,5 @@
 import bioc
+from bioc import BioCCollection, BioCDocument
 
 from BiocAnnotationGenes import BiocAnnotationGenes
 from BiocRelation import BiocRelation
@@ -47,7 +48,24 @@ class BiocLoader:
 
         gene_to_norm_gene_dict = self.retrieve_gene_names_dict(doc)
         genes = gene_to_norm_gene_dict.values()
-        gene_pairs = itertools.combinations_with_replacement(list(set(genes)), 2)
+
+
+
+
+
+        gene_pairs = list( itertools.combinations_with_replacement(list(set(genes)), 2))
+
+        # # Add gene pairs not picked by annotation, but are present in relations
+        # relations = self.retrieve_relations(doc)
+        # for r in relations:
+        #     r=list(r)
+        #     gene1 = r[0]
+        #     if len(r) ==2:
+        #         gene2 = r[1]
+        #     else:
+        #         gene2 = gene1
+        #
+        #     gene_pairs.append([gene1, gene2])
 
         # normalise gene names in sentences
         sentences = self.sentence_extractor(doc)
@@ -61,4 +79,31 @@ class BiocLoader:
             uid = "{}#{}#{}".format(doc.id, gene1, gene2)
             result_x.append([uid, doc.id, gene1, gene2, normalised_sentences, genes, self.retrieve_relations(doc)])
 
+
+
         return result_x
+
+    def dump(self, data_rows, filename=tempfile.mkstemp(prefix="PredictedFile", suffix=".xml")[1]):
+        # Read file and do preliminary pre processing to form rows of records
+        dic = {}
+        for d in data_rows:
+            i_relation = I_GENE2 + 1
+            # Only bother with true relations
+            if not d[i_relation]:
+                continue
+
+            # construct dictionary
+            docid = d[I_DOC_ID]
+            if not dic.has_key(docid):
+                dic[docid] = {"relations": []}
+
+            dic[docid]["relations"].append((d[I_GENE1], d[I_GENE2]))
+
+        biocrelation_wrapper = BiocRelation()
+        with open(filename, 'w') as fp:
+            collection = BioCCollection()
+            for docid in dic.keys():
+                collection.add_document(biocrelation_wrapper.get_bioc_relations(docid, dic[docid]["relations"]))
+
+            self.logger.info("Writing input to %s", filename)
+            bioc.dump(collection, fp)

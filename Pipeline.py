@@ -157,6 +157,11 @@ class Pipeline:
         f, p, r = model_scorer.get_scores(labels, post_processed_pred)
         self.logger.info("Validation post_processed_pred set score f = %s, p= %s, r = %s", f, p, r)
 
+        #writeback to biocformat
+        data_rows_result = self.feature_extractor.convert_bioc_ready(metadata, metadata_names, predicted)
+        return  data_rows_result
+
+
     def get_labels(self, data_rows):
         labels = []
         for r in data_rows:

@@ -31,3 +31,16 @@ class TestBiocRelation(TestCase):
 
         # Assert
         self.assertEqual(expected, actual)
+
+    @ddt
+    def test_get_bioc_relations(self):
+        # arrange
+        docid = 1
+        relations = [set("gene1"), set("gene2")]
+        sut = BiocRelation()
+
+        # Act
+        actual = sut.get_bioc_relations(docid, relations)
+
+        # Assert
+        self.assertEquals(len(actual.relations), len(relations))

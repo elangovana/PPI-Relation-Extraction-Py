@@ -14,6 +14,10 @@ class TransformerFeatureExtractor(Transformer):
         self.key_n_grams = "n_grams"
         self.key_self_relation = "Self--Relation"
         self.key_frequncy = "frequnce"
+        self.meta_field_name_id = "uid"
+        self.meta_field_name_doc_id = "docid"
+        self.meta_field_name_gene1 = "gene1"
+        self.meta_field_name_gene2 = "gene2"
         self.preprocessor_ngram_feature_extractor = preprocessor_ngram_feature_extractor or NGramFeatureExtractor(
             vocabulary=n_grams).extract
         self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
@@ -28,7 +32,8 @@ class TransformerFeatureExtractor(Transformer):
         indics = {Feature_NORM_FREQ: 0, Feature_Fragments: 1, Feature_IsSelfRelation: 2}
 
         metadata = np.array(data_rows)[:, [I_ID, I_DOC_ID, I_GENE1, I_GENE2]]
-        metadata_feature_names = ["uid", "docid", "gene1", "gene2"]
+        metadata_feature_names = [self.meta_field_name_id, self.meta_field_name_doc_id, self.meta_field_name_gene1,
+                                  self.meta_field_name_gene2]
 
         for r in data_rows:
             fragments = self.preprocessor_fragment_extractor(r[I_SENTENCES], r[I_GENE1], r[I_GENE2], r[I_GENESINDOC])
@@ -78,8 +83,6 @@ class TransformerFeatureExtractor(Transformer):
         features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
         feature_names.append("normalised_frequency")
 
-
-
         # Append features to metadata (not used by model)
         # Self Relation
         new_feature = np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_IsSelfRelation]]
@@ -104,3 +107,17 @@ class TransformerFeatureExtractor(Transformer):
         return ({self.key_metadata_names: metadata_feature_names, self.key_metadata: metadata,
                  self.key_feature_names: feature_names, self.key_feature: features, self.key_n_grams: n_gram_names,
                  self.key_self_relation: self.key_self_relation})
+
+    def convert_bioc_ready(self, metadata, metadata_names, y):
+        result = []
+        i_id = metadata_names.index(self.meta_field_name_id)
+        i_docId = metadata_names.index(self.meta_field_name_doc_id)
+        i_gene1 = metadata_names.index(self.meta_field_name_gene1)
+        i_gene2 = metadata_names.index(self.meta_field_name_gene2)
+
+        i = 0
+        for m in metadata:
+            result.append([m[i_id], m[i_docId], m[i_gene1], m[i_gene2], y[i]])
+            i = i + 1
+
+        return result

@@ -29,5 +29,34 @@ class BiocRelation(object):
         result = []
         for rel in doc.relations:
             if rel.infons["relation"] == "PPIm":
-                result.append(set([rel.infons["Gene1"], rel.infons["Gene2"]]))
+                result.append({rel.infons["Gene1"], rel.infons["Gene2"]})
         return result
+
+    def get_bioc_relations(self, docid, relations):
+
+        # <relation id="5618#7534">
+        #     <infon key="Gene1">5618</infon>
+        #     <infon key="Gene2">7534</infon>
+        #     <infon key="relation">PPIm</infon>
+        # </relation>
+
+        biocDoc=BioCDocument()
+        biocDoc.id = docid
+        biocDoc.relations=[]
+
+        for rel in relations:
+            bioc_rel = BioCRelation()
+            rel_list = list(rel)
+            infon = {}
+            infon["relation"] = "PPIm"
+            infon["Gene1"] = rel_list[0]
+
+            infon["Gene2"] = rel_list[0]
+            if len(rel_list) == 2:
+                infon["Gene2"] = rel_list[1]
+
+            bioc_rel.id="{}#{}".format(infon["Gene1"], infon["Gene2"])
+            bioc_rel.infons=infon
+            biocDoc.relations.append(bioc_rel)
+
+        return biocDoc

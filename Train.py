@@ -34,4 +34,7 @@ def validate(training_settings_pickle, test_data_file, output_dir):
     pipeline = Pipeline(feature_extractor=TransformerFeatureExtractor(
         preprocessor_ngram_feature_extractor=NGramFeatureExtractor(vocabulary=n_grams).extract))
 
-    pipeline.validate(data, trained_model)
+    result = pipeline.validate(data, trained_model)
+
+    loader.dump(result)
+
