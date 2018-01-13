@@ -1,10 +1,8 @@
 import bioc
 
-
 from BiocAnnotationGenes import BiocAnnotationGenes
 from BiocRelation import BiocRelation
 from BiocSentences import BiocSentences
-from Pipeline import Pipeline
 from PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
 
 import tempfile
@@ -16,10 +14,6 @@ I_GENE1 = 2
 I_GENE2 = 3
 I_SENTENCES = 4
 I_GENESINDOC = 5
-I_BIOCDOC = 6
-I_NORM_FREQUNCE = 7
-I_FRAGMENTS = 8
-I_SELFRELATION = 9
 
 
 class BiocLoader:
@@ -45,7 +39,6 @@ class BiocLoader:
         # subset
         # data_rows =  data_rows[1:100]
         return data_rows
-
 
     def convert_bioc_document_to_rows(self, doc):
         result_x = []
