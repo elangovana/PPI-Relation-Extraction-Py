@@ -32,6 +32,10 @@ class ModelLogisticsRegression:
         unique, counts = np.unique(vector_y, return_counts=True)
         self.logger.info("Unique classes vs counts \n %s", np.asarray((unique, counts)).T)
 
+        # Note: Seems odd, but doing cross validation first, so that the model with full data fit is retuned to the caller
+        score = self.model_scorer.evalute_kfold_score(matrix_x, model, vector_y, metadata_v, n_splits=kfold_n_splits,
+                                                      random_stat=kfold_random_state)
+
         # Fit model
         model.fit(matrix_x, vector_y)
 
@@ -41,10 +45,6 @@ class ModelLogisticsRegression:
         self.logger.info("****Training set confusion")
         self.model_scorer.log_confusion_matrix(self.logger, vector_y, pred, self.labels)
         self.logger.info('Training data f-score %f, p-score %f, r-score %f ', f_score, p_score, r_score)
-
-        # kfold cross validation
-        score = self.model_scorer.evalute_kfold_score(matrix_x, model, vector_y, metadata_v, n_splits=kfold_n_splits,
-                                                      random_stat=kfold_random_state)
 
         # Return
         return model, score

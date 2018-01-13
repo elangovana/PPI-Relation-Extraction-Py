@@ -6,7 +6,7 @@ import os
 from ddt import data, ddt, unpack
 
 import Train
-import cPickle as pickle
+
 
 @ddt
 class TestRun(TestCase):
@@ -27,7 +27,7 @@ class TestRun(TestCase):
         sut(train_file_abs_path, output_dir=tempfile.mkdtemp(prefix="Train_test_run_"))
 
     @data(  # ("data/training_gold_sentences.xml")
-        ("data/training_gnorm_with_relation.xml", "data/trained_modeltZyec0.pickle")
+        ("data/training_gnorm_with_relation.xml", "data/trained_model.pickle")
     )
     @unpack
     def test_validate(self, train_data_file, training_settings_pickle):

@@ -91,4 +91,6 @@ Computes F-score (harmonic mean), Precision and Recall
         p_score = sklearn.metrics.precision_score(actual, pred, self.labels, pos_label=self.positive_label)
         r_score = sklearn.metrics.recall_score(actual, pred, self.labels, pos_label=self.positive_label)
         f_score = sklearn.metrics.f1_score(actual, pred, self.labels, pos_label=self.positive_label)
+
+        self.log_confusion_matrix(self.logger, actual, pred, self.labels)
         return f_score, p_score, r_score

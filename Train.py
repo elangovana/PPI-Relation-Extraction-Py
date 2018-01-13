@@ -5,6 +5,9 @@ from NGramFeatureExtractor import NGramFeatureExtractor
 from Pipeline import Pipeline
 import cPickle as pickle
 
+from TransformerFeatureExtractor import TransformerFeatureExtractor
+
+
 def run(training_data_file, output_dir):
     # Parse data
     loader = BiocLoader()
@@ -20,13 +23,14 @@ def validate(training_settings_pickle, test_data_file, output_dir):
     loader = BiocLoader()
     data = loader.parse(test_data_file)
 
-    #training settings
+    # training settings
     training_settings = pickle.load(open(training_settings_pickle, "rb"))
     trained_model = training_settings["model"]
 
     n_grams = training_settings["n-grams"]
 
     # Run Train
-    pipeline = Pipeline(preprocessor_ngram_feature_extractor=NGramFeatureExtractor(vocabulary=n_grams))
+    pipeline = Pipeline(feature_extractor=TransformerFeatureExtractor(
+        preprocessor_ngram_feature_extractor=NGramFeatureExtractor(vocabulary=n_grams).extract))
 
     pipeline.validate(data, trained_model)

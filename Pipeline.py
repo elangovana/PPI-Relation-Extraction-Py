@@ -15,22 +15,17 @@ from BiocLoader import I_GENE1, I_GENE2, I_RELATIONS
 from BiocRelation import BiocRelation
 from ModelLogisticsRegresssion import ModelLogisticsRegression
 from ModelScorer import ModelScorer
-from NGramFeatureExtractor import NGramFeatureExtractor
-from PPIFragmentExtractor import PPIFragementExtractor
 from PostProcessingSelfRelation import PostProcessingSelfRelation
 from TransformerFeatureExtractor import TransformerFeatureExtractor
 
 
 class Pipeline:
 
-    def __init__(self, model=None, logs_dir=tempfile.mkdtemp(), preprocessor_ngram_feature_extractor=None):
+    def __init__(self, model=None, logs_dir=tempfile.mkdtemp(), feature_extractor=TransformerFeatureExtractor()):
         self.logs_dir = logs_dir
         self.logger = logging.getLogger(__name__)
         self.validate_relation = BiocRelation().is_valid
-        self.preprocessor_ngram_feature_extractor = preprocessor_ngram_feature_extractor or NGramFeatureExtractor().extract
-        self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
-        self.feature_extractor = TransformerFeatureExtractor()
-
+        self.feature_extractor = feature_extractor
         self.model = model or ModelLogisticsRegression()
 
     def _save_to_file(self, logs_features_file, column_names, columnr_data_to_merge):
@@ -70,16 +65,19 @@ class Pipeline:
         labels = np.array(self.get_labels(data_rows))
         distinct_labels = np.unique(labels)
         positive_label = True
-        self.logger.info("Training model...")
-        self.logger.info("Total number of features used %i. Feature names:\n%s",
-                         len(feature_names),
-                         "\n".join(feature_names))
+
         # Train model
         random_state = 42
         kfold_splits = 3
         trained_model, holdout_f_score = self.model.train(features, labels, metadata_v=metadata,
                                                           kfold_random_state=random_state, kfold_n_splits=kfold_splits)
         predicted_on_train = trained_model.predict(features)
+
+        # persist trained model
+        pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
+        self.logger.info("Saving model to %s", pickle_file_name)
+        with open(pickle_file_name, 'wb') as fd:
+            pickle.dump({"model": trained_model, "n-grams": n_grams}, fd)
 
         # log formatted features to file
         logs_features_file = os.path.join(self.logs_dir,
@@ -124,11 +122,7 @@ class Pipeline:
             f, p, r = model_scorer.get_scores(labels[test], post_processed_test)
             self.logger.info("Kth hold set f-score, after post processing %s", f)
 
-        # persist trained model
-        pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
-        self.logger.info("Saving model to %s", pickle_file_name)
-        with open(pickle_file_name, 'wb') as fd:
-            pickle.dump({"model": trained_model, "n-grams": n_grams}, fd)
+
         return pickle_file_name
 
     def validate(self, data_rows, trained_model):
@@ -150,9 +144,8 @@ class Pipeline:
                                    logs_dir=tempfile.gettempdir())
 
         f, p, r = model_scorer.get_scores(labels, predicted)
-        self.logger.info("Kth hold set f-score, after post processing ")
 
-        self.logger.info("Kth hold set f-score, after post processing %s", f)
+        self.logger.info("Validation set score f = %s, p= %s, r = %s", f, p,r)
 
     def get_labels(self, data_rows):
         labels = []

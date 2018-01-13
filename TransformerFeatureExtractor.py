@@ -1,3 +1,5 @@
+import logging
+
 import numpy as np
 
 from BiocLoader import I_SENTENCES, I_GENE1, I_GENE2, I_GENESINDOC, I_ID, I_DOC_ID
@@ -14,6 +16,7 @@ class TransformerFeatureExtractor(Transformer):
         self.preprocessor_ngram_feature_extractor = preprocessor_ngram_feature_extractor or NGramFeatureExtractor(
             vocabulary=n_grams).extract
         self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
+        self.logger = logging.getLogger(__name__)
 
     def extract(self, data_rows):
         tmp_stage1_transformed_data_rows = []
@@ -50,16 +53,16 @@ class TransformerFeatureExtractor(Transformer):
         # Extract ngram features
         v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(
             np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_Fragments]])
+
         features = v_ngram_features
-        feature_names = n_gram_names
-        print (features)
+        feature_names = []
+        feature_names.extend(n_gram_names)
 
         # Append features to ngrams
         # Self Relation
         new_feature = (np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_IsSelfRelation]].astype(int))
         features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
-        feature_names.append("SelfRelation")
-        print (features)
+        feature_names.append("Self--Relation")
 
         # Feature count
         feature_count = np.array([[np.sum(r)] for r in features])
@@ -83,6 +86,10 @@ class TransformerFeatureExtractor(Transformer):
         new_feature = feature_count
         metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
         metadata_feature_names.append("feature count")
+
+        self.logger.info("Total number of features used %s. Feature names:\n %s",
+                         len(feature_names),
+                         "\n".join(feature_names))
 
         return ({self.key_metadata_names: metadata_feature_names, self.key_metadata: metadata,
                  self.key_feature_names: feature_names, self.key_feature: features, self.key_n_grams: n_gram_names})
