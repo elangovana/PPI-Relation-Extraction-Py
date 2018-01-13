@@ -11,6 +11,7 @@ import cPickle as pickle
 
 from sklearn.model_selection import KFold
 
+from BiocLoader import I_GENE1, I_GENE2, I_RELATIONS
 from BiocRelation import BiocRelation
 from ModelLogisticsRegresssion import ModelLogisticsRegression
 from ModelScorer import ModelScorer
@@ -19,15 +20,7 @@ from PPIFragmentExtractor import PPIFragementExtractor
 from PostProcessingSelfRelation import PostProcessingSelfRelation
 from TransformerFeatureExtractor import TransformerFeatureExtractor
 
-I_RELATIONS = 1
-I_GENE1 = 2
-I_GENE2 = 3
-I_SENTENCES = 4
-I_GENESINDOC = 5
-I_BIOCDOC = 6
-I_NORM_FREQUNCE = 7
-I_FRAGMENTS = 8
-I_SELFRELATION = 9
+
 
 
 class Pipeline:
@@ -142,5 +135,5 @@ class Pipeline:
     def get_labels(self, data_rows):
         labels = []
         for r in data_rows:
-            labels.append(self.validate_relation(r[I_BIOCDOC], r[I_GENE1], r[I_GENE2]))
+            labels.append(self.validate_relation(r[I_RELATIONS], r[I_GENE1], r[I_GENE2]))
         return labels
