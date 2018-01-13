@@ -20,4 +20,6 @@ class TestBiocLoader(TestCase):
         bioc_file_abs_path=os.path.join(os.path.dirname(__file__), bioc_file)
 
         #Act
-        sut.parse(bioc_file_abs_path)
+        actual = sut.parse(bioc_file_abs_path)
+
+        self.assertIsNotNone(actual)

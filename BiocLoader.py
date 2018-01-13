@@ -24,7 +24,7 @@ I_SELFRELATION = 9
 
 class BiocLoader:
 
-    def __init__(self, model=None, logs_dir=tempfile.mkdtemp()):
+    def __init__(self, logs_dir=tempfile.mkdtemp()):
         self.logs_dir = logs_dir
         self.logger = logging.getLogger(__name__)
 
@@ -32,7 +32,6 @@ class BiocLoader:
         self.retrieve_gene_names_dict = BiocAnnotationGenes().get_gene_names_to_normalised_dict
         self.retrieve_relations = BiocRelation().get_relations
         self.preprocessor_replace_with_norm_genes = PreprocessorNormaliseGenes().normalise_gene_names_bulk
-        self.pipeline = Pipeline()
 
     def parse(self, filename, output_dir=tempfile.mkdtemp()):
         # Read file and do preliminary pre processing to form rows of records
@@ -45,8 +44,8 @@ class BiocLoader:
 
         # subset
         # data_rows =  data_rows[1:100]
+        return data_rows
 
-        self.pipeline.run_model(data_rows, output_dir)
 
     def convert_bioc_document_to_rows(self, doc):
         result_x = []
