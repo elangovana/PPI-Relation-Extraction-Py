@@ -21,15 +21,13 @@ from PostProcessingSelfRelation import PostProcessingSelfRelation
 from TransformerFeatureExtractor import TransformerFeatureExtractor
 
 
-
-
 class Pipeline:
 
-    def __init__(self, model=None, logs_dir=tempfile.mkdtemp()):
+    def __init__(self, model=None, logs_dir=tempfile.mkdtemp(), preprocessor_ngram_feature_extractor=None):
         self.logs_dir = logs_dir
         self.logger = logging.getLogger(__name__)
         self.validate_relation = BiocRelation().is_valid
-        self.preprocessor_ngram_feature_extractor = NGramFeatureExtractor().extract
+        self.preprocessor_ngram_feature_extractor = preprocessor_ngram_feature_extractor or NGramFeatureExtractor().extract
         self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
         self.feature_extractor = TransformerFeatureExtractor()
 
@@ -88,7 +86,7 @@ class Pipeline:
                                           tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
         ngram_indices = [i for i, x in enumerate(feature_names) if x in n_grams]
 
-        n_gram_feature_thumbprint = np.array([["".join(np.array(r).astype(str))] for r in features[:,ngram_indices]])
+        n_gram_feature_thumbprint = np.array([["".join(np.array(r).astype(str))] for r in features[:, ngram_indices]])
         self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
         self._save_to_file(logs_features_file,
                            (metadata_names, ["labels"], ["Pred"], ["thumbprint"], feature_names),
@@ -130,7 +128,31 @@ class Pipeline:
         pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
         self.logger.info("Saving model to %s", pickle_file_name)
         with open(pickle_file_name, 'wb') as fd:
-            pickle.dump(trained_model, fd)
+            pickle.dump({"model": trained_model, "n-grams": n_grams}, fd)
+        return pickle_file_name
+
+    def validate(self, data_rows, trained_model):
+
+        result = self.feature_extractor.extract(data_rows)
+        metadata_names = result[self.feature_extractor.key_metadata_names]
+        feature_names = result[self.feature_extractor.key_feature_names]
+        features = result[self.feature_extractor.key_feature]
+        metadata = result[self.feature_extractor.key_metadata]
+        n_grams = result[self.feature_extractor.key_n_grams]
+
+        predicted = trained_model.predict(features)
+
+        labels = np.array(self.get_labels(data_rows))
+        distinct_labels = np.unique(labels)
+        positive_label = True
+
+        model_scorer = ModelScorer(labels=distinct_labels, positive_label=positive_label,
+                                   logs_dir=tempfile.gettempdir())
+
+        f, p, r = model_scorer.get_scores(labels, predicted)
+        self.logger.info("Kth hold set f-score, after post processing ")
+
+        self.logger.info("Kth hold set f-score, after post processing %s", f)
 
     def get_labels(self, data_rows):
         labels = []

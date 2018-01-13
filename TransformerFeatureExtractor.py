@@ -8,20 +8,21 @@ from Transformer import Transformer
 
 class TransformerFeatureExtractor(Transformer):
 
-    def __init__(self):
+    def __init__(self, n_grams=None, preprocessor_ngram_feature_extractor=None):
         Transformer.__init__(self)
         self.key_n_grams = "n_grams"
-        self.preprocessor_ngram_feature_extractor = NGramFeatureExtractor().extract
+        self.preprocessor_ngram_feature_extractor = preprocessor_ngram_feature_extractor or NGramFeatureExtractor(
+            vocabulary=n_grams).extract
         self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
 
     def extract(self, data_rows):
         tmp_stage1_transformed_data_rows = []
         Feature_NORM_FREQ = "normalised_frequncey"
         Feature_Fragments = "Feature fragments"
-        Feature_IsSelfRelation ="isselfrelation"
-        indics = {Feature_NORM_FREQ:0, Feature_Fragments:1, Feature_IsSelfRelation:2}
+        Feature_IsSelfRelation = "isselfrelation"
+        indics = {Feature_NORM_FREQ: 0, Feature_Fragments: 1, Feature_IsSelfRelation: 2}
 
-        metadata = np.array(data_rows)[:, [I_ID,I_DOC_ID,I_GENE1,I_GENE2]]
+        metadata = np.array(data_rows)[:, [I_ID, I_DOC_ID, I_GENE1, I_GENE2]]
         metadata_feature_names = ["uid", "docid", "gene1", "gene2"]
 
         for r in data_rows:
@@ -30,8 +31,8 @@ class TransformerFeatureExtractor(Transformer):
             normalised_frequency = count_of_valid_fragments * 100 / (len(r[I_SENTENCES]))
             combined_fragments = "   \t ".join(fragments)
 
-            tmp_stage1_transformed_data_rows.append([normalised_frequency, combined_fragments, int(r[I_GENE1] == r[I_GENE2])])
-
+            tmp_stage1_transformed_data_rows.append(
+                [normalised_frequency, combined_fragments, int(r[I_GENE1] == r[I_GENE2])])
 
         # Test case by titling the number in favour of thumb print 0 to false, by removing some records
         #  remove_rec=[('21569203','28379874','2335')
@@ -47,7 +48,8 @@ class TransformerFeatureExtractor(Transformer):
         #  data_rows = [r for r in data_rows if (r[I_DOCID], r[I_GENE1], r[I_GENE2]) not in remove_rec]
 
         # Extract ngram features
-        v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_Fragments]])
+        v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(
+            np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_Fragments]])
         features = v_ngram_features
         feature_names = n_gram_names
         print (features)
@@ -82,4 +84,5 @@ class TransformerFeatureExtractor(Transformer):
         metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
         metadata_feature_names.append("feature count")
 
-        return ({self.key_metadata_names: metadata_feature_names, self.key_metadata:metadata, self.key_feature_names:feature_names, self.key_feature:features, self.key_n_grams: n_gram_names })
+        return ({self.key_metadata_names: metadata_feature_names, self.key_metadata: metadata,
+                 self.key_feature_names: feature_names, self.key_feature: features, self.key_n_grams: n_gram_names})
