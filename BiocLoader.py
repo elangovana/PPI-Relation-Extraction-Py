@@ -9,11 +9,13 @@ import tempfile
 import logging
 import itertools
 
-I_RELATIONS = 6
+I_ID = 0
+I_DOC_ID = 1
 I_GENE1 = 2
 I_GENE2 = 3
 I_SENTENCES = 4
 I_GENESINDOC = 5
+I_RELATIONS = 6
 
 
 class BiocLoader:

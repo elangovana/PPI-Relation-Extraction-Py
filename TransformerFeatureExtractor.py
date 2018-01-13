@@ -1,6 +1,6 @@
 import numpy as np
 
-from BiocLoader import I_SENTENCES, I_GENE1, I_GENE2, I_GENESINDOC
+from BiocLoader import I_SENTENCES, I_GENE1, I_GENE2, I_GENESINDOC, I_ID, I_DOC_ID
 from NGramFeatureExtractor import NGramFeatureExtractor
 from PPIFragmentExtractor import PPIFragementExtractor
 from Transformer import Transformer
@@ -21,7 +21,7 @@ class TransformerFeatureExtractor(Transformer):
         Feature_IsSelfRelation ="isselfrelation"
         indics = {Feature_NORM_FREQ:0, Feature_Fragments:1, Feature_IsSelfRelation:2}
 
-        metadata = np.array(data_rows)[:, 0:I_SENTENCES]
+        metadata = np.array(data_rows)[:, [I_ID,I_DOC_ID,I_GENE1,I_GENE2]]
         metadata_feature_names = ["uid", "docid", "gene1", "gene2"]
 
         for r in data_rows:
