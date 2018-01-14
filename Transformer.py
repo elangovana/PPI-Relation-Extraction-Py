@@ -9,6 +9,7 @@ class Transformer:
         self.key_feature ="feature"
         self.logger = logging.getLogger(__name__)
 
+
     def extract(self, data_rows):
         pass
 

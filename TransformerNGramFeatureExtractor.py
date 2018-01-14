@@ -18,9 +18,10 @@ class TransformerNGramFeatureExtractor(Transformer):
         self.meta_field_name_doc_id = "docid"
         self.meta_field_name_gene1 = "gene1"
         self.meta_field_name_gene2 = "gene2"
-        self.preprocessor_ngram_feature_extractor = ngram_extractor or NGramExtractor(
-            vocabulary=n_grams).extract
-        self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
+        self.n_gram_names = None
+        self.preprocessor_ngram_extractor = ngram_extractor or NGramExtractor(
+            vocabulary=self.n_gram_names)
+        self.preprocessor_fragment_extractor = PPIFragementExtractor()
         self.logger = logging.getLogger(__name__)
         Transformer.__init__(self)
 
@@ -36,7 +37,8 @@ class TransformerNGramFeatureExtractor(Transformer):
                                   self.meta_field_name_gene2]
 
         for r in data_rows:
-            fragments = self.preprocessor_fragment_extractor(r[I_SENTENCES], r[I_GENE1], r[I_GENE2], r[I_GENESINDOC])
+            fragments = self.preprocessor_fragment_extractor.extract(r[I_SENTENCES], r[I_GENE1], r[I_GENE2],
+                                                                     r[I_GENESINDOC])
             count_of_valid_fragments = len(fragments)
             normalised_frequency = (count_of_valid_fragments * 100) / (len(r[I_SENTENCES]))
             combined_fragments = "   \t ".join(fragments)
@@ -58,12 +60,13 @@ class TransformerNGramFeatureExtractor(Transformer):
         #  data_rows = [r for r in data_rows if (r[I_DOCID], r[I_GENE1], r[I_GENE2]) not in remove_rec]
 
         # Extract ngram features
-        v_ngram_features, n_gram_names = self.preprocessor_ngram_feature_extractor(
+
+        v_ngram_features, self.n_gram_names = self.preprocessor_ngram_extractor.extract(
             np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_Fragments]])
 
         features = v_ngram_features
         feature_names = []
-        feature_names.extend(n_gram_names)
+        feature_names.extend(self.n_gram_names)
 
         # Append features to ngrams
         # Self Relation
@@ -93,7 +96,6 @@ class TransformerNGramFeatureExtractor(Transformer):
         metadata = np.concatenate((metadata, new_metadata_feature.reshape(len(new_metadata_feature), 1)), axis=1)
         metadata_feature_names.append("tumbpint")
 
-
         # Feature count
         new_feature = feature_count
         metadata = np.concatenate((metadata, new_feature.reshape(len(new_feature), 1)), axis=1)
@@ -104,8 +106,7 @@ class TransformerNGramFeatureExtractor(Transformer):
                          "\n".join(feature_names))
 
         return ({self.key_metadata_names: metadata_feature_names, self.key_metadata: metadata,
-                 self.key_feature_names: feature_names, self.key_feature: features, self.key_n_grams: n_gram_names,
-                 self.key_self_relation: self.key_self_relation})
+                 self.key_feature_names: feature_names, self.key_feature: features})
 
     def convert_bioc_ready(self, metadata, metadata_names, y):
         result = []
@@ -120,3 +121,19 @@ class TransformerNGramFeatureExtractor(Transformer):
             i = i + 1
 
         return result
+
+    def __getstate__(self):
+        """
+Customise picking so that the n-grams previously used can be retained
+        :return:
+        """
+        return {"n_gram_names": self.n_gram_names}
+
+    def __setstate__(self, d):
+        """
+Customise unpickling so that only n gram names are restored , everything else is similar to a new object
+        :param d: The pickled dictionary
+        """
+        tmp_obj = TransformerNGramFeatureExtractor(n_grams=d["n_gram_names"])
+        for attr, value in tmp_obj.__dict__.iteritems():
+            self.__dict__[attr] = value

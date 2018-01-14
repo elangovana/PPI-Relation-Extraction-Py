@@ -24,17 +24,10 @@ def validate(training_settings_pickle, test_data_file, output_dir):
     data = loader.parse(test_data_file)
 
 
-    # training settings
-    training_settings = pickle.load(open(training_settings_pickle, "rb"))
-    trained_model = training_settings["model"]
-
-    n_grams = training_settings["n-grams"]
-
     # Run Train
-    pipeline = Pipeline(feature_extractor=TransformerNGramFeatureExtractor(
-        ngram_extractor=NGramExtractor(vocabulary=n_grams).extract))
+    pipeline = Pipeline()
 
-    result = pipeline.validate(data, trained_model)
+    result = pipeline.validate(data, training_settings_pickle)
 
     loader.dump(result)
 

@@ -59,12 +59,10 @@ class Pipeline:
         feature_names = result[self.feature_extractor.key_feature_names]
         features = result[self.feature_extractor.key_feature]
         metadata = result[self.feature_extractor.key_metadata]
-        n_grams = result[self.feature_extractor.key_n_grams]
-        feature_name_self_relation = result[self.feature_extractor.key_self_relation]
 
         self.logger.debug("Total number of features used %s. Feature names:\n %s",
-                         len(feature_names),
-                         "\n".join(feature_names))
+                          len(feature_names),
+                          "\n".join(feature_names))
         # labels
         labels = np.array(self.get_labels(data_rows))
         distinct_labels = np.unique(labels)
@@ -81,7 +79,7 @@ class Pipeline:
         pickle_file_name = os.path.join(output_dir, tempfile.mkstemp(prefix="trained_model")[1])
         self.logger.info("Saving model to %s", pickle_file_name)
         with open(pickle_file_name, 'wb') as fd:
-            pickle.dump({"model": trained_model, "n-grams": n_grams}, fd)
+            pickle.dump({"model": trained_model, "feature_extractor": self.feature_extractor}, fd)
 
         # log formatted features to file
         logs_features_file = os.path.join(self.logs_dir,
@@ -90,7 +88,7 @@ class Pipeline:
         self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
         self._save_to_file(logs_features_file,
                            (metadata_names, ["labels"], ["Pred"], feature_names),
-                           (metadata, labels, np.array(predicted_on_train),  features))
+                           (metadata, labels, np.array(predicted_on_train), features))
 
         # post processing
         model_scorer = ModelScorer(labels=distinct_labels, positive_label=positive_label,
@@ -106,17 +104,17 @@ class Pipeline:
             # Save test set
             logs_features_file = os.path.join(self.logs_dir,
                                               tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
-            self.logger.info("Writing kth train features labels and predictions to log file %s", logs_features_file)
+            self.logger.debug("Writing kth train features labels and predictions to log file %s", logs_features_file)
             self._save_to_file(logs_features_file,
-                               (metadata_names, ["labels"], ["Pred"],  feature_names),
+                               (metadata_names, ["labels"], ["Pred"], feature_names),
                                (metadata[train], labels[train], np.array(pred_train),
                                 features[train]))
 
             logs_features_file = os.path.join(self.logs_dir,
                                               tempfile.mkstemp(prefix="data_formatted_features", suffix=".csv")[1])
-            self.logger.info("Writing train features labels and predictions to log file %s", logs_features_file)
+            self.logger.debug("Writing train features labels and predictions to log file %s", logs_features_file)
             self._save_to_file(logs_features_file,
-                               (metadata_names, ["labels"], ["Pred"],  feature_names),
+                               (metadata_names, ["labels"], ["Pred"], feature_names),
                                (metadata[test], labels[test], np.array(post_processed_test),
 
                                 features[test]))
@@ -126,19 +124,19 @@ class Pipeline:
 
         return pickle_file_name
 
-    def validate(self, data_rows, trained_model):
+    def validate(self, data_rows, training_settings_pickle):
+
+        # training settings
+        training_settings = pickle.load(open(training_settings_pickle, "rb"))
+        trained_model = training_settings["model"]
+        feature_extractor = training_settings["feature_extractor"]
 
         self.logger.info("Data six %s", np.array(data_rows).shape)
-        result = self.feature_extractor.extract(data_rows)
+        result = feature_extractor.extract(data_rows)
         metadata_names = result[self.feature_extractor.key_metadata_names]
         feature_names = result[self.feature_extractor.key_feature_names]
         features = result[self.feature_extractor.key_feature]
         metadata = result[self.feature_extractor.key_metadata]
-        n_grams = result[self.feature_extractor.key_n_grams]
-        feature_name_self_relation = result[self.feature_extractor.key_self_relation]
-        self.logger.info("Total number of features used %s. Feature names:\n %s",
-                         len(feature_names),
-                         "\n".join(feature_names))
 
         predicted = trained_model.predict(features)
 
@@ -157,10 +155,9 @@ class Pipeline:
         f, p, r = model_scorer.get_scores(labels, post_processed_pred)
         self.logger.info("Validation post_processed_pred set score f = %s, p= %s, r = %s", f, p, r)
 
-        #writeback to biocformat
+        # writeback to biocformat
         data_rows_result = self.feature_extractor.convert_bioc_ready(metadata, metadata_names, predicted)
-        return  data_rows_result
-
+        return data_rows_result
 
     def get_labels(self, data_rows):
         labels = []
