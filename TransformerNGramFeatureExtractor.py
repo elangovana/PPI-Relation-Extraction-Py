@@ -3,14 +3,14 @@ import logging
 import numpy as np
 
 from BiocLoader import I_SENTENCES, I_GENE1, I_GENE2, I_GENESINDOC, I_ID, I_DOC_ID
-from NGramFeatureExtractor import NGramFeatureExtractor
+from NGramExtractor import NGramExtractor
 from PPIFragmentExtractor import PPIFragementExtractor
 from Transformer import Transformer
 
 
-class TransformerFeatureExtractor(Transformer):
+class TransformerNGramFeatureExtractor(Transformer):
 
-    def __init__(self, n_grams=None, preprocessor_ngram_feature_extractor=None):
+    def __init__(self, n_grams=None, ngram_extractor=None):
         self.key_n_grams = "n_grams"
         self.key_self_relation = "Self--Relation"
         self.key_frequncy = "frequnce"
@@ -18,7 +18,7 @@ class TransformerFeatureExtractor(Transformer):
         self.meta_field_name_doc_id = "docid"
         self.meta_field_name_gene1 = "gene1"
         self.meta_field_name_gene2 = "gene2"
-        self.preprocessor_ngram_feature_extractor = preprocessor_ngram_feature_extractor or NGramFeatureExtractor(
+        self.preprocessor_ngram_feature_extractor = ngram_extractor or NGramExtractor(
             vocabulary=n_grams).extract
         self.preprocessor_fragment_extractor = PPIFragementExtractor().extract
         self.logger = logging.getLogger(__name__)
@@ -93,7 +93,6 @@ class TransformerFeatureExtractor(Transformer):
         metadata = np.concatenate((metadata, new_metadata_feature.reshape(len(new_metadata_feature), 1)), axis=1)
         metadata_feature_names.append("tumbpint")
 
-        print(features)
 
         # Feature count
         new_feature = feature_count

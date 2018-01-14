@@ -16,12 +16,12 @@ from BiocRelation import BiocRelation
 from ModelLogisticsRegresssion import ModelLogisticsRegression
 from ModelScorer import ModelScorer
 from PostProcessingSelfRelation import PostProcessingSelfRelation
-from TransformerFeatureExtractor import TransformerFeatureExtractor
+from TransformerNGramFeatureExtractor import TransformerNGramFeatureExtractor
 
 
 class Pipeline:
 
-    def __init__(self, model=None, logs_dir=tempfile.mkdtemp(), feature_extractor=TransformerFeatureExtractor()):
+    def __init__(self, model=None, logs_dir=tempfile.mkdtemp(), feature_extractor=TransformerNGramFeatureExtractor()):
         self.logs_dir = logs_dir
         self.logger = logging.getLogger(__name__)
         self.validate_relation = BiocRelation().is_valid

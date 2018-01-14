@@ -29,7 +29,7 @@ class ModelLogisticsRegression:
 
         # Fit model
         model.fit(matrix_x, vector_y)
-        print(model.coef_)
+        self.logger.info(model.coef_)
 
         # predict on the training set
         pred = model.predict(matrix_x)

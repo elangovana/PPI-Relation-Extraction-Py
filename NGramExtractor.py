@@ -6,22 +6,22 @@ import tempfile
 import os
 
 
-class NGramFeatureExtractor(CountVectorizer):
+class NGramExtractor(CountVectorizer):
 
     def __init__(self, n_gram_len=1, vocabulary=None, logs_dir=tempfile.mkdtemp(), stop_words='english'):
         """
 
         :param n_gram_len: the size of n-gram where each gram is a word
         """
-        super(NGramFeatureExtractor, self).__init__(analyzer="word", binary=True,
-                                     ngram_range=(n_gram_len, n_gram_len), vocabulary=vocabulary, max_features = 2500, stop_words=stop_words)
+        super(NGramExtractor, self).__init__(analyzer="word", binary=True,
+                                             ngram_range=(n_gram_len, n_gram_len), vocabulary=vocabulary, max_features = 2500, stop_words=stop_words)
         self.n_gram_len = n_gram_len
         self.logs_dir = logs_dir
         self.logger = logging.getLogger(__name__)
 
 
     def build_analyzer(self):
-        analyzer = super(NGramFeatureExtractor, self).build_analyzer()
+        analyzer = super(NGramExtractor, self).build_analyzer()
         return lambda doc: ([nltk.stem.SnowballStemmer('english').stem(w) for w in analyzer(doc)])
 
     def extract(self, text_vector):

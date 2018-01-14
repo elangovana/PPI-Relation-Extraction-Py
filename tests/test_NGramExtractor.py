@@ -4,7 +4,7 @@ import os
 import numpy as np
 from ddt import ddt, data, unpack
 from logging.config import fileConfig
-from NGramFeatureExtractor import NGramFeatureExtractor
+from NGramExtractor import NGramExtractor
 
 """
 Unit tests for FeatureExtraction class
@@ -12,7 +12,7 @@ Unit tests for FeatureExtraction class
 
 
 @ddt
-class TestNGramFeatureExtractor(unittest.TestCase):
+class TestNGramExtractor(unittest.TestCase):
 
     def setUp(self):
         fileConfig(os.path.join(os.path.dirname(__file__), 'logger.ini'))
