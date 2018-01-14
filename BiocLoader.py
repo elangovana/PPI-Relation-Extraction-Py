@@ -49,11 +49,7 @@ class BiocLoader:
         gene_to_norm_gene_dict = self.retrieve_gene_names_dict(doc)
         genes = gene_to_norm_gene_dict.values()
 
-
-
-
-
-        gene_pairs = list( itertools.combinations_with_replacement(list(set(genes)), 2))
+        gene_pairs = list(itertools.combinations_with_replacement(list(set(genes)), 2))
 
         # # Add gene pairs not picked by annotation, but are present in relations
         # relations = self.retrieve_relations(doc)
@@ -78,8 +74,6 @@ class BiocLoader:
             gene2 = gene_pair[1]
             uid = "{}#{}#{}".format(doc.id, gene1, gene2)
             result_x.append([uid, doc.id, gene1, gene2, normalised_sentences, genes, self.retrieve_relations(doc)])
-
-
 
         return result_x
 
