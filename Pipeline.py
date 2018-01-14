@@ -62,7 +62,7 @@ class Pipeline:
         n_grams = result[self.feature_extractor.key_n_grams]
         feature_name_self_relation = result[self.feature_extractor.key_self_relation]
 
-        self.logger.info("Total number of features used %s. Feature names:\n %s",
+        self.logger.debug("Total number of features used %s. Feature names:\n %s",
                          len(feature_names),
                          "\n".join(feature_names))
         # labels
