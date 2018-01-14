@@ -34,7 +34,7 @@ class TestNGramExtractor(unittest.TestCase):
         """
 
         # Arrange
-        sut = NGramFeatureExtractor(n_gram_size, vocabulary=vocabulary, stop_words=None)
+        sut = NGramExtractor(n_gram_size, vocabulary=vocabulary, stop_words=None)
 
         # Act
         actual, feature_names = sut.extract(text_vector)
