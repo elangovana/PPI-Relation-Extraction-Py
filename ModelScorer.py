@@ -15,21 +15,21 @@ class ModelScorer:
         self.labels = labels
         self.logger = logging.getLogger(__name__)
 
-    def log_confusion_matrix(self, logger, actual, pred, labels):
-        logger.info("-------------------------------")
+    def log_confusion_matrix(self, logger, actual, pred, labels, log_level=logging.DEBUG):
+        logger.log(log_level, "-------------------------------")
         s = "\t\t"
         for l in labels:
             s = "{}\t\t|{} Pred".format(s, l)
-        logger.info("|%s|", s)
+        logger.log(log_level, "|%s|", s)
         cm = sklearn.metrics.confusion_matrix(actual, pred, labels)
         i = 0
         for r in cm:
             s = ""
             for c in r:
                 s = "{}\t\t|{}".format(s, c)
-            logger.info("|%s Actual\t%s|", labels[i], s)
+            logger.log(log_level, "|%s Actual\t%s|", labels[i], s)
             i = i + 1
-        logger.info("---------------------------------")
+        logger.log(log_level, "---------------------------------")
 
     def evalute_kfold_score(self, matrix_x, model, vector_y, metadata_v=None, n_splits=3, random_stat=None):
         # Initialise
@@ -40,7 +40,7 @@ class ModelScorer:
 
         for train, test in k_fold.split(matrix_x):
             # fit
-            self.logger.info("****Training set splits for each k fold")
+            self.logger.debug("****Training set splits for each k fold")
             model.fit(matrix_x[train], vector_y[train])
             self.log_confusion_matrix(self.logger, vector_y[train], model.predict(matrix_x[train]), self.labels)
 
@@ -50,25 +50,15 @@ class ModelScorer:
             f_score, p_score, r_score = self.get_scores(actual, pred)
 
             # log
-            self.logger.info("-----Confusion matrx for the hold out set-----")
+            self.logger.debug("-----Confusion matrix for the hold out set-----")
             self.log_confusion_matrix(self.logger, actual, pred, self.labels)
-            self.logger.info('KFold  score %f, precision  %f, recall %f', f_score, p_score, r_score)
-            # log holdout pred
+            self.logger.debug('KFold  score %f, precision  %f, recall %f', f_score, p_score, r_score)
+            # log holdout predictions
             logfile = os.path.join(self.logs_dir,
                                    tempfile.mkstemp(prefix="debug_kfold_holdout_", suffix=".csv")[1])
-            self.logger.info('Logging feature and metadata for kth holdout set into file %s', logfile)
-
-            # TODO cleanup
-            if metadata_v is not None:
-                np.savetxt(logfile, np.concatenate((metadata_v[test],
-                                                    np.array(vector_y[test]).reshape(len(vector_y[test]), 1),
-                                                    np.array(pred).reshape(len(pred), 1), matrix_x[test]), axis=1),
-                           delimiter='|', fmt="%s")
-            else:
-                np.savetxt(logfile, np.concatenate((
-                    np.array(vector_y[test]).reshape(len(vector_y[test]), 1),
-                    np.array(pred).reshape(len(pred), 1), matrix_x[test]), axis=1),
-                           delimiter='|', fmt="%s")
+            self.logger.debug('Logging feature and metadata for kth holdout set into file %s', logfile)
+            metadata_test =  metadata_v[test] if metadata_v is not None else None
+            self._log_kfold_predictions_csv(logfile, matrix_x[test],metadata_test, pred,  actual)
 
             # save scores
             k_fold_fscores.append(f_score)
@@ -76,10 +66,27 @@ class ModelScorer:
             k_fold_rscores.append(r_score)
 
         # return average score
-        mean_score = np.mean(k_fold_fscores)
-        self.logger.info('KFold mean f-score %f, p-score %f, r-score %f ', mean_score, np.mean(k_fold_pscores),
-                         np.mean(k_fold_rscores))
-        return mean_score
+        mean_fscore = np.mean(k_fold_fscores)
+        mean_pscore = np.mean(k_fold_pscores)
+        mean_rscore = np.mean(k_fold_rscores)
+        self.logger.info('KFold mean f-score %f, p-score %f, r-score %f ', mean_fscore, mean_pscore,
+                         mean_rscore)
+        return mean_fscore, mean_pscore, mean_rscore
+
+    @staticmethod
+    def _log_kfold_predictions_csv(logfile, matrix_x, metadata_v, pred, actual):
+        # log the files only for debug or above
+        if not logging.getLogger().isEnabledFor(logging.DEBUG):
+            return
+
+        data = np.concatenate((
+            np.array(actual).reshape(len(actual), 1),
+            np.array(pred).reshape(len(pred), 1)), axis=1)
+        #, matrix_x
+        if metadata_v is not None:
+            data = np.concatenate((metadata_v, data), axis=1 )
+
+        np.savetxt(logfile, data, delimiter='|', fmt="%s")
 
     def get_scores(self, actual, pred):
         """
