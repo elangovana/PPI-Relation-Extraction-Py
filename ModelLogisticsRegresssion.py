@@ -39,11 +39,11 @@ class ModelLogisticsRegression:
         self.logger.info('Training data f-score %f, p-score %f, r-score %f ', f_score, p_score, r_score)
 
         # evaluate k fold score
-        score = self.model_scorer.evalute_kfold_score(matrix_x, self.construct_model(), vector_y, metadata_v,
+        scores = self.model_scorer.evalute_kfold_score(matrix_x, self.construct_model(), vector_y, metadata_v,
                                                       n_splits=kfold_n_splits,
                                                       random_stat=kfold_random_state)
         # Return
-        return model, score
+        return model, scores
 
     def construct_model(self):
         class_weight = "balanced"
