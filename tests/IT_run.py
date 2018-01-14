@@ -27,7 +27,7 @@ class TestRun(TestCase):
         sut(train_file_abs_path, output_dir=tempfile.mkdtemp(prefix="Train_test_run_"))
 
     @data("data/training_gold_sentences.xml"
-          "data/training_gnorm_with_relation.xml"
+        , "data/training_gnorm_with_relation.xml"
         , "data/validation_set_with_gold_relation.xml"
           )
     def test_validate(self, train_data_file):
