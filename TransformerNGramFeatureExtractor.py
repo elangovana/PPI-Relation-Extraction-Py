@@ -18,7 +18,7 @@ class TransformerNGramFeatureExtractor(Transformer):
         self.meta_field_name_doc_id = "docid"
         self.meta_field_name_gene1 = "gene1"
         self.meta_field_name_gene2 = "gene2"
-        self.n_gram_names = None
+        self.n_gram_names = n_grams
         self.preprocessor_ngram_extractor = ngram_extractor or NGramExtractor(
             vocabulary=self.n_gram_names)
         self.preprocessor_fragment_extractor = PPIFragementExtractor()

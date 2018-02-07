@@ -131,12 +131,15 @@ class Pipeline:
         trained_model = training_settings["model"]
         feature_extractor = training_settings["feature_extractor"]
 
-        self.logger.info("Data six %s", np.array(data_rows).shape)
+        self.logger.info("Data rows %s", np.array(data_rows).shape)
         result = feature_extractor.extract(data_rows)
+
         metadata_names = result[self.feature_extractor.key_metadata_names]
         feature_names = result[self.feature_extractor.key_feature_names]
         features = result[self.feature_extractor.key_feature]
         metadata = result[self.feature_extractor.key_metadata]
+
+        self.logger.info("features %s", np.array(features).shape)
 
         predicted = trained_model.predict(features)
 
