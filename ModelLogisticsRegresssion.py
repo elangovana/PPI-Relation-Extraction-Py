@@ -12,11 +12,11 @@ from ModelScorer import ModelScorer
 
 class ModelLogisticsRegression:
 
-    def __init__(self, labels=None, positive_label=True, logs_dir=tempfile.mkdtemp(), scorer=None):
+    def __init__(self, labels=None, positive_label=True, logs_dir=None, scorer=None):
         self.labels = labels or [True, False]
         self.logger = logging.getLogger(__name__)
         self.positive_label = positive_label
-        self.logs_dir = logs_dir
+        self.logs_dir = logs_dir or tempfile.mkdtemp()
         self.model_scorer = scorer or ModelScorer(labels=self.labels, logs_dir=self.logs_dir,
                                                   positive_label=self.positive_label)
 

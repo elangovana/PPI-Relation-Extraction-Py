@@ -21,8 +21,9 @@ I_RELATIONS = 6
 
 class BiocLoader:
 
-    def __init__(self, logs_dir=tempfile.mkdtemp()):
-        self.logs_dir = logs_dir
+    def __init__(self, logs_dir=None):
+
+        self.logs_dir = logs_dir or tempfile.mkdtemp()
         self.logger = logging.getLogger(__name__)
 
         self.sentence_extractor = BiocSentences().convert_to_vec
@@ -77,7 +78,8 @@ class BiocLoader:
 
         return result_x
 
-    def dump(self, data_rows, filename=tempfile.mkstemp(prefix="PredictedFile", suffix=".xml")[1]):
+    def dump(self, data_rows, filename=None):
+        filename = filename or tempfile.mkstemp(prefix="PredictedFile", suffix=".xml")[1]
         # Read file and do preliminary pre processing to form rows of records
         dic = {}
         for d in data_rows:
