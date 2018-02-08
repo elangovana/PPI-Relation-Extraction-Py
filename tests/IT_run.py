@@ -28,10 +28,12 @@ class TestRun(TestCase):
 
     @data(("data/training_gold_sentences.xml", "data/training_gold_sentences.xml")
         , ("data/training_gnorm_with_relation.xml", "data/training_gnorm_with_relation.xml")
-        , ("data/training_gnorm_with_relation.xml","data/validation_set_with_gold_relation.xml")
+        , ("data/training_gnorm_with_relation.xml","data/validation_set_with_gnorm_relation.xml")
         , ("data/training_gnorm_with_relation.xml","data/PMtask_relations_testset_merge_gnorm_result.xml")
-        , ("data/validation_set_with_gold_relation.xml", "data/validation_set_with_gold_relation.xml")
-        , ("data/validation_set_with_gold_relation.xml","data/training_gnorm_with_relation.xml")
+        , ("data/training_gnorm_with_relation.xml", "data/validate_final_test_gold.xml")
+        , ("data/training_gnorm_with_relation.xml", "data/validate_final_test_gold_gnorm_merge.xml")
+        , ("data/validation_set_with_gnorm_relation.xml", "data/validation_set_with_gnorm_relation.xml")
+        , ("data/validation_set_with_gnorm_relation.xml","data/training_gnorm_with_relation.xml")
 
           )
     @unpack

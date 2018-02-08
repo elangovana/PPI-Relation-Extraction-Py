@@ -146,6 +146,9 @@ class Pipeline:
         labels = np.array(self.get_labels(data_rows))
         distinct_labels = np.unique(labels)
         positive_label = True
+        # Log some stats about the class
+        unique, counts = np.unique(labels, return_counts=True)
+        self.logger.info("Unique classes vs counts in validation set\n %s", np.asarray((unique, counts)).T)
 
         model_scorer = ModelScorer(labels=distinct_labels, positive_label=positive_label,
                                    logs_dir=tempfile.gettempdir())
