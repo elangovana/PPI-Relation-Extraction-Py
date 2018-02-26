@@ -14,7 +14,7 @@ class NGramExtractor(CountVectorizer):
         :param n_gram_len: the size of n-gram where each gram is a word
         """
         super(NGramExtractor, self).__init__(analyzer="word", binary=True,
-                                             ngram_range=(n_gram_len, n_gram_len), vocabulary=vocabulary, max_features = 2500, stop_words=stop_words)
+                                             ngram_range=(n_gram_len, n_gram_len), vocabulary=vocabulary, max_features = 5, stop_words=stop_words)
         self.n_gram_len = n_gram_len
         self.logs_dir = logs_dir
         self.logger = logging.getLogger(__name__)
