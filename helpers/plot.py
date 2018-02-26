@@ -4,7 +4,7 @@ import os
 from matplotlib.legend_handler import HandlerLine2D
 
 
-def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4)):
+def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4), plot_title=""):
     """
     The file to plot. Expected file format
     N	Test file name	Micro Precision	Micro Recall	Micro F1	Macro Precision	Macro Recall	Macro F1
@@ -12,6 +12,7 @@ def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4)):
     2	Test With Gnorm 	0.2977	0.359	0.3255	0.2752	0.3771	0.2901
     3	Test With Gnorm 	0.4	0.3084	0.3483	0.2868	0.3353	0.289
     ....
+    :param plot_title: The plot title
     :param data_cols: The data col numbers
     :param csv_file:
 
@@ -38,10 +39,14 @@ def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4)):
     l_recall, = plt.plot(n, recall, 'b--', label='Recall')
     l_fscore, = plt.plot(n, fscore, 'g--', label='F-Score')
 
+    plt.title(plot_title)
+
     plt.legend(handler_map={l_prec: HandlerLine2D(numpoints=4)})
 
     plt.show()
 
 
-plot(os.path.join(os.path.dirname(__file__), 'Data_Test_GNorm_N_Vs_FScore.txt'))
-plot(os.path.join(os.path.dirname(__file__), 'Data_Test_GNormMerge_N_Vs_FScore.txt'))
+plot(os.path.join(os.path.dirname(__file__), 'Data_Test_GNorm_N_Vs_FScore.txt'),
+     plot_title="Test data using GNormPlus entity annotation")
+plot(os.path.join(os.path.dirname(__file__), 'Data_Test_GNormMerge_N_Vs_FScore.txt'),
+     plot_title="Test data using GNormPlus and Task entity annotation")
