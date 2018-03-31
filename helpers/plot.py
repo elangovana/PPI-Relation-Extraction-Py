@@ -4,7 +4,7 @@ import os
 from matplotlib.legend_handler import HandlerLine2D
 
 
-def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4), plot_title=""):
+def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4), plot_title="", output_file = "plot.png"):
     """
     The file to plot. Expected file format
     N	Test file name	Micro Precision	Micro Recall	Micro F1	Macro Precision	Macro Recall	Macro F1
@@ -43,10 +43,10 @@ def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4), plot_title=""):
 
     plt.legend(handler_map={l_prec: HandlerLine2D(numpoints=4)})
 
-    plt.show()
+    plt.savefig(output_file, dpi=300)
 
 
 plot(os.path.join(os.path.dirname(__file__), 'Data_Test_GNorm_N_Vs_FScore.txt'),
-     plot_title="Test data using GNormPlus entity annotation")
+     plot_title="Test data using GNormPlus entity annotation", output_file = "CoOccurance_N_Vs_Score_Gnorm.png")
 plot(os.path.join(os.path.dirname(__file__), 'Data_Test_GNormMerge_N_Vs_FScore.txt'),
-     plot_title="Test data using GNormPlus and Task entity annotation")
+     plot_title="Test data using GNormPlus and Task entity annotation", output_file = "CoOccurance_N_Vs_Score_Gnorm_Task.png")
