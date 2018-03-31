@@ -45,6 +45,8 @@ def plot(csv_file, delimit='\t', data_cols=(0, 2, 3, 4), plot_title="", output_f
 
     plt.savefig(output_file, dpi=300)
 
+    plt.close()
+
 
 plot(os.path.join(os.path.dirname(__file__), 'Data_Test_GNorm_N_Vs_FScore.txt'),
      plot_title="Test data using GNormPlus entity annotation", output_file = "CoOccurance_N_Vs_Score_Gnorm.png")
