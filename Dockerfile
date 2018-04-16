@@ -9,7 +9,7 @@ MAINTAINER lanax
 #Install base packages Python, Wgr & nginx
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
          wget \
-         python3.6 \
+         python \
          nginx \
          ca-certificates \
     && rm -rf /var/lib/apt/lists/*
