@@ -1,13 +1,9 @@
-import os
 import tempfile
+from os.path import basename
 
 from BiocLoader import BiocLoader
-from NGramExtractor import NGramExtractor
 from Pipeline import Pipeline
-import cPickle as pickle
 
-from TransformerNGramFeatureExtractor import TransformerNGramFeatureExtractor
-from os.path import basename
 
 def run(training_data_file, output_dir):
     # Parse data
