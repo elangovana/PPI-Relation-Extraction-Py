@@ -38,7 +38,7 @@ RUN conda install -q -r requirements.txt && \
 
 ENV PYTHONUNBUFFERED=TRUE
 ENV PYTHONDONTWRITEBYTECODE=TRUE
-ENV PATH="/opt/program:/opt/conda:${PATH}"
+ENV PATH="/opt/program:/opt/conda/bin:${PATH}"
 
 # Set up the program in the image
 WORKDIR /opt/program
