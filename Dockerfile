@@ -10,6 +10,7 @@ MAINTAINER lanax
 RUN apt-get -y update && apt-get install -y --no-install-recommends \
          wget \
          python \
+         bunzip2 \
          nginx \
          ca-certificates \
     && rm -rf /var/lib/apt/lists/*
