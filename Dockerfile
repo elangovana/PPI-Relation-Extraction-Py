@@ -21,7 +21,7 @@ RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
 
 #Copy source files
-COPY ./* /opt/program
+COPY ./* /opt/program/
 
 # Here we get all python packages.
 # There's substantial overlap between scipy and numpy that we eliminate by
