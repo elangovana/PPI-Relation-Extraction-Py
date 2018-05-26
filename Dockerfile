@@ -19,7 +19,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 RUN wget -nv https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p  /opt/conda/
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
-RUN ls -lR /opt/conda/
+RUN ls -l /opt/conda/
 
 #Copy source files
 COPY ./* /opt/program/
