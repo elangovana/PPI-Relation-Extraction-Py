@@ -41,7 +41,7 @@ ENV PATH="/opt/program:/opt/conda/bin:${PATH}"
 # linking them together. Likewise, pip leaves the install caches populated which uses
 # a significant amount of space. These optimizations save a fair amount of space in the
 # image, which reduces start up time.
-RUN conda install  --yes --file requirements.txt && \
+RUN conda install  --yes --file /opt/program/requirements.txt && \
         rm -rf /root/.cache
 
 # Set up the program in the image
