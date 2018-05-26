@@ -17,7 +17,7 @@ RUN apt-get -y update && apt-get install -y --no-install-recommends \
 
 #Install conda
 RUN wget -nv https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
+RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p  /opt/conda
 RUN rm Anaconda3-5.0.1-Linux-x86_64.sh
 
 #Copy source files
@@ -38,7 +38,7 @@ RUN conda install -q -r requirements.txt && \
 
 ENV PYTHONUNBUFFERED=TRUE
 ENV PYTHONDONTWRITEBYTECODE=TRUE
-ENV PATH="/opt/program:${PATH}"
+ENV PATH="/opt/program:/opt/conda:${PATH}"
 
 # Set up the program in the image
 WORKDIR /opt/program
