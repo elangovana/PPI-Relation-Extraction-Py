@@ -3,7 +3,7 @@ from unittest import TestCase
 from bioc import BioCDocument, BioCRelation
 from ddt import ddt, unpack, data
 
-from source.BiocRelation import BiocRelation
+from BiocRelation import BiocRelation
 
 
 @ddt

@@ -6,7 +6,7 @@ import os
 from bioc import BioCSentence
 from ddt import ddt, data
 
-from source.BiocSentences import BiocSentences
+from BiocSentences import BiocSentences
 import bioc
 
 

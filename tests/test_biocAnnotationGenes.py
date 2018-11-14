@@ -3,7 +3,7 @@ from unittest import TestCase
 from bioc import BioCDocument, BioCAnnotation, BioCPassage
 from ddt import data, ddt, unpack
 
-from source.BiocAnnotationGenes import BiocAnnotationGenes
+from BiocAnnotationGenes import BiocAnnotationGenes
 
 
 @ddt

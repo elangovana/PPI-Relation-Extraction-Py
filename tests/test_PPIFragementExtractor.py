@@ -1,7 +1,7 @@
 from unittest import TestCase
 from ddt import ddt, data, unpack
 
-from source.PPIFragmentExtractor import PPIFragementExtractor
+from PPIFragmentExtractor import PPIFragementExtractor
 
 
 @ddt

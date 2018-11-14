@@ -4,7 +4,7 @@ import os
 import numpy as np
 from ddt import ddt, data, unpack
 from logging.config import fileConfig
-from source.NGramExtractor import NGramExtractor
+from NGramExtractor import NGramExtractor
 
 """
 Unit tests for FeatureExtraction class

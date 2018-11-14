@@ -1,7 +1,7 @@
 from unittest import TestCase
 from ddt import ddt
 import numpy as np
-from source.ModelLogisticsRegresssion import ModelLogisticsRegression
+from ModelLogisticsRegresssion import ModelLogisticsRegression
 from logging.config import fileConfig
 import os
 

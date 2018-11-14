@@ -3,7 +3,7 @@ from unittest import TestCase
 import numpy as np
 from ddt import ddt, data, unpack
 
-from source.PostProcessingSelfRelation import PostProcessingSelfRelation
+from PostProcessingSelfRelation import PostProcessingSelfRelation
 
 
 @ddt
