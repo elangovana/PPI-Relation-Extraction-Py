@@ -4,7 +4,7 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 import logging
 
-from source.ModelScorer import ModelScorer
+from ModelScorer import ModelScorer
 
 
 class ModelLogisticsRegression:

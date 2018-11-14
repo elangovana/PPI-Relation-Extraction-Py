@@ -1,3 +1,5 @@
+[Build Status](https://travis-ci.org/elangovana/PPI-Relation-Extraction-Py.svg?branch=master)](https://travis-ci.org/elangovana/PPI-Relation-Extraction-Py)
+
 # PPI-Relation-Extraction-Py
 # Biocreative VI Track 4 task - Extract protein interactions affected by mutation 
 ## Introduction
