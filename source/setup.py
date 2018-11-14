@@ -8,6 +8,6 @@ setup(
     license='',
     author='Aparna Elangovan',
     author_email='',
-    description='', install_requires=['ddt', 'scikit-learn', 'bioc', 'numpy', 'nltk']
+    description='', install_requires=[ 'scikit-learn', 'bioc', 'numpy', 'nltk']
 )
 

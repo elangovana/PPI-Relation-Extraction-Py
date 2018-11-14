@@ -5,7 +5,7 @@ from unittest import TestCase
 import os
 from ddt import data, ddt, unpack
 
-import Train
+from source import Train
 
 
 @ddt

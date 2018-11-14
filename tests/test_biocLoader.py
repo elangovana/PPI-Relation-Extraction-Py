@@ -1,9 +1,9 @@
 from logging.config import fileConfig
 from unittest import TestCase
 
-from BiocLoader import BiocLoader
+from source.BiocLoader import BiocLoader
 import os
-from ddt import ddt, data, unpack
+from ddt import ddt, data
 
 
 @ddt

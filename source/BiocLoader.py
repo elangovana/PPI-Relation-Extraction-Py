@@ -1,10 +1,10 @@
 import bioc
-from bioc import BioCCollection, BioCDocument
+from bioc import BioCCollection
 
-from BiocAnnotationGenes import BiocAnnotationGenes
-from BiocRelation import BiocRelation
-from BiocSentences import BiocSentences
-from PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
+from source.BiocAnnotationGenes import BiocAnnotationGenes
+from source.BiocRelation import BiocRelation
+from source.BiocSentences import BiocSentences
+from source.PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
 
 import tempfile
 import logging

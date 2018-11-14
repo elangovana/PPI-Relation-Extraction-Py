@@ -1,9 +1,7 @@
-import logging
 from unittest import TestCase
-import numpy
-from ddt import data, ddt
+from ddt import ddt
 import numpy as np
-from ModelLogisticsRegresssion import ModelLogisticsRegression
+from source.ModelLogisticsRegresssion import ModelLogisticsRegression
 from logging.config import fileConfig
 import os
 

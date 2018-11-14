@@ -3,8 +3,8 @@ python:
   - "2.7"
 # command to install dependencies
 install:
-  - pip install -r requirements.txt
+  - pip install -r source/requirements.txt
 # command to run tests
 script:
+  - export PYTHONPATH=./source
   - pytest # or py.test for Python versions 3.5 and below
-  - docker build -t biocreative_vi_relation_extraction:ae .

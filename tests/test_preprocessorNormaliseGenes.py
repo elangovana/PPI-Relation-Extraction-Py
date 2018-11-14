@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from ddt import data, unpack, ddt
 
-from PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
+from source.PreprocessorNormaliseGenes import PreprocessorNormaliseGenes
 
 
 @ddt

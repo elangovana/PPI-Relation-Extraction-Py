@@ -8,7 +8,7 @@ from ddt import ddt, data, unpack
 from sklearn.linear_model import LogisticRegression
 import os
 
-from ModelScorer import ModelScorer
+from source.ModelScorer import ModelScorer
 
 
 @ddt

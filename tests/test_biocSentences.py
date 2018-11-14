@@ -1,13 +1,12 @@
-import logging
 from logging.config import fileConfig
 from unittest import TestCase
 
 import os
 
 from bioc import BioCSentence
-from ddt import ddt, data, unpack
+from ddt import ddt, data
 
-from BiocSentences import BiocSentences
+from source.BiocSentences import BiocSentences
 import bioc
 
 

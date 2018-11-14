@@ -1,13 +1,10 @@
 import tempfile
 
-import sklearn
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import KFold
 import numpy as np
 import logging
-import os
 
-from ModelScorer import ModelScorer
+from source.ModelScorer import ModelScorer
 
 
 class ModelLogisticsRegression:
