@@ -90,7 +90,7 @@ class BiocLoader:
 
             # construct dictionary
             docid = d[I_DOC_ID]
-            if not dic.has_key(docid):
+            if docid not in dic:
                 dic[docid] = {"relations": []}
 
             dic[docid]["relations"].append((d[I_GENE1], d[I_GENE2]))

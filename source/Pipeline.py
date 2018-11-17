@@ -7,7 +7,7 @@ import tempfile
 
 import numpy as np
 import os
-import cPickle as pickle
+import pickle
 
 from sklearn.model_selection import KFold
 

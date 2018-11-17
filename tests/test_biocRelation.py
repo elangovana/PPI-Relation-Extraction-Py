@@ -43,4 +43,4 @@ class TestBiocRelation(TestCase):
         actual = sut.get_bioc_relations(docid, relations)
 
         # Assert
-        self.assertEquals(len(actual.relations), len(relations))
+        self.assertEqual(len(actual.relations), len(relations))

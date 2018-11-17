@@ -22,4 +22,4 @@ class TestPPIFragementExtractor(TestCase):
         actual = sut.extract(sentence_vector, protein1, protein2, remove_words)
 
         # Assert
-        self.assertEquals(expected_frags, actual)
+        self.assertEqual(expected_frags, actual)

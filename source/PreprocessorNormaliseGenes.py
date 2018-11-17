@@ -18,6 +18,6 @@ class PreprocessorNormaliseGenes:
     def normalise_gene_names_bulk(self, v_sentences, dict_gene_name_to_Id):
         # get the gene names to replace
         # replace
-        for key, value in dict_gene_name_to_Id.iteritems():
+        for key, value in dict_gene_name_to_Id.items():
             v_sentences = self.normalise_gene_names(v_sentences, key, value)
         return v_sentences

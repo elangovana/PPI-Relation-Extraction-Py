@@ -41,9 +41,9 @@ class TestNGramExtractor(unittest.TestCase):
 
         # Assert
         actual_dim = len(actual.shape)
-        self.assertEquals(actual_dim, 2, "Expecting a 2 dimensional array, instead found {}".format(actual_dim))
-        self.assertEquals(actual.shape[1], expected_no_of_ngrams)
-        self.assertEquals(actual.shape[0], len(text_vector))
+        self.assertEqual(actual_dim, 2, "Expecting a 2 dimensional array, instead found {}".format(actual_dim))
+        self.assertEqual(actual.shape[1], expected_no_of_ngrams)
+        self.assertEqual(actual.shape[0], len(text_vector))
 
     @data((["This is apple"], 3, None, [[1]])
         , (["This is stemming"], 3, None, [[1]])
@@ -68,5 +68,5 @@ class TestNGramExtractor(unittest.TestCase):
 
         # Assert
         actual_dim = len(actual.shape)
-        self.assertEquals(actual_dim, 2, "Expecting a 2 dimensional array, instead found {}".format(actual_dim))
+        self.assertEqual(actual_dim, 2, "Expecting a 2 dimensional array, instead found {}".format(actual_dim))
         self.assertEqual(actual.flatten().tolist(), np.array(expected_ngrams_vector).flatten().tolist())

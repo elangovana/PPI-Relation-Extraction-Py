@@ -18,5 +18,5 @@ class TestPipeline(unittest.TestCase):
         """
 
         train_file_abs_path = os.path.join(os.path.dirname(__file__), train_file_path)
-        self.assertEquals(os.path.exists(train_file_abs_path), True,
+        self.assertEqual(os.path.exists(train_file_abs_path), True,
                           "The file {} does not exist".format(train_file_abs_path))
