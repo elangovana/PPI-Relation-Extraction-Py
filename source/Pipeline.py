@@ -127,7 +127,8 @@ class Pipeline:
     def validate(self, data_rows, training_settings_pickle):
 
         # training settings
-        training_settings = pickle.load(open(training_settings_pickle, "rb"))
+        with open(training_settings_pickle, "rb") as b:
+            training_settings = pickle.load(b)
         trained_model = training_settings["model"]
         feature_extractor = training_settings["feature_extractor"]
 

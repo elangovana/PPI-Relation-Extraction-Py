@@ -82,7 +82,7 @@ class TransformerNGramFeatureExtractor(Transformer):
 
         # Normalised gene pair frequncy
 
-        new_feature = np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_NORM_FREQ]].astype(int)
+        new_feature = np.array(tmp_stage1_transformed_data_rows)[:, indics[Feature_NORM_FREQ]].astype(float).astype(int)
         features = np.concatenate((features, new_feature.reshape(len(new_feature), 1)), axis=1)
         feature_names.append("normalised_frequency")
 
@@ -135,5 +135,5 @@ Customise unpickling so that only n gram names are restored , everything else is
         :param d: The pickled dictionary
         """
         tmp_obj = TransformerNGramFeatureExtractor(n_grams=d["n_gram_names"])
-        for attr, value in tmp_obj.__dict__.iteritems():
+        for attr, value in tmp_obj.__dict__.items():
             self.__dict__[attr] = value
