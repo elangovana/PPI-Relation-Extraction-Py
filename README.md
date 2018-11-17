@@ -1,4 +1,4 @@
-[Build Status](https://travis-ci.org/elangovana/PPI-Relation-Extraction-Py.svg?branch=master)](https://travis-ci.org/elangovana/PPI-Relation-Extraction-Py)
+[![Build Status](https://travis-ci.org/elangovana/PPI-Relation-Extraction-Py.svg?branch=master)](https://travis-ci.org/elangovana/PPI-Relation-Extraction-Py)
 
 # PPI-Relation-Extraction-Py
 # Biocreative VI Track 4 task - Extract protein interactions affected by mutation 
@@ -11,3 +11,10 @@ GNormPlus (docker https://hub.docker.com/r/lanax/gnormplus/)  was used for prote
 ## Results
 The gene recognition and normalization phase using GNormPlus had a F-score of 40.6%, with a recall of 53.4 % in the full training set.   The relation extraction phase has a precision of 30.757 %, recall of 24.735 % resulting in an F-score of 27.419%
 
+
+## Prerequisites
+1. Install Python 3.5
+1. Install pip
+2. Install virtualenv
+
+## Set up
