@@ -39,7 +39,6 @@ class BiocLoaderDataFrame:
 
         for i, d in dataframe.iterrows():
             if not d["isValid"]: continue
-            print(d["isValid"])
 
             i_relation = I_GENE2 + 1
             # Only bother with true relations
