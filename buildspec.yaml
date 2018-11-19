@@ -9,7 +9,7 @@ phases:
     commands:
       - pip install pytest==3.6.3
       - pip install pyflakes==2.0.0
-      ## Repo name
+      ## CONFIGURE THIS: Repo name, please make sure this repo exists in ECR
       - export IMAGE_REPO_NAME=ppi-relation-extraction
       # AWS cli version to login into ecr. This needs to be compatible with the version of boto3 in the requirements file
       - export awscli_version=1.16.35
