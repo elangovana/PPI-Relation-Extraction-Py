@@ -25,13 +25,11 @@ class TestBiocLoader(TestCase):
 
         self.assertIsNotNone(actual)
 
-
-
     def test_dump(self):
         # Arrange
         sut = BiocLoader()
-        data_rows = [["Doc1#Gene1A#Gene2A", "DocId1", "Gene1A", "Gene2A", True],["Doc2#Gene2B#Gene2B", "DocId2", "Gene1B", "Gene2B", True] ]
+        data_rows = [["Doc1#Gene1A#Gene2A", "DocId1", "Gene1A", "Gene2A", True],
+                     ["Doc2#Gene2B#Gene2B", "DocId2", "Gene1B", "Gene2B", True]]
 
         # Act
-        actual = sut.dump(data_rows)
-
+        sut.dump(data_rows)

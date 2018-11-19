@@ -6,3 +6,4 @@ future==0.16.0
 numpy==1.13.3
 nltk==3.2.5
 matplotlib==2.2.2
+sagemaker-containers==2.3.0

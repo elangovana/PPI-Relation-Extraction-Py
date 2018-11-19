@@ -1,6 +1,6 @@
 import unittest
 import os
-from ddt import ddt, data, unpack
+from ddt import ddt, data
 
 """
 Unit tests for Pipeline class

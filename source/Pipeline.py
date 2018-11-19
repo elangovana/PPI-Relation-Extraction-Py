@@ -136,7 +136,7 @@ class Pipeline:
         result = feature_extractor.extract(data_rows)
 
         metadata_names = result[self.feature_extractor.key_metadata_names]
-        feature_names = result[self.feature_extractor.key_feature_names]
+        # feature_names = result[self.feature_extractor.key_feature_names]
         features = result[self.feature_extractor.key_feature]
         metadata = result[self.feature_extractor.key_metadata]
 
