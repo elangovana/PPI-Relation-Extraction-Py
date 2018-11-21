@@ -1,4 +1,9 @@
 FROM python:3.6-alpine
+RUN apk add --update curl gcc g++ \
+    && rm -rf /var/cache/apk/*
+
+RUN ln -s /usr/include/locale.h /usr/include/xlocale.h
+
 
 ENV source_path /opt/program/source
 RUN mkdir -p ${source_path}
