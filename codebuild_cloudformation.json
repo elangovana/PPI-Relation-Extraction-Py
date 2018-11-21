@@ -174,7 +174,10 @@
                 {
                   "Effect": "Allow",
                   "Action": [
-                    "ecr:PutImage"
+                    "ecr:PutImage",
+                    "ecr:InitiateLayerUpload",
+                    "ecr:UploadLayerPart",
+                    "ecr:CompleteLayerUpload"
                   ],
                   "Resource": [
                     {
