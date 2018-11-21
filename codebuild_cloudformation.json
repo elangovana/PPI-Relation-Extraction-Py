@@ -55,7 +55,7 @@
           "Image": {
             "Ref": "buildImage"
           },
-          "PrivilegedMode":"True"
+          "PrivilegedMode": "True"
         },
         "Name": {
           "Ref": "codeBuildProjectName"
@@ -174,7 +174,9 @@
               "Statement": [
                 {
                   "Effect": "Allow",
-                  "Action": "ecr:PutImage",
+                  "Action": [
+                    "ecr:PutImage"
+                  ],
                   "Resource": [
                     {
                       "Fn::Join": [
@@ -188,6 +190,13 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "ecr:GetAuthorizationToken"
+                  ],
+                  "Resource": "*"
                 }
               ]
             }
