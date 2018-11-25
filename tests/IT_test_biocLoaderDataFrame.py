@@ -1,3 +1,4 @@
+from io import StringIO
 from logging.config import fileConfig
 from unittest import TestCase
 
@@ -32,9 +33,13 @@ class TestBiocLoaderDataFrame(TestCase):
         # Arrange
         sut = BiocLoaderDataFrame()
         bioc_file_abs_path = os.path.join(os.path.dirname(__file__), bioc_file)
+        out_handle= StringIO()
 
         # Act
         dataframe = sut.parse(bioc_file_abs_path)
-        sut.dump(dataframe)
+        sut.dump(dataframe, out_handle)
+
+
+
 
 

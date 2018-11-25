@@ -32,8 +32,7 @@ class BiocLoaderDataFrame:
                                  columns=["id", "docid", "participant1", "participant2", "abstract", "isValid"])
         return dataframe
 
-    def dump(self, dataframe, filename=None):
-        filename = filename or tempfile.mkstemp(prefix="PredictedFile", suffix=".xml")[1]
+    def dump(self, dataframe, handle):
         # Read file and do preliminary pre processing to form rows of records
         dic = {}
 
@@ -53,10 +52,10 @@ class BiocLoaderDataFrame:
             dic[docid]["relations"].append((d["participant1"], d["participant2"]))
 
         biocrelation_wrapper = BiocRelation()
-        with open(filename, 'w') as fp:
-            collection = BioCCollection()
-            for docid in dic.keys():
-                collection.add_document(biocrelation_wrapper.get_bioc_relations(docid, dic[docid]["relations"]))
 
-            self.logger.info("Writing input to %s", filename)
-            bioc.dump(collection, fp)
+        collection = BioCCollection()
+        for docid in dic.keys():
+            collection.add_document(biocrelation_wrapper.get_bioc_relations(docid, dic[docid]["relations"]))
+
+        self.logger.info("Writing input to handle")
+        bioc.dump(collection, handle)
