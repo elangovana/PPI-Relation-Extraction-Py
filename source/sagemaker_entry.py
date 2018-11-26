@@ -5,15 +5,24 @@ import os
 import sys
 
 from Train import run
+
 """
 This is the sagemaker entry point
 """
 
-def train():
+
+
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler(sys.stdout)],
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     logger = logging.getLogger(__name__)
 
     parser = argparse.ArgumentParser(
         description='PPI interaction: Text Classification')
+
+    parser.add_argument('entry', required=True,
+                        help='The dataset file with respect to the train directory', choices={"train"})
 
     parser.add_argument('--traindata', required=True,
                         help='The dataset file with respect to the train directory')
@@ -33,10 +42,7 @@ def train():
     training_set = os.path.join(args.traindata_dir, args.traindata)
     out = args.out
 
-    run(training_set, out)
 
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler(sys.stdout)],
-                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    train()
+    # Based on the op
+    if args.entry == "train":
+        run(training_set, out)
