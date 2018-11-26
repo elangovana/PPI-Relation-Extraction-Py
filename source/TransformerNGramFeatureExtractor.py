@@ -2,10 +2,10 @@ import logging
 
 import numpy as np
 
-from source.BiocLoader import I_SENTENCES, I_GENE1, I_GENE2, I_GENESINDOC, I_ID, I_DOC_ID
-from source.NGramExtractor import NGramExtractor
-from source.PPIFragmentExtractor import PPIFragementExtractor
-from source.Transformer import Transformer
+from BiocLoader import I_SENTENCES, I_GENE1, I_GENE2, I_GENESINDOC, I_ID, I_DOC_ID
+from NGramExtractor import NGramExtractor
+from PPIFragmentExtractor import PPIFragementExtractor
+from Transformer import Transformer
 
 
 class TransformerNGramFeatureExtractor(Transformer):

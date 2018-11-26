@@ -1,8 +1,8 @@
 import tempfile
 from os.path import basename
 
-from source.BiocLoader import BiocLoader
-from source.Pipeline import Pipeline
+from BiocLoader import BiocLoader
+from Pipeline import Pipeline
 
 
 def run(training_data_file, output_dir):

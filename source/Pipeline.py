@@ -3,20 +3,19 @@ This is the main pipeline class for relation extraction.
 """
 import collections
 import logging
+import os
+import pickle
 import tempfile
 
 import numpy as np
-import os
-import pickle
-
 from sklearn.model_selection import KFold
 
-from source.BiocLoader import I_GENE1, I_GENE2, I_RELATIONS
-from source.BiocRelation import BiocRelation
-from source.ModelLogisticsRegresssion import ModelLogisticsRegression
-from source.ModelScorer import ModelScorer
-from source.PostProcessingSelfRelation import PostProcessingSelfRelation
-from source.TransformerNGramFeatureExtractor import TransformerNGramFeatureExtractor
+from BiocLoader import I_GENE1, I_GENE2, I_RELATIONS
+from BiocRelation import BiocRelation
+from ModelLogisticsRegresssion import ModelLogisticsRegression
+from ModelScorer import ModelScorer
+from PostProcessingSelfRelation import PostProcessingSelfRelation
+from TransformerNGramFeatureExtractor import TransformerNGramFeatureExtractor
 
 
 class Pipeline:
