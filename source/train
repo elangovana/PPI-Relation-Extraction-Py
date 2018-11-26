@@ -5,7 +5,9 @@ import os
 import sys
 
 from Train import run
-
+"""
+This is the sagemaker entry point
+"""
 
 def train():
     logger = logging.getLogger(__name__)
